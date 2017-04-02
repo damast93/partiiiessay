@@ -1,0 +1,111 @@
+\documentclass[12pt,a4paper]{article}
+
+% Typography
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\usepackage[condensed,math]{anttor}
+\usepackage{libertine}
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+
+\usepackage{fontspec}
+\usepackage{microtype}
+
+\usepackage{etoolbox}
+\newfontfamily\quotefont{Antykwa Torunska Condensed}
+\AtBeginEnvironment{quote}{\quotefont}
+
+
+% Maths symbols
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Commutative diagrams
+\usepackage[all,cmtip]{xy}
+
+% Bibliography
+%\usepackage{doc}
+\usepackage[style=alphabetic, backend=biber]{biblatex} 
+%\renewcommand*{\intitlepunct}{}
+
+\addbibresource{src//bibliography.bib}
+
+% Layout setup
+\usepackage[left=3cm,right=3cm,top=1.5cm,bottom=1.2cm,includeheadfoot]{geometry}
+
+% Creating graphics
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Proof enviroments
+\usepackage[standard,amsmath,thmmarks]{ntheorem}
+
+% Incremental numbering per section
+\theoremstyle{margin}
+\theorembodyfont{\normalfont}
+\newtheorem{counter}{counter}[section]
+
+\renewtheorem{Example}[counter]{Example}
+\renewtheorem{Definition}[counter]{Definition}
+
+\theorembodyfont{\slshape}
+\renewtheorem{Corollary}[counter]{Corollary}
+\renewtheorem{Lemma}[counter]{Lemma}
+\renewtheorem{Proposition}[counter]{Proposition}
+\renewtheorem{Theorem}[counter]{Theorem}
+
+\theoremstyle{nonumberplain}
+\theoremsymbol{\ensuremath{\,\hfill\square}}
+\theoremheaderfont{\normalfont\scshape}
+\theorembodyfont{\normalfont}
+\theoremseparator{:} 
+\renewtheorem{Proof}{Proof}
+
+% Custom maths & symbol definitions
+\newcommand{\id}{\textrm{id}}
+\renewcommand{\hom}{\textrm{Hom}}
+\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\catname}[1]{\mathbf{#1}}
+
+% Hyperlinks & PDF setup
+\providecommand\phantomsection{} 
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue]{hyperref}
+\hypersetup{
+    hypertexnames=false,
+    pdftitle={Locally presentable and accessible categories},
+    pdfauthor={Dario Stein},
+    pdfsubject={Part III Essay},
+    pdfkeywords={locally presentable category, accessible category, category theory, universal algebra, sketch, part iii essay},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Locally presentable and accessible categories}
+\author{Dario Stein}
+\date{02.04.2017}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+% Start numbering with 0
+% \setcounter{section}{-1}
+% \parindent0cm
+\input{src//introduction.tex} \pagebreak
+
+
+% Print bibliography
+
+% Print all of it
+\nocite{*}
+
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography[title=Bibliography]
+
+\end{document}
