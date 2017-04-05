@@ -1,0 +1,153 @@
+\section{Locally presentable and accessible categories}
+\label{sec:presentableaccessible}
+
+All categories in this essay will be locally small. All cardinals will be infinite regular cardinals.
+
+\subsection{Directed and filtered colimits}
+
+Let's recall the definition of a directed set
+\begin{Definition}[Directed set]
+A poset is called \emph{$\lambda$-directed} if every subset of cardinality less than $\lambda$ has an upper bound.
+\end{Definition}
+Noe that if $\lambda$ was a singular cardinal, a poset is $\lambda$-directed iff it is $\lambda^+$-directed for the cardinal successor $\lambda^+$, which is always regular. \\
+
+We can generalise the notion of directedness to arbitrary categories.
+
+\begin{Definition}[Small category]
+A category is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms.
+\end{Definition}
+
+\begin{Definition}[Filtered category]
+A category is called \emph{$\lambda$-filtered} if every $\lambda$-small subcategory has a cocone over it. 
+\end{Definition}
+
+We are interested in \emph{$\lambda$-filtered ($\lambda$-directed) colimits}, i.e. colimits of diagrams of shape $\cat I$, where $\cat I$ is a $\lambda$-filtered category (or a $\lambda$-directed poset considered as a category). It turns out these notions are equivalent, hence we can reduce to the simpler directed case.
+
+\begin{Proposition}A category $\cat C$ has $\lambda$-filtered colimits iff it has $\lambda$-directed colimits. For such categories, a functor $F : \cat C \to \cat D$ preserves $\lambda$-filtered colimits iff it preserves $\lambda$-directed ones.
+\end{Proposition}
+
+\begin{Example}\label{ex:Q}
+In $\catname{Grp}$, we have 
+\[ "\mathbb Q = \varinjlim \frac 1 n \mathbb Z". \]
+More precisely, $\mathbb Q$ is the $\aleph_0$-directed colimit of the diagram
+\begin{align*}
+ D : (\mathbb N, |) &\to \catname{Grp}, n \mapsto \mathbb Z \\
+ (n\, | \,m) &\mapsto \left(\mathbb Z \xrightarrow{m/n} \mathbb Z\right)
+\end{align*}
+\end{Example}
+
+Note that unlike e.g. coproducts, the underlying set of a directed colimit is easy to describe. For all varieties, the forgetful functor to $\catname{Set}$ creates directed colimits.
+
+\subsection{Presentable objects}
+\begin{Definition}[Presentable object]
+An object $A$ of a category $\cat K$ is called \emph{$\lambda$-presentable} if its covariant Hom-functor 
+\[ \hom(A,-) : \cat K \to \catname{Set} \]
+preserves $\lambda$-directed colimits.
+\end{Definition}
+Let's unravel this definition. Take a $\lambda$-directed diagram
+\[ D : (\cat I,\leq) \to \cat K \]
+with colimit $C$ and coprojections $D_i \xrightarrow{c_i} C$, then we get an induced diagram in $\catname{Set}$:
+\[
+\xymatrix{
+\hom(A,D_i) \ar[rd] \ar[dd]_{(D(i \to j))_*} \ar@/^2pc/[rrd]^{(c_i)_*} \\
+& \colim_i \hom(A,D_i) \ar[r]^{\kappa} & \hom(A,C) \\
+\hom(A,D_j) \ar[ru] \ar@/_2pc/[rru]_{(c_j)_*} \\
+}\]
+Preserving the colimit means that $\kappa$ is a bijection. We read off the conditions
+
+\textbf{Surjectivity} Every morphism $f : A \to C$ factors through one of the $D_i$ as
+\begin{equation}
+f = c_i \circ f_i \text { for some } f_i : A \to D_i.
+\end{equation}
+\textbf{Injectivity} The factorization is essentially unique, i.e. if $f = c_i\circ  f_i = c_j\circ  f_j$ then $f_i = f_j$ in $\colim_i \hom(A,D_i)$, so there is $k \geq i,j$ such that
+\begin{equation}
+D(i \to k) \circ f_i = D(j \to k) \circ f_j.
+\end{equation}
+
+\textbf{Remark: } For $\lambda \leq \lambda'$, $\lambda$-presentable objects are $\lambda'$-presentable. For the case $\lambda=\aleph_0$, we simply say \emph{finitely presentable}. \\
+
+Presentable objects really capture what the name suggests: In a variety, an object $A$ is $\lambda$-presentable iff it has a presentation with less than $\lambda$ generators and relations.
+
+\begin{Proposition}A $\lambda$-small colimit of $\lambda$-presentable objects is again $\lambda$-presentable.
+\end{Proposition}
+
+\begin{Example}\ \\
+\begin{itemize}
+\item A set $A$ is $\lambda$-presentable iff $|A| < \lambda$.
+\item An element $c$ of a lattice $L$ is finitely presentable iff it is a \emph{compact element}, i.e. whenever
+\[ c \leq \bigvee_i d_i \]
+for a directed join, we have $c \leq d_i$ for some $i$. This really generalizes the usual compactness from the semilattice of open sets of a topological space (every open cover has a finite subcover).
+\item The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of these, thus $\aleph_1$-presentable; this corresponds to the countable presentation
+\[ \mathbb Q \cong \left\langle x_n : n \in \mathbb N | x_n = k \cdot x_{nk} \right \rangle\]
+\end{itemize}
+\end{Example}
+
+\subsection{Locally presentable and accessible categories}
+
+\begin{Definition}[Locally presentable category]
+A category $\cat K$ is \emph{locally $\lambda$-presentable} if
+\begin{enumerate}
+\item $\cat K$ is cocomplete
+\item there is a set $\mathcal A$ of $\lambda$-presentable objects such that every object of $\cat K$ is a $\lambda$-directed colimit of objects of $\mathcal A$.
+\end{enumerate}
+We say $\cat K$ is \emph{locally presentable} if it is locally $\lambda$-presentable for some $\lambda$.
+\end{Definition}
+
+Accessibility is a weakening on condition (1)
+
+\begin{Definition}[Accessible category]
+A category $\cat K$ is \emph{$\lambda$-accessible} if
+\begin{enumerate}
+\item $\cat K$ is has $\lambda$-directed colimits
+\item there is a set $\mathcal A$ of $\lambda$-presentable objects such that every object of $\cat K$ is a $\lambda$-directed colimit of objects of $\mathcal A$.
+\end{enumerate}
+We say $\cat K$ is accessible if it is $\lambda$-accessible for some $\lambda$.
+\end{Definition}
+
+Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. 
+
+Recall that a set $G$ of $\cat K$-objects is called a \emph{strong generator} if morphisms out of $G$-objects can distinguish morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ is a strong generator. For locally presentable categories, we have a converse that allows for a simpler definition
+\begin{Proposition}
+A category $\mathcal K$ is locally $\lambda$-presentable iff it has a strong generator of $\lambda$-presentable objects. 
+\end{Proposition}
+\begin{Corollary} The category $\catname{Set}$ is locally finitely presentable as $\{1\}$ is a strong generator by a single finitely presentable set. In fact, every set is directed colimit of its finite subsets. \\
+
+Every variety is locally finitely presentable by the strong generator $\{ F(x) \}$ on the one-generator free algebra. 
+\end{Corollary}
+
+\begin{Corollary}\label{coro:raise}
+Every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$.
+\end{Corollary}
+\begin{Proof}
+Take the same strong generator.
+\end{Proof}
+
+Note that we cannot take the same set $\mathcal A$ from the definition. For example, every set is directed colimit of its finite subsets, but not $\aleph_1$-directed colimit of these. Instead we have to add new $\aleph_1$-small colimits that will form a set of $\aleph_1$-presentable sets, so that every set is $\aleph_1$-directed colimit of its countable subsets. \\
+
+Corollary \ref{coro:raise} is in interesting contrast to accessible categories. We only get the following
+\begin{Proposition}
+For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible.
+\end{Proposition}
+
+\subsection{Canonical colimits}
+\begin{Definition}
+If $\cat K$ is $\lambda$-accessible, the set of $\lambda$-presentable objects of $\cat K$ is essentially small. We write $\cat K_\lambda$ for any set of representatives of the isomorphism classes.
+\end{Definition}
+
+
+The set $\cat K_\lambda$ is a fortiori a strong generator of $\cat K$ and every object of $\mathcal K$ will be a colimit of $\cat K_\lambda$-objects in a canonical way.
+
+\begin{Definition}[Canonical colimit]
+Given a set $\mathcal A \subseteq \cat K$ and an object $K$ of $\cat K$, the \emph{canonical diagram} with respect to $\mathcal A$ is the diagram of all morphisms $A \to K$ with $A \in \mathcal A$, formally given by the forgetful functor
+\[ U : \mathcal A/K \to \cat K. \]
+We say $K$ is a \emph{canonical colimit} of $\mathcal A$-objects if the canonical cocone 
+\[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
+is colimiting. 
+\end{Definition}
+\begin{Definition}[Dense subcategory]
+A small full subcategory $\cat A \subseteq \cat K$ is called \emph{dense} if every object of $\cat K$ is a canonical colimit of $\cat A$-objects.
+\end{Definition}
+
+\begin{Proposition}
+If $\cat K$ is $\lambda$-accessible and $K$ a $\cat K$-object, then the canonical diagram wrt. $\cat K_\lambda$ is $\lambda$-filtered and $K$ its canonical colimit. In particular, $\cat K_\lambda$ is dense.
+\end{Proposition}

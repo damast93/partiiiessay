@@ -1,9 +1,55 @@
-\section{Introduction}
+\section*{Introduction}
+\phantomsection
+\addcontentsline{toc}{section}{Introduction}
 
-Introduce stuff from \cite{AdamekRosicky}
+When thinking of a restricted class of categories with pleasant properties, \emph{(finitary) varieties} are among the first candidates: \emph{Sets}, \emph{groups}, \emph{rings} all form complete and cocomplete categories, are well-powered, well-copowered, have free objects, closure properties, commutativity ... \\
 
-\begin{Definition}[Presentable object]
-An object $A$ of $\cat C$ is called \emph{$\lambda$-presentable} if its Hom-functor
-\[ \hom(A,-) : \cat C \to \catname Set \]
-preserves $\lambda$-directed colimits. 
-\end{Definition}
+A variety $\cat K$ is given through a finitary signature $\Sigma$ and a set of term equations over $\Sigma$. Then $\cat K$ is the full subcategory of the algebras $\catname{Alg}(\Sigma)$ that satisfy all equations. Universal algebra has the following famous characterisation of varieties by Birkhoff's HSP-Theorem: Let $\cat K$ be a full subcategory of $\catname{Alg}(\Sigma)$. Then the following are equivalent
+\begin{enumerate}
+\item $\cat K$ is a variety
+\item $\cat K$ is closed under \underline{h}omomorphic images, \underline{s}ubobjects and \underline{p}roducts in $\catname{Alg}(\Sigma)$.
+\end{enumerate}
+This is a first correspondence of syntactical properties of a theory and categorical properties of its models. For example, we can deduce that the category of \emph{fields} is not a variety over any signature, as the componentwise product of fields fails to be a field. Still, Birkhoff's theorem is very much an extrinsic characterisation of varieties. What can we say by \emph{just} looking at $\cat K$, even in cases where the category doesn't look algebraic at all? \\
+
+In this essay, I will introduce the broader classes of \emph{locally presentable} and \emph{accessible} categories. Both are clean, intrinsically defined categorical properties: Local presentability roughly means that a cocomplete category is generated in a certain sense by "small objects" via colimits. This notion already covers a wide range of everyday categories from varieties and quasivarieties to Banach spaces and graphs. 
+
+Accessibility weakens the requirement of cocompleteness, giving us wilder categories like the categories of fields, linear orders, sets with monomorphisms or connected graphs. \\
+
+It turns out that again, both locally presentable and accessible categories can be axiomatised as models of an appropriate theory, and the categorical properties will reflect syntactic properties of the theory. One could use infinitary propositional logic here, or rather use the "language" of \emph{sketches}: \\
+
+A sketch is merely a small category $\cat A$ with distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
+\[
+\xymatrix{
+  & p \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & \\
+a & a & a
+}\]
+with the prescribed discrete cone
+\[
+\xymatrix{
+  & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
+a & & a
+}\]
+A model $F : \cat A \to \catname{Set}$ consists of two sets $X=F(a)$ and $P=F(p)$ where
+\[
+\xymatrix{
+  & F(p) \ar[rd]^{F(\pi_2)} \ar[ld]_{F(\pi_1)} & \\
+F(A) & & F(A)
+}\]
+is a limit, thus \[ P \cong X \times X \] 
+and a map $F(m) : P \to X$. We can therefore identify the models of $\mathcal A$ as algebras with a binary operation $m$. \\
+
+In fact, sketches eliminate the need to define terms and formulas for our theories entirely. We have a purely categorical concept right at our disposal. Still, limits and colimits provide us with all the expressive power we need. This will be our main theorem:
+
+\begin{Theorem}[Sketchability]\ \\
+\begin{enumerate}
+\item A category is accessible if and only if it is \emph{sketchable}, i.e. equivalent to the category of models of a sketch. 
+
+\item A category is locally presentable iff it is sketchable by a \emph{limit sketch}, i.e. a sketch that only prescribes \emph{cones}.
+
+\item A category is a (many-sorted) variety iff it is sketchable by only prescribing finite discrete cones.
+\end{enumerate}
+\end{Theorem}
+
+In sections \ref{sec:presentableaccessible} and \ref{sec:sketches}, I will introduce the notions of locally presentable, accessible categories, sketches and give examples. 
+
+Our main objective is then to give a proof of the accessible part of the sketchability theorem. I will focus on accessible categories during the development but mention the other cases when suitable. In section \ref{seq:catstoskeches}, I will analyse the structure of accessible categories further and show how to turn them into functor categories and models of a sketch. Section \ref{sec:sketchesaccessible} will contain the other direction of the theorem, that model categories of sketches are indeed accessible.

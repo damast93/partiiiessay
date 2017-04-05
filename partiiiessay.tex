@@ -1,11 +1,11 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
 % Typography
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage{titlesec}
 
-\usepackage[condensed,math]{anttor}
+%\usepackage[condensed,math]{anttor}
 \usepackage{libertine}
 \setmainfont[Ligatures=TeX]{Linux Libertine O}
 
@@ -13,8 +13,8 @@
 \usepackage{microtype}
 
 \usepackage{etoolbox}
-\newfontfamily\quotefont{Antykwa Torunska Condensed}
-\AtBeginEnvironment{quote}{\quotefont}
+%\newfontfamily\quotefont{Antykwa Torunska Condensed}
+%\AtBeginEnvironment{quote}{\quotefont}
 
 
 % Maths symbols
@@ -65,9 +65,15 @@
 
 % Custom maths & symbol definitions
 \newcommand{\id}{\textrm{id}}
+\renewcommand{\circ}{\cdot}
 \renewcommand{\hom}{\textrm{Hom}}
 \newcommand{\cat}[1]{\mathcal{#1}}
 \newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\colim}{\operatorname{colim}}
+
+%\def\[#1\]{%
+%  \begin{equation}#1\end{equation}%
+% }
 
 % Hyperlinks & PDF setup
 \providecommand\phantomsection{} 
@@ -96,9 +102,14 @@
 
 % Start numbering with 0
 % \setcounter{section}{-1}
-% \parindent0cm
-\input{src//introduction.tex} \pagebreak
 
+\parindent0cm
+
+\input{src//introduction.tex} \pagebreak
+\input{src//presentableaccessible.tex} \pagebreak
+\input{src//sketches.tex} \pagebreak
+\input{src//catstosketches.tex} \pagebreak
+\input{src//sketchesaccessible.tex} \pagebreak
 
 % Print bibliography
 
