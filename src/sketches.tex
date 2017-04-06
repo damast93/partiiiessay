@@ -1,2 +1,101 @@
 \section{Sketches}
 \label{sec:sketches}
+
+\subsection{Definition of Sketches}
+
+Sketches have been introduces by Ehresmann. \\
+
+\begin{Definition}[Sketch]
+A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
+\end{Definition}
+Note that for convenience, we treat our cones not as natural transformations but as special diagrams $D : \cat I \to \cat A$ where $I$ has a distinguished apex $\cat I^+$ and a bottom $\cat I^\bot$ with morphisms $\cat I^+ \to B$ for all $B \in \cat I^\bot$ and no morphisms from $B$ into the apex; analogously for cocones. \\
+
+Sketches form a category $\catname{Sk}$ by letting morphisms $(\cat A, \dist L, \dist C) \to (\cat A', \dist{L'}, \dist{C'})$ be functors $F : \cat A \to \cat A'$ that respect the distinguished cones and cocones, i.e. for all $D \in \dist L$, we have $F \circ D \in \dist{L'}$ and similarly $F \circ D \in \dist{C'}$ for all $D \in \dist C$. \\
+
+\textbf{Remark: } The way we will actually write down sketches to present a theory will look slightly different: Instead of the category $\cat A$, we will usually specify an underlying graph\footnote{directed multigraph} $G$, together with a set $D$ of commutativity conditions between pairs of paths of the same starting- and endpoint. We will then prescribe the cones and cocones accordingly. Note that we get back to our original definition by taking $\cat A$ to be the category freely presented by the $G$ modulo the congruence given by $D$. 
+
+\begin{Definition}[Model of a sketch]
+Given a sketch $\mathbb S = (\cat A, \dist L, \dist C)$ and a category $\cat K$, a \emph{model} of $\mathbb S$ in $\cat K$ is a functor
+\[ F : \cat A \to \cat K \]
+that turns all distinguished cones into limit cones and cocones into colimit cones in $\cat K$, i.e. \begin{itemize}
+\item for all $D \in \dist L$, $F \circ D$ is limiting,
+\item for all $D \in \dist C$, $F \circ D$ is colimiting.
+\end{itemize}
+A \emph{morphism of models} is just a natural transformation between the functors, making the category \[ \mod(\mathbb S, \cat K) \]
+of $\mathbb S$-models in $\cat K$ a full subcategory of $\fun{\cat A}{\cat K}$. We write
+\[ \mod(\mathbb S) := \mod(\mathbb S, \catname{Set}) \]
+for the category of set-valued models of $\mathbb S$. Set-valued models will in fact be so important that we call a category \emph{sketchable} if it is equivalent to $\mod(\mathbb S)$ for a sketch $\mathbb S$.
+\end{Definition}
+
+\textbf{Remark: } By ignoring set-theoretic restrictions, we could think of taking model categories as a functor
+\begin{equation}
+\label{eq:modfunctor} \mod(-, \cat K) : \catname{Sk}^\op \to \catname{CAT}
+\end{equation}
+In general, non-isomorphic sketches can still have equivalent categories of models though. Note that we can assign to every category $\cat K$ an ``underlying large sketch'' 
+\[ U(\cat K) = (\cat K, \dist L, \dist C) \]
+where $\dist L$ collects all limit cones, $\dist C$ all colimit cones in $\cat K$. Then a model $F : \mathbb S \to \cat K$ is nothing but a sketch morphism $F : \mathbb S \to U(\cat K)$ and (\ref{eq:modfunctor}) is just given by composition of morphisms. 
+
+We can now give names to the the syntactic (better: geometric?) properties of sketches.
+\begin{Definition}
+We call $\mathbb S = (\cat A, \dist L, \dist C)$
+\begin{enumerate}
+\item a \emph{limit sketch} if $\dist C$ is empty
+\item a \emph{product sketch} if $\dist C$ is empty and all cones in $\dist L$ are \emph{discrete}, i.e. an apex connected to a discrete diagram
+\item a \emph{finite product sketch} if $\dist C$ is empty and all cones in $\dist L$ are discrete and finite
+\item \emph{$\lambda$-small} if all cones and cocones have underlying $\lambda$-small diagrams
+\end{enumerate}
+We furthermore say \emph{mixed sketch} to stress that both $\dist L$ and $\dist C$ are nonempty.
+\end{Definition}
+
+\subsection{Examples}
+
+This section is to give examples on how to sketch theories for known categories. We have already seen the sketch for a binary algebra in the introduction. Let's extend it in the following way:
+
+%% Watch your language
+\begin{Example}[Unital algebras]
+We want to sketch the variety $\cat V$ with a neutral element $e$ such that
+\[ x \cdot e = x. \]
+We start with a graph on vertices $1, a, a^2$ and edges as described
+\[
+\xymatrix{
+  & a^2 \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & & 1 \ar[d]_{e} \\
+a & a & a & a
+}\]
+Note that even though $1$ and $a^2$ are suggestively named, these are just symbols at the moment. We will make them get their intended meaning in the models of the sketch. To make $a^2$ become the actual product of $a$, we needed to add
+\[
+\xymatrix{
+  & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
+a & & a
+}\]
+to $\dist L$. Furthermore, we add to $\dist L$ the empty cone with apex $1$, making it a terminal object. We add an edge
+\[ (\id,e) : a \to a^2 \]
+and now need to pin down its meaning. Let's introduce another edge $! : a \to 1$. As $1$ will be a terminal object, its meaning is already uniquely defined. Now we can add commutativity relations
+\[
+\xymatrix{
+  & & a \ar[d]^{(\id,e)} \ar@/_/[lldd]^{\id} \ar@/^/[rd]^{!}  & & \\
+  & & a^2 \ar[lld]^{\pi_1} \ar[rrd]_{\pi_2} & 1 \ar@/^/[rd]^{e} & \\
+a & & & & a
+}\]
+As $a^2$ will be a limit, the morphism $(\id,e)$ into it will be determined through its projections and thus be uniquely defined as well. Lastly, we can add a commutativity relation\footnote{note that the identity morphism $\id_a$ is uniquely given through the empty path $()$ from $a$ to $a$}
+\[ m \cdot (\id,e) = \id_a. \]
+By this construction, we have a finite product sketch $\mathbb S$ with two cones such that
+\[ \mod(\mathbb S) \simeq \cat V. \]
+\end{Example}
+
+\begin{Example}[Groups]
+I will just sketch how to sketch the category of groups. For the associative law, we first make ourselves double and triple products
+\[
+\xymatrix{
+  & a^2 \ar[ld]_{\pi_1} \ar[rd]^{\pi_2} &    & & a^3 \ar[ld]_{p_1} \ar[d]^{p_2} \ar[rd]^{p_3} & \\
+a &     & a & a & a & a
+}\]
+with the corresponding discrete limit cones. We want to write down the equation
+\[ m \circ (m \circ (p_1, p_2), p_3) = m \circ (p_1, m \circ (p_2,p_3)) \]
+between paths $a^3 \to a^3$. All the intermediate edges have to be added to the sketch and defined uniquely via their limit projections, e.g by the following commuting diagram
+\[
+\xymatrix{
+& & a^3 \ar[d]^{(p_1,p_2)} \ar@/_2pc/[lldd]_{p_1} \ar@/^2pc/[rrdd]^{p_2} & \\
+& & a^2 \ar[lld]_{\pi_1} \ar[rrd]^{\pi_2} & \\
+a & & & & a
+}\]
+\end{Example}

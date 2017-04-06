@@ -1,2 +1,25 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
+
+\subsection{Canonical colimits}
+\begin{Definition}
+If $\cat K$ is $\lambda$-accessible, the set of $\lambda$-presentable objects of $\cat K$ is essentially small. We write $\cat K_\lambda$ for any set of representatives of the isomorphism classes.
+\end{Definition}
+
+
+The set $\cat K_\lambda$ is a fortiori a strong generator of $\cat K$ and every object of $\mathcal K$ will be a colimit of $\cat K_\lambda$-objects in a canonical way.
+
+\begin{Definition}[Canonical colimit]
+Given a set $\mathcal A \subseteq \cat K$ and an object $K$ of $\cat K$, the \emph{canonical diagram} with respect to $\mathcal A$ is the diagram of all morphisms $A \to K$ with $A \in \mathcal A$, formally given by the forgetful functor
+\[ U : \mathcal A/K \to \cat K. \]
+We say $K$ is a \emph{canonical colimit} of $\mathcal A$-objects if the canonical cocone 
+\[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
+is colimiting. 
+\end{Definition}
+\begin{Definition}[Dense subcategory]
+A small full subcategory $\cat A \subseteq \cat K$ is called \emph{dense} if every object of $\cat K$ is a canonical colimit of $\cat A$-objects.
+\end{Definition}
+
+\begin{Proposition}
+If $\cat K$ is $\lambda$-accessible and $K$ a $\cat K$-object, then the canonical diagram wrt. $\cat K_\lambda$ is $\lambda$-filtered and $K$ its canonical colimit. In particular, $\cat K_\lambda$ is dense.
+\end{Proposition}
