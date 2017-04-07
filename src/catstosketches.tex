@@ -1,11 +1,12 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
 
+In this section, we will see how to embed accessible categories into functor categories and turn them into models of a sketch.
+
 \subsection{Canonical colimits}
 \begin{Definition}
-If $\cat K$ is $\lambda$-accessible, the set of $\lambda$-presentable objects of $\cat K$ is essentially small. We write $\cat K_\lambda$ for any set of representatives of the isomorphism classes.
+If $\cat K$ is $\lambda$-accessible, the set of $\lambda$-presentable objects of $\cat K$ is essentially small. We write $\cat K_\lambda$ for any set of representatives up to isomorphism.
 \end{Definition}
-
 
 The set $\cat K_\lambda$ is a fortiori a strong generator of $\cat K$ and every object of $\mathcal K$ will be a colimit of $\cat K_\lambda$-objects in a canonical way.
 
@@ -16,10 +17,56 @@ We say $K$ is a \emph{canonical colimit} of $\mathcal A$-objects if the canonica
 \[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
 is colimiting. 
 \end{Definition}
+
 \begin{Definition}[Dense subcategory]
 A small full subcategory $\cat A \subseteq \cat K$ is called \emph{dense} if every object of $\cat K$ is a canonical colimit of $\cat A$-objects.
 \end{Definition}
 
-\begin{Proposition}
+\begin{Proposition}\label{prop:lpres}
 If $\cat K$ is $\lambda$-accessible and $K$ a $\cat K$-object, then the canonical diagram wrt. $\cat K_\lambda$ is $\lambda$-filtered and $K$ its canonical colimit. In particular, $\cat K_\lambda$ is dense.
 \end{Proposition}
+
+\begin{Proposition}[Canonical embedding]
+For a small full subcategory $\cat A$ of $\cat K$, we can look at the domain-restricted Yoneda embedding
+\[ E : \cat K \to \pre{\cat A}, \, K \mapsto \hom(-,K) \]
+We can reformulate earlier properties in terms of $E$:
+\begin{itemize}
+\item $E$ is an embedding iff $\cat A$ is dense in $\cat K$
+\item $E$ preserves $\lambda$-filtered colimits iff all $\cat A$-objects are locally $\lambda$-presentable
+\end{itemize}
+\end{Proposition}
+
+Together with \ref{prop:lpres}, we can deduce that every $\lambda$-accessible category $\cat K$ embeds into the functor category $\fun{\cat A^\op}{\catname{Set}}$ where $\cat A = K_\lambda$. For a more precise description, we want to determine the essential image of the embedding.
+
+\subsection{Flat functors}
+
+\begin{Definition}[$\lambda$-flat functor]
+We call a functor $F : \cat A \to \catname{Set}$ $\lambda$-flat, if $F$ is a $\lambda$-directed colimit of representable functors. We write $\flat_\lambda(\cat A)$ for the full subcategory of $\fun{A}{\catname{Set}}$ consisting of $\lambda$-flat functors.
+\end{Definition}
+
+\begin{Proposition}
+Let $\cat K$ be $\lambda$-accessible, $\cat A = \cat K_\lambda$ and $E : \cat K \to \fun{\cat A^\op}{\catname{Set}}$ the canonical embedding. Then the essential image of $E$ precisely consists of the $\lambda$-flat functors, and there is an equivalence
+\[ \cat K \simeq E\text{''}\cat K \simeq \flat_\lambda(\cat A^\op). \]
+\end{Proposition}
+
+Note that on the other hand, for every locally small $\cat A$, the category $\flat_lambda(\cat A)$ is $\lambda$-accessible.
+
+\begin{Proposition}
+If $\cat K$ is locally $\lambda$-presentable, the essential image of $E$ reduces to the $\emph{$\lambda$-continuous functors}$, i.e. functors that preserve $\lambda$-small limits, and
+\[ \cat K \simeq E\text{''}\cat K \simeq \cont_\lambda(\cat A^\op). \]
+\end{Proposition}
+
+\begin{Corollary}
+Locally presentable categories are complete and well-powered.
+\end{Corollary}
+\begin{Proof}
+The subcategory $\cont_\lambda(\cat A)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits, and therefore complete. A category with pullbacks and a strong generator is well-powered.
+\end{Proof}
+
+\begin{Corollary}
+Every locally $\lambda$-presentable category is sketchable by a $\lambda$-small limit sketch.
+\end{Corollary}
+\begin{Proof}
+Take the sketch $\mathbb S = (\cat A^\op, L)$ where $L$ consists of all $\lambda$-small limit cones in $\cat A^\op$. Then by definition
+\[ \mod(\mathbb S) \simeq \cont_\lambda(\cat A^\op). \]
+\end{Proof}

@@ -8,7 +8,8 @@ Sketches have been introduces by Ehresmann. \\
 \begin{Definition}[Sketch]
 A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
 \end{Definition}
-Note that for convenience, we treat our cones not as natural transformations but as special diagrams $D : \cat I \to \cat A$ where $I$ has a distinguished apex $\cat I^+$ and a bottom $\cat I^\bot$ with morphisms $\cat I^+ \to B$ for all $B \in \cat I^\bot$ and no morphisms from $B$ into the apex; analogously for cocones. \\
+% Todo better explanation
+Note that for convenience, we treat our cones not as natural transformations but as diagrams $D : \cat I \to \cat A$ of a special form. $I$ has a distinguished apex $\cat I^+$ and a basis diagram $\cat I^\bot$ with unique morphisms $\cat I^+ \to B$ for all $B \in \cat I^\bot$ and no morphisms from $B$ into $\cat I^+$; analogously for cocones. \\
 
 Sketches form a category $\catname{Sk}$ by letting morphisms $(\cat A, \dist L, \dist C) \to (\cat A', \dist{L'}, \dist{C'})$ be functors $F : \cat A \to \cat A'$ that respect the distinguished cones and cocones, i.e. for all $D \in \dist L$, we have $F \circ D \in \dist{L'}$ and similarly $F \circ D \in \dist{C'}$ for all $D \in \dist C$. \\
 
@@ -103,14 +104,12 @@ Unitality was discussed in \ref{ex:unitality}, and the inversion operation amoun
 as paths $a^2 \to a$, where again $!: a^2 \to 1$. 
 \end{Example}
 
-This procedure actually shows how to turn any set of identities into a finite product sketch.
+This procedure gives an idea on how to turn any set of identities into a finite product sketch.
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.
 \end{Proposition}
 \begin{Proof}
-For any variety, we have seen how to turn it into a model category of a sketch. \\
-
-Given a finite product sketch $\mathbb S = (\cat A, \dist L)$, we define a variety in the following way: Start by defining a signature with sorts $\obj(\cat A)$ and add unary operation symbols $f : s \to t$ for every morphism $f : s \to t$ in $\cat A$. \\
+Given a finite product sketch $\mathbb S = (\cat A, \dist L)$, we need to define a variety equivalent to its models: Start by defining a signature with sorts $\obj(\cat A)$ and add unary operation symbols $f : s \to t$ for every morphism $f : s \to t$ in $\cat A$. \\
 
 Add equations
 \[ \id_r(x) = x \]

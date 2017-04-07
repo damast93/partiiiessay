@@ -6,8 +6,8 @@
 \usepackage{titlesec}
 
 %\usepackage[condensed,math]{anttor}
-\usepackage{libertine}
-\setmainfont[Ligatures=TeX]{Linux Libertine O}
+%\usepackage{libertine}
+%\setmainfont[Ligatures=TeX]{Linux Libertine O}
 
 \usepackage{fontspec}
 \usepackage{microtype}
@@ -42,15 +42,21 @@
 % Proof enviroments
 \usepackage[standard,amsmath,thmmarks]{ntheorem}
 
+% Enumeration style
+\renewcommand\labelenumi{(\roman{enumi})}
+\renewcommand\theenumi\labelenumi
+
 % Incremental numbering per section
 \theoremstyle{margin}
 \theorembodyfont{\normalfont}
 \newtheorem{counter}{counter}[section]
 
+% TODO Check font 
+\theorembodyfont{\slshape}
+
 \renewtheorem{Example}[counter]{Example}
 \renewtheorem{Definition}[counter]{Definition}
 
-\theorembodyfont{\slshape}
 \renewtheorem{Corollary}[counter]{Corollary}
 \renewtheorem{Lemma}[counter]{Lemma}
 \renewtheorem{Proposition}[counter]{Proposition}
@@ -66,7 +72,10 @@
 % Custom maths & symbol definitions
 \newcommand{\id}{\textrm{id}}
 \renewcommand{\circ}{\cdot}
+\renewcommand{\lim}{\operatorname{lim}}
 \newcommand{\op}{\textrm{op}}
+\renewcommand{\flat}{\mathbf{Flat}}
+\newcommand{\cont}{\mathbf{Cont}}
 \newcommand{\obj}{\textrm{ob}}
 \newcommand{\mor}{\textrm{mor}}
 \newcommand{\dist}[1]{\textrm{#1}}
