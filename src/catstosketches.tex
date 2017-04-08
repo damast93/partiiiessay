@@ -1,72 +1,82 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
 
-In this section, we will see how to embed accessible categories into functor categories and turn them into models of a sketch.
+In this section, we will see how to embed accessible categories into functor categories and turn them into models of a sketch: \\
 
 \subsection{Canonical colimits}
-\begin{Definition}
-If $\cat K$ is $\lambda$-accessible, the set of $\lambda$-presentable objects of $\cat K$ is essentially small. We write $\cat K_\lambda$ for any set of representatives up to isomorphism.
-\end{Definition}
 
-The set $\cat K_\lambda$ is a fortiori a strong generator of $\cat K$ and every object of $\mathcal K$ will be a colimit of $\cat K_\lambda$-objects in a canonical way.
-
-\begin{Definition}[Canonical colimit]
-Given a set $\mathcal A \subseteq \cat K$ and an object $K$ of $\cat K$, the \emph{canonical diagram} with respect to $\mathcal A$ is the diagram of all morphisms $A \to K$ with $A \in \mathcal A$, formally given by the forgetful functor
-\[ U : \mathcal A/K \to \cat K. \]
-We say $K$ is a \emph{canonical colimit} of $\mathcal A$-objects if the canonical cocone 
-\[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
-is colimiting. 
-\end{Definition}
-
-\begin{Definition}[Dense subcategory]
-A small full subcategory $\cat A \subseteq \cat K$ is called \emph{dense} if every object of $\cat K$ is a canonical colimit of $\cat A$-objects.
-\end{Definition}
-
-\begin{Proposition}\label{prop:lpres}
-If $\cat K$ is $\lambda$-accessible and $K$ a $\cat K$-object, then the canonical diagram wrt. $\cat K_\lambda$ is $\lambda$-filtered and $K$ its canonical colimit. In particular, $\cat K_\lambda$ is dense.
-\end{Proposition}
-
-\begin{Proposition}[Canonical embedding]
-For a small full subcategory $\cat A$ of $\cat K$, we can look at the domain-restricted Yoneda embedding
-\[ E : \cat K \to \pre{\cat A}, \, K \mapsto \hom(-,K) \]
-We can reformulate earlier properties in terms of $E$:
-\begin{itemize}
-\item $E$ is an embedding iff $\cat A$ is dense in $\cat K$
-\item $E$ preserves $\lambda$-filtered colimits iff all $\cat A$-objects are locally $\lambda$-presentable
-\end{itemize}
-\end{Proposition}
-
-Together with \ref{prop:lpres}, we can deduce that every $\lambda$-accessible category $\cat K$ embeds into the functor category $\fun{\cat A^\op}{\catname{Set}}$ where $\cat A = K_\lambda$. For a more precise description, we want to determine the essential image of the embedding.
-
-\subsection{Flat functors}
-
-\begin{Definition}[$\lambda$-flat functor]
-We call a functor $F : \cat A \to \catname{Set}$ $\lambda$-flat, if $F$ is a $\lambda$-directed colimit of representable functors. We write $\flat_\lambda(\cat A)$ for the full subcategory of $\fun{A}{\catname{Set}}$ consisting of $\lambda$-flat functors.
-\end{Definition}
+Let $\cat K$ be a $\lambda$-accessible category. We know that every object is $\lambda$-filtered colimit of some set $\cat A$ of $\lambda$-presentable objects. In fact, we can pick a canonical such set generating set by considering all $\lambda$-presentable objects.
 
 \begin{Proposition}
-Let $\cat K$ be $\lambda$-accessible, $\cat A = \cat K_\lambda$ and $E : \cat K \to \fun{\cat A^\op}{\catname{Set}}$ the canonical embedding. Then the essential image of $E$ precisely consists of the $\lambda$-flat functors, and there is an equivalence
-\[ \cat K \simeq E\text{''}\cat K \simeq \flat_\lambda(\cat A^\op). \]
+For every $\lambda$-accessible category $\cat K$, the full subcategory of $\lambda$-presentable objects is essentially small. 
 \end{Proposition}
-
-Note that on the other hand, for every locally small $\cat A$, the category $\flat_lambda(\cat A)$ is $\lambda$-accessible.
-
-\begin{Proposition}
-If $\cat K$ is locally $\lambda$-presentable, the essential image of $E$ reduces to the $\emph{$\lambda$-continuous functors}$, i.e. functors that preserve $\lambda$-small limits, and
-\[ \cat K \simeq E\text{''}\cat K \simeq \cont_\lambda(\cat A^\op). \]
-\end{Proposition}
-
-\begin{Corollary}
-Locally presentable categories are complete and well-powered.
-\end{Corollary}
 \begin{Proof}
-The subcategory $\cont_\lambda(\cat A)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits, and therefore complete. A category with pullbacks and a strong generator is well-powered.
+Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered colimit $B \xrightarrow{\sim} \colim_i A_i$ of objects in $\cat A$. The isomorphism factors through one of the $A_i$, exhibiting $B$ as a retract $B \xrightarrow{j} A_i \xrightarrow{r} B$ of $A_i$. Note that $jr$ is an idempotent endomorphism of $A_i$, and retracts that induce the same endomorphism are isomorphic. Thus we have an class injection
+\[ \{ \text{retracts of } A_i \}/\text{isomorphism} \hookrightarrow \hom(A_i,A_i) \]
+where the codomain is a set as $\cat K$ is locally small. Now take the union of the sets of representatives for each $A_i \in \cat A$.
 \end{Proof}
 
-\begin{Corollary}
-Every locally $\lambda$-presentable category is sketchable by a $\lambda$-small limit sketch.
+Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $\cat K$, formally given by the forgetful functor
+\[ U : (\cat A/K) \to \cat K. \]
+We say that $K$ is the canonical colimit of $\cat A$-objects if the canonical cocone
+\[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
+is colimiting. We call $\cat A$ \emph{dense} in $\cat K$ if every object of $\cat K$ is the canonical colimit of $\cat A$-objects.
+
+\begin{Proposition}\label{prop:presdense}
+For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and the canonical diagram is $\lambda$-filtered.
+\end{Proposition}
+\begin{Proof}
+\end{Proof}
+
+Given a small full subcategory $\cat A$ of $\cat K$, we have a functor 
+\[ E : \cat K \to \fun{\cat A^\op}{\catname{Set}} \]
+that sends an object $K$ to the domain restriction of $\hom(-, K)$ to $\cat A^\op$. We can restate the properties of $\cat A$ in terms of $E$ in the following way:
+\begin{enumerate}
+\item $E$ is fully faithful iff $\cat A$ is dense in $\cat K$.
+\item $E$ preserves $\lambda$-filtered colimits iff all objects of $\cat A$ are $\lambda$-presentable.
+\end{enumerate}
+
+Together with Proposition \ref{prop:presdense}, we see that for $\lambda$-accessible categories $\cat K$, we get a canonical embedding
+\[ E : \cat K \to \fun{\cat A}{\catname{Set}} \text{ where } \cat A = \cat K^\op_\lambda. \]
+
+\subsection{Flat functors}
+We want to characterise precisely which subcategories of $\fun{\cat A}{\catname{Set}}$ occur via embeddings of accessible categories.
+
+\begin{Definition}\
+We call a functor $F : \cat A \to \catname{Set}$
+\begin{enumerate}
+\item \emph{$\lambda$-flat} if it is $\lambda$-filtered colimit of representable functors
+\item \emph{$\lambda$-continuous} if it preserves $\lambda$-small limits
+\end{enumerate}
+and we denote the full subcategories of $\fun {\cat A}{\catname{Set}}$ of $\lambda$-flat and $\lambda$-continuous functors as 
+\[ \flat_\lambda(\cat A), \cont_\lambda(\cat A) \text{ respectively}. \]
+\end{Definition}
+
+\begin{Proposition}
+Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding consists precisely of the $\lambda$-flat functors, and we have an equivalence
+\[ \cat K \simeq \flat_\lambda(\cat A). \]
+Conversely, for $\cat A$ small, the category $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
+\end{Proposition}
+\begin{Proof}
+\end{Proof}
+
+Note that this description leads to a strong characterisation in the locally presentable case.
+\begin{Proposition}
+Let $\cat K$ be $\lambda$-accessible \emph{and cocomplete}, i.e. locally $\lambda$-presentable, and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding restricts to the $\lambda$-continuous functors and
+\[ \cat K \simeq \cont_\lambda(\cat A). \]
+\end{Proposition}
+\begin{Proof}
+\end{Proof}
+
+\begin{Corollary}\
+Let $\cat K$ be a locally $\lambda$-presentable category. Then
+\begin{enumerate}
+\item $\cat K$ is complete, and well-powered \label{item:cw}
+\item $\cat K$ is sketchable by a $\lambda$-small limit sketch \label{item:limsketch}
+\end{enumerate}
 \end{Corollary}
 \begin{Proof}
-Take the sketch $\mathbb S = (\cat A^\op, L)$ where $L$ consists of all $\lambda$-small limit cones in $\cat A^\op$. Then by definition
-\[ \mod(\mathbb S) \simeq \cont_\lambda(\cat A^\op). \]
+We have an equivalence $K \simeq \cont_\lambda(\cat A)$. The latter category is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits; thus it is complete. Every category with pullbacks and a strong generator is well-powered, showing \ref{item:cw}. For \ref{item:limsketch}, note that by definition
+\[ \cont_\lambda(\cat A) \simeq \mod(\mathbb S) \]
+where the sketch $\mathbb S$ collects all $\lambda$-small limit cones in $\cat A$.
 \end{Proof}

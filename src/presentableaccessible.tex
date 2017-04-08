@@ -10,21 +10,17 @@ Every set is the union of its finite subsets. Furthermore, every algebra is the 
 \subsection{Directed and filtered colimits}
 
 Let's recall the definitions of directed colimits (confusingly known as ``direct limits'' in algebra):
-\begin{Definition}[Directed set]
+\begin{Definition}
 A nonempty poset is called \emph{$\lambda$-directed} if every subset of cardinality less than $\lambda$ has an upper bound. \footnote{Note that if $\lambda$ was a singular cardinal, a poset is $\lambda$-directed iff it is $\lambda^+$-directed for the cardinal successor $\lambda^+$, which is always regular.}
 \end{Definition}
 
 We can generalise the notion of directedness to arbitrary categories.
 
-\begin{Definition}[$\lambda$-small category]
-A category is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms.
-\end{Definition}
-
-\begin{Definition}[Filtered category]
-A nonempty category is called \emph{$\lambda$-filtered} if every $\lambda$-small subcategory has a cocone over it. 
-\end{Definition}
-
-\begin{Definition}[Filtered colimit]
+\begin{Definition}\
+\begin{enumerate}
+\item A category is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms.
+\item A category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory has a cocone over it. 
+\end{enumerate}
 A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered ($\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (or a $\lambda$-directed poset considered as a category). 
 \end{Definition}
 
@@ -46,11 +42,11 @@ Note that unlike e.g. coproducts, the underlying set of a filtered colimit is ea
 
 The trademark feature of filtered colimits is that they commute with small limits in $\catname{Set}$.
 
-\begin{Proposition}\label{prop:smallvsfiltered}
+\begin{Lemma}\label{prop:smallvsfiltered}
 For every diagram $D : \cat I \times \cat J \to \catname{Set}$ with $\cat I$ $\lambda$-small and $\cat J$ $\lambda$-filtered, the induced morphism
 \[ \colim_j \lim_i D(i,j) \to \lim_i \colim_j D(i,j) \]
 is an isomorphism.
-\end{Proposition}
+\end{Lemma}
 
 \subsection{Presentable objects}
 \begin{Definition}[Presentable object]
@@ -58,12 +54,12 @@ An object $A$ of a category $\cat K$ is called \emph{$\lambda$-presentable} if i
 \[ \hom(A,-) : \cat K \to \catname{Set} \]
 preserves $\lambda$-filtered colimits.
 \end{Definition}
-% Spelled out?
+% Spelled out?!
 
 Note that every $\lambda$-presentable object is $\lambda'$-presentable for $\lambda' \geq \lambda$. In the case $\lambda=\aleph_0$, we simply say \emph{finitely presentable}. \\
 
-\begin{Proposition}\label{prop:smallcolim} A $\lambda$-small colimit of $\lambda$-presentable objects is again $\lambda$-presentable.
-\end{Proposition}
+\begin{Lemma}\label{prop:smallcolim} A $\lambda$-small colimit of $\lambda$-presentable objects is again $\lambda$-presentable.
+\end{Lemma}
 \begin{Proof}
 Take a $\lambda$-small diagram $(A_i)$ of $\lambda$-presentable objects, and a $\lambda$-filtered diagram $(D_j)$. By the property \ref{prop:smallvsfiltered}, we get
 \begin{align*}
@@ -78,7 +74,7 @@ therefore $\hom(\colim_i A_i, -)$ preserves $\lambda$-filtered colimits as claim
 \begin{Example}
 In $\catname{Set}$, the singleton set $1$ is finitely presentable as $\hom(1,X) \cong X$ for every set, therefore
 \[ \hom(1,\colim_i A_i) \cong \colim_i \hom(1,A_i) \]
-for every diagram $(A_i)$. By Proposition \ref{prop:smallcolim}, a nonempty set $A$ is $\lambda$-presentable iff $|A| < \lambda$.
+for every diagram $(A_i)$. By \ref{prop:smallcolim}, a nonempty set $A$ is $\lambda$-presentable iff $|A| < \lambda$.
 \end{Example}
 
 The definition of presentable objects really captures what the name suggests: 
@@ -96,8 +92,8 @@ An element $c$ of a lattice $L$ is finitely presentable iff it is a \emph{compac
 for a directed join, we have $c \leq d_i$ for some $i$. This really generalizes the usual compactness from the semilattice of open sets of a topological space (every open cover has a finite subcover).
 \end{Example}
 \begin{Example}
-The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of these, thus $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; in fact, the construction gives the presentation
-\[ \mathbb Q \cong \left\langle x_n : n \in \mathbb N | x_n = k \cdot x_{nk} \right \rangle\]
+The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of these, thus $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; note that indeed we have a presentation
+\[ \mathbb Q \cong \left\langle x_n : n \in \mathbb N\,|\,x_n = k \cdot x_{nk} \right \rangle\]
 \end{Example}
 
 \subsection{Locally presentable and accessible categories}
@@ -123,7 +119,7 @@ A category $\cat K$ is \emph{$\lambda$-accessible} if
 \end{enumerate}
 \end{Definition}
 
-We say a category is \emph{accessible} (\emph{locally presentable}) if it is $\lambda$-accessible (locally $\lambda$-presentable) for some $\lambda$. Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. \\
+We say a category is \emph{accessible} (\emph{locally presentable}) if it is $\lambda$-accessible (locally $\lambda$-presentable) for some $\lambda$. Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. 
 
 \begin{Example}
 The category $\catname{Set}$ is locally finitely presentable, as every set is $\aleph_0$-directed colimit of its finite subsets.
@@ -131,38 +127,21 @@ The category $\catname{Set}$ is locally finitely presentable, as every set is $\
 
 Recall that a set $G$ of $\cat K$-objects is called a \emph{strong generator} if morphisms out of $G$-objects can distinguish morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ is a strong generator. For locally presentable categories, we have a converse that allows for a simpler definition:
 
-\begin{Proposition}
+\begin{Lemma}\label{lemma:stronggen}
 A cocomplete category $\mathcal K$ is locally $\lambda$-presentable iff it has a strong generator of $\lambda$-presentable objects. 
-\end{Proposition}
+\end{Lemma}
 
-\begin{Corollary}\label{coro:raise}
-Every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$.
-\end{Corollary}
-\begin{Proof}
-Take the same strong generator.
-\end{Proof}
+As an immediate corollary, we get that every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$. The same strong generator will do! This situation stands in interesting contrast with accessible categories, where we only get the following: For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible. \\
 
-The situation of \ref{coro:raise} stands in interesting contrast to accessible categories. We only get the following
-\begin{Proposition}
-For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible.
-\end{Proposition}
+Using \ref{lemma:stronggen} we can now give more examples
 
-We can now give more examples
-
-% Example for lambda > w?
+% Example for lambda > w? Accessible example?
 \begin{Example}
+% Is it really??
 Every variety is locally finitely presentable by the strong generator $\{ F(x) \}$ on the one-generator free algebra. \\
 
 To give an example that is not equivalent to a variety: The category $\catname{Pos}$ of posets is locally finitely presentable, as $\{\mathbf 2\}$ is a strong generator. % Why isn't that a variety?
 \end{Example}
 
-\begin{Example}
-For every small category $\cat A$, the category of presheaves $\pre{\cat A} = \fun{\cat A^\op}{\catname{Set}}$ is locally finitely presentable. We'll show that the representable presheaves are finitely presentable. Let \[ y : \cat A \to \pre{\cat A}, A \mapsto \hom(-,A) \] denote the Yoneda embedding. By the Yoneda lemma, we have
-\begin{align*}
-\hom(yA, \colim_i F_i) &\cong (\colim_i F_i)(A) \\
-&\cong \colim_i F_i(A) \\
-&\cong \colim_i \hom(yA, F_i)
-\end{align*}
-so $\hom(yA,-)$ preserves in fact all colimits. Now $\pre{\cat A}$ is cocomplete and representable presheaves form a strong generator as well. %proof
-\end{Example}
+% Functor categories?
 
