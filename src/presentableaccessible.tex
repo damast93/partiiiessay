@@ -54,7 +54,11 @@ An object $A$ of a category $\cat K$ is called \emph{$\lambda$-presentable} if i
 \[ \hom(A,-) : \cat K \to \catname{Set} \]
 preserves $\lambda$-filtered colimits.
 \end{Definition}
-% Spelled out?!
+Spelled out, this means that every morphism $A \xrightarrow{f} C = \colim_i D_i$ into a $\lambda$-filtered colimit already factors through one of the coprojections
+\[ f = A \xrightarrow{f_i} D_i \xrightarrow{c_i} C \]
+and the factorisation is essentially unique, so if \[ f = c_i\cdot f_i = c_j \cdot f_j, \]
+there is an index $k$ in the diagram and maps $i \to k, j \to k$ such that
+\[ D(i \to k)\cdot f_i = D(j \to k) \cdot f_j. \]
 
 Note that every $\lambda$-presentable object is $\lambda'$-presentable for $\lambda' \geq \lambda$. In the case $\lambda=\aleph_0$, we simply say \emph{finitely presentable}. \\
 

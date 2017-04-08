@@ -17,7 +17,7 @@ where the codomain is a set as $\cat K$ is locally small. Now take the union of 
 \end{Proof}
 
 Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $\cat K$, formally given by the forgetful functor
-\[ U : (\cat A/K) \to \cat K. \]
+\[ U : \cat A/K \to \cat K. \]
 We say that $K$ is the canonical colimit of $\cat A$-objects if the canonical cocone
 \[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
 is colimiting. We call $\cat A$ \emph{dense} in $\cat K$ if every object of $\cat K$ is the canonical colimit of $\cat A$-objects.
@@ -26,15 +26,48 @@ is colimiting. We call $\cat A$ \emph{dense} in $\cat K$ if every object of $\ca
 For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and the canonical diagram is $\lambda$-filtered.
 \end{Proposition}
 \begin{Proof}
+Let $K$ be an object of $\cat K$. We know that it is $\lambda$-filtered colimit of some $\lambda$-presentable objects $(B_i)$. Looking at the canonical diagram $A : \cat A/K \to \cat K$, we see that the diagram $B$ sits inside of it like this
+\[
+\xymatrix{
+  & & K & & \\
+& B_i \ar[rr] \ar[ru] & & B_j \ar[lu] & \\
+A_r \ar[rrrr] \ar@/^2pc/[rruu] \ar@{.>}[ru]_{\exists} & & & & A_s \ar@{.>}[lu]^{\exists} \ar@/_2pc/[lluu]
+}\]
+Because $A_r$ are all locally $\lambda$-presentable, we get the dashed morphisms into some $B_i$. The larger diagram therefore factors through $B$ in a compatible way, in the terminology of [...AR], $B$ is cofinal in $A$, and the diagrams have the same colimit. \\
+
+For $\lambda$-filteredness, note that each $\lambda$-small subcategory of $\cat A/K$ admits factorisations into less than $\lambda$ $B$-objects, but by $\lambda$-directedness of $B$, everything in fact factors through a single $B$-object, so the subcategory has a cocone over it. 
 \end{Proof}
+
+% Use actual confinal diag B in A/K, index stuff with U_f
 
 Given a small full subcategory $\cat A$ of $\cat K$, we have a functor 
 \[ E : \cat K \to \fun{\cat A^\op}{\catname{Set}} \]
 that sends an object $K$ to the domain restriction of $\hom(-, K)$ to $\cat A^\op$. We can restate the properties of $\cat A$ in terms of $E$ in the following way:
+
+\begin{Proposition}\
+\label{prop:canonicalproperties}
 \begin{enumerate}
-\item $E$ is fully faithful iff $\cat A$ is dense in $\cat K$.
-\item $E$ preserves $\lambda$-filtered colimits iff all objects of $\cat A$ are $\lambda$-presentable.
+\item $E$ is fully faithful if $\cat A$ is dense in $\cat K$. \label{item:fullyfaithful}
+\item $E$ preserves $\lambda$-filtered colimits if all objects of $\cat A$ are $\lambda$-presentable. \label{item:limits}
 \end{enumerate}
+\end{Proposition}
+% Make stuff iff again
+
+\begin{Proof}
+\ref{item:fullyfaithful}: Let $U : \cat A/K \to \cat K$ be the canonical diagram; we claim that a cocone $(U_f \to K')$ corresponds to a natural transformation $EK \to EK'$. Indeed such a cocone has for each $A \xrightarrow{f} K$ a morphism $A \xrightarrow{\hat f} K'$, such that for all commutative triangles
+\[
+\xymatrix{
+A \ar[rr]^{h} \ar[rd]_{f} & & A' \ar[ld]^{g} \\
+& K
+}\]
+we have $\hat f = \hat g \cdot h$. This amounts precisely to a family of maps $(\widehat{-})_A: \hom(A,K) \to \hom(A,K')$, natural in $A$. We get the desired equation
+\[ \hom(EK,EK') \cong \textrm{Cocones}(U, K') \cong \hom(K,K') \] 
+if and only if the cocone into $K$ is universal, thus $\cat A$ is dense. \\
+
+For \ref{item:limits}, note that colimits of functors are computed pointwise. For all $\lambda$-filtered colimits, we have
+\[ E(\colim_i K_i)(A) \cong \hom(A,\colim_i K_i) \cong \colim_i \hom(A,K_i) \]
+as $A$ is $\lambda$-presentable, therefore $E(\colim_i K_i) \cong \colim_i EK_i$.
+\end{Proof}
 
 Together with Proposition \ref{prop:presdense}, we see that for $\lambda$-accessible categories $\cat K$, we get a canonical embedding
 \[ E : \cat K \to \fun{\cat A}{\catname{Set}} \text{ where } \cat A = \cat K^\op_\lambda. \]
@@ -58,14 +91,26 @@ Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the
 Conversely, for $\cat A$ small, the category $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
 \end{Proposition}
 \begin{Proof}
+The first statement follows from \ref{prop:canonicalproperties}; $E$ preserves $\lambda$-filtered colimits, and every object $K$ can be written as one, so
+\[ EK \cong E(\colim_i A_i) \cong \colim_i \hom(-,A_i), \]
+where the latter is a colimit of representables in $\fun{\cat A^\op}{\catname{Set}}$.
+% comment on both directions
+Conversely, by [MP], $\flat_\lambda(\cat A)$ is closed under $\lambda$-filtered colimits in $\fun{\cat A^\op}{\catname{Set}}$. Furthermore representable functors are $\lambda$-presentable objects and by definition every $\lambda$-flat functor is $\lambda$-filtered colimits of these. So $\flat_\lambda(\cat A)$ is $\lambda$-accessible. % proof
 \end{Proof}
 
+% orthogonality small vs. filtered
 Note that this description leads to a strong characterisation in the locally presentable case.
 \begin{Proposition}
 Let $\cat K$ be $\lambda$-accessible \emph{and cocomplete}, i.e. locally $\lambda$-presentable, and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding restricts to the $\lambda$-continuous functors and
 \[ \cat K \simeq \cont_\lambda(\cat A). \]
 \end{Proposition}
 \begin{Proof}
+The category $\cat A$ is closed under $\lambda$-small colimits in $\cat K$, because the colimit exists in $\cat K$ but by \ref{prop:smallcolim} actually lies in $\cat A$. \\
+
+By continuity of representables, the functor $\hom(-, K)$ preserves all limits in $\cat K^\op$. However the $\lambda$-small limits of $\cat A^\op$ agree with those from $\cat K^\op$, so they preserved as well.
+
+% Show other implication
+Now let $F$ be $\lambda$-continuous.
 \end{Proof}
 
 \begin{Corollary}\
