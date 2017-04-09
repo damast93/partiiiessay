@@ -1,7 +1,9 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
 
-In this section, we will see how to embed accessible categories into functor categories and turn them into models of a sketch: \\
+In this section, we will see how to embed accessible categories into the functor category $\fun{\cat A}{\catname{Set}}$ for some small category $\cat A$. More precisely, $\lambda$-accessible categories will be precisely those equivalent to the subcategories $\flat_\lambda(\cat A)$ of so-called \emph{$\lambda$-flat} functors $\cat A \to \catname{Set}$. \\
+
+We will then show that the condition of flatness can be captured by a sketch.
 
 \subsection{Canonical colimits}
 
@@ -13,7 +15,7 @@ For every $\lambda$-accessible category $\cat K$, the full subcategory of $\lamb
 \begin{Proof}
 Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered colimit $B \xrightarrow{\sim} \colim_i A_i$ of objects in $\cat A$. The isomorphism factors through one of the $A_i$, exhibiting $B$ as a retract $B \xrightarrow{j} A_i \xrightarrow{r} B$ of $A_i$. Note that $jr$ is an idempotent endomorphism of $A_i$, and retracts that induce the same endomorphism are isomorphic. Thus we have an class injection
 \[ \{ \text{retracts of } A_i \}/\text{isomorphism} \hookrightarrow \hom(A_i,A_i) \]
-where the codomain is a set as $\cat K$ is locally small. Now take the union of the sets of representatives for each $A_i \in \cat A$.
+where the codomain is a set (as $\cat K$ is locally small). Now take the union of the sets of representatives for each $A_i \in \cat A$.
 \end{Proof}
 
 Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $\cat K$, formally given by the forgetful functor
@@ -91,7 +93,7 @@ Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the
 Conversely, for $\cat A$ small, the category $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
 \end{Proposition}
 \begin{Proof}
-The first statement follows from \ref{prop:canonicalproperties}; $E$ preserves $\lambda$-filtered colimits, and every object $K$ can be written as one, so
+The first statement follows pretty much from the definition of flatness and the properties in \ref{prop:canonicalproperties}; $E$ preserves $\lambda$-filtered colimits, and every object $K$ can be written as one, so
 \[ EK \cong E(\colim_i A_i) \cong \colim_i \hom(-,A_i), \]
 where the latter is a colimit of representables in $\fun{\cat A^\op}{\catname{Set}}$.
 % comment on both directions
@@ -112,6 +114,8 @@ By continuity of representables, the functor $\hom(-, K)$ preserves all limits i
 % Show other implication
 Now let $F$ be $\lambda$-continuous.
 \end{Proof}
+
+% Show equivalence complete <-> cocomplete <-> lambda-cocomplete
 
 \begin{Corollary}\
 Let $\cat K$ be a locally $\lambda$-presentable category. Then

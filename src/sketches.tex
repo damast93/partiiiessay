@@ -52,7 +52,7 @@ We furthermore say \emph{mixed sketch} to stress that both $\dist L$ and $\dist 
 
 In this section, we will see examples on how to sketch theories for known some categories. Note that we have to be careful to distinguish between the vertices and edges of the sketch, and their ``meaning'' as objects and morphisms in a model. \\
 
- We have already seen the sketch for a binary algebra in the introduction. Let's extend it in the following way:
+We have already seen the sketch for binary algebras in the introduction. Let's extend it in the following way:
 
 \begin{Example}[Unital algebras]\label{ex:unitality}
 We want to sketch the variety $\cat V$ with a neutral element $e$ such that
@@ -174,18 +174,6 @@ has to become a coproduct cone, so add it to $\dist C$. Then define a map
 \[ (x,x^{-1}) : k^* \to k^2 \]
 in the obvious way and add a condition on paths $k^* \to k$
 \[ \times \circ (x,x^{-1}) = 1_k \circ !. \]
-\end{Example}
-
-% Put this in the introduction?
-\begin{Example}[Connected graphs]
-A surprisingly elegant example is the sketch $\mathbb S$ on vertices $1,e,v$ with terminal object $1$ \[
-\xymatrix{
-& 1 \\
-e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
-}\]
-Models of $\mathbb S$ will be graphs $(V,E)$, but the distinguished cocone becomes a coequaliser 
-\[ 1 \cong V/(s(e)\sim t(e)). \]
-The equivalence relation identifies all vertices that are connected by an edge, so there has to be precisely one connected component. $\mathbb S$ axiomatises the category of connected graphs and homomorphisms.
 \end{Example}
 
 % Linear orders machen

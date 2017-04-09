@@ -11,12 +11,11 @@ A variety $\cat K$ is given through a finitary signature $\Sigma$ and a set of t
 \end{enumerate}
 This is a first correspondence of syntactical properties of a theory and properties of its model class. For example, we can deduce that the class of \emph{fields} cannot be described with a universal set of axioms, as the componentwise product of fields fails to be a field. \footnote{Of course, the category of fields cannot be equivalent to a variety either, as it's not complete. \emph{What characteristic would a terminal field have?}}  Still, Birkhoff's theorem is very much an extrinsic characterisation of varieties. Can we tell if a category is \emph{equivalent} to a variety, even when it doesn't look algebraic at all? In other words, what can we infer from categorical properties of $\cat K$ alone? \\
 
-% generalize while maintaining pleasant properties
-In this essay, I will introduce the theory of \emph{locally presentable} and \emph{accessible} categories. Both are clean, intrinsically defined categorical properties: Local presentability roughly means that a cocomplete category is generated in a certain sense by ``small objects'' via colimits. This notion already covers a wide range of everyday categories, including all varieties, quasivarieties, but also Banach spaces or posets. \\
+In this essay, I will introduce the theory of \emph{locally presentable} and \emph{accessible} categories, which generalise varieties while still maintaining nice properties. Now both are clean, intrinsically defined categorical notions: Local presentability roughly means that a cocomplete category is generated in a certain sense by ``small objects'' via colimits. This notion already covers a wide range of everyday categories, including all varieties, quasivarieties, but also Banach spaces or posets. \\
 
 Accessibility weakens the requirement of cocompleteness, giving us back wilder categories like the categories of fields, linear orders, sets with monomorphisms or connected graphs. \\
 
-It turns out that again, both locally presentable and accessible categories can be axiomatised as models of certain kinds of theories, e.g. in infinitary propositional logic. Instead of introducing their syntax, we'll take another approach using ``language'' of \emph{sketches}: \\
+It turns out that again, both locally presentable and accessible categories can be axiomatised as categories of models of certain kinds of theories, e.g. in infinitary propositional logic. Instead of introducing that kind of language, we'll take another approach using the formalism of \emph{sketches}: \\
 
 A sketch is merely a small category $\cat A$ with distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
 \[
@@ -24,7 +23,7 @@ A sketch is merely a small category $\cat A$ with distinguished cones and cocone
   & p \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & \\
 a & a & a
 }\]
-with the prescribed discrete cone
+and the prescribed cone
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
@@ -36,9 +35,23 @@ A model $F : \cat A \to \catname{Set}$ consists of two sets $X=F(a)$ and $P=F(p)
   & F(p) \ar[rd]^{F(\pi_2)} \ar[ld]_{F(\pi_1)} & \\
 F(A) & & F(A)
 }\]
-is a limit, thus \[ P \cong X \times X \] 
-and a map $F(m) : P \to X$. We can therefore identify the models of $\mathcal A$ as algebras with a binary operation $m$. \\
+has to be limit in $\catname{Set}$, thus we can choose $P = X \times X$. The morphism $m$ gives a map $F(m) : X \times X \to X$. We can therefore identify the models of $\mathcal A$ as algebras with a binary operation $m$. \\
 
+We can express more intricate axioms by prescribing both limits and colimits. Recall that we can think of a directed multigraph as a functor $\cat A \to \catname{Set}$ where $\cat A$ is the category
+\[
+\xymatrix{
+e \ar@/^/[r]^{s} \ar@/_/[r]_{t} & v
+}\]
+Now add to $\cat A$ an object $1$, let $L$ be the cone with apex $1$ over an empty diagram and let $C$ be the cocone \[
+\xymatrix{
+& 1 \\
+e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
+}\]
+Models $F: \cat A \to \catname{Set}$ of this sketch give us graphs $(V,E)$ where $V=F(v),E=F(e)$. Turning the cone $L$ into a limit means that $F(1)$ becomes a terminal object $\star$ in $\catname{Set}$. Furthermore, $F$ turns $C$ into a coequaliser
+\[ \star \cong V/(Fs(e)\sim Ft(e)). \]
+The equivalence relation identifies all vertices that are connected by an edge, so we have to end up with precisely one connected component. The sketch axiomatised connected graphs. \\
+
+% Reformulate
 In fact, sketches eliminate the need to define terms and formulas for our theories entirely. We have a purely categorical concept right at our disposal. Still, limits and colimits provide us with all the expressive power we need. This will be our main theorem:
 
 \begin{Theorem}[Sketchability]\
