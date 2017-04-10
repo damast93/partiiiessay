@@ -83,7 +83,7 @@ for every diagram $(A_i)$. By \ref{prop:smallcolim}, a nonempty set $A$ is $\lam
 
 The definition of presentable objects really captures what the name suggests: 
 
-\begin{Proposition}In a variety, an object $A$ is $\lambda$-presentable iff it has a presentation with less than $\lambda$ generators and relations.
+\begin{Proposition}\label{prop:varietypresentable} In a variety, an object $A$ is $\lambda$-presentable iff it has a presentation with less than $\lambda$ generators and relations.
 \end{Proposition}
 \textit{Idea: } Take $A$ with presentation on less than $\lambda$ generators and relations and take map $f : A \to C = \colim_i D_i$. Then all generators have to map set-theoretically into some $D_i$. Take a cocone over these, so all generators map into a single $D$, but the relations don't have to hold in $D$ yet, so we can't extend to a homomorphism of algebras. However the relations hold in $C$, so each relation has to start holding after some $D \to D_j$. Take a cocone over these to some $D^*$, now we can factor $f$ through it. \\
 
