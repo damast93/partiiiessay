@@ -103,8 +103,7 @@ Note that by the claimed adjunction, we get
 \[ \hom(F_!(yA),B) \cong \hom(yA,F^*(B)) \cong F^*(B)(A), \]
 so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\
 
-% it *is* the canonical colimit of the image of y
-The way every presheaf is written as a colimit of representables has a canonical description. For $P : \cat A^\op \to \catname{Set}$, we define the ``category of elements'' $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, an element $x : yA \to P$ of $\el(P)$ is equivalent to a pair $(A,x), x \in PA$ where morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Ph(y) = x$. We have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. \\
+In fact, every presheaf is the canonical colimit of all representables. For $P : \cat A^\op \to \catname{Set}$, we define the ``category of elements'' $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, an element $x : yA \to P$ of $\el(P)$ is equivalent to a pair $(A,x), x \in PA$ where morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Ph(y) = x$. We have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. \\
 
 Let $y' : \cat A^\op \to \fun{\cat A}{\catname{Set}}$ denote the contravariant Yoneda embedding.
 
@@ -173,6 +172,8 @@ $\flat_\lambda(\cat A)$ is closed unter $\lambda$-filtered colimits in $\fun{\ca
 By the same argument as in \ref{item:fflat} $\Rightarrow$ \ref{item:kancont} for \ref{prop:flat}, a $\lambda$-filtered colimit of functors that satisfy \ref{item:kancont} also satisfies \ref{item:kancont}.
 \end{Proof}
 
+\subsection{Embedding theorems}
+
 \begin{Proposition}
 Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding consists precisely of the $\lambda$-flat functors, and we have an equivalence
 \[ \cat K \simeq \flat_\lambda(\cat A). \]
@@ -221,8 +222,6 @@ y'A_i \ar[ruu] \ar[ru]^{a_i} \ar[rr] & &  y'A_j \ar[lu]_{a_j} \ar[luu]
 
 During the proof, it was actually enough to require that $\cat K$ have $\lambda$-small colimits. We can draw several corollaries
 
-% Show equivalence complete <-> cocomplete <-> lambda-cocomplete
-
 \begin{Corollary}
 Let $\cat K$ be a $\lambda$-accessible category. Then the following are equivalent
 \begin{enumerate}
@@ -247,3 +246,8 @@ Note that by definition
 \[ \cont_\lambda(\cat A) \simeq \mod(\mathbb S) \]
 where the sketch $\mathbb S$ collects all $\lambda$-small limit cones in $\cat A$.
 \end{Proof}
+
+It remains to show how we can sketch accessible categories. This reduces to the question of sketching $\flat_\lambda(\cat A)$. Note that by the universal property of the free cocompletion, we have an equivalence of categories
+\[ \fun{\pre{\cat A}}{\catname{Set}}_{\text{coco.}} \simeq \fun{\cat A}{\catname{Set}} \]
+given by precomposition with $y$ and Kan extension. \ref{prop:flat} shows that this restricts to
+\[ \fun{\pre{\cat A}}{\catname{Set}}_{\text{coco. + $\lambda$-cont.}} \simeq \flat_\lambda(A) \]
