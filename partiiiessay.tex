@@ -74,12 +74,13 @@
 \renewcommand{\circ}{\cdot}
 \renewcommand{\lim}{\operatorname{lim}}
 \newcommand{\op}{\textrm{op}}
+\newcommand{\el}{\textrm{el}}
 \renewcommand{\flat}{\mathbf{Flat}}
 \newcommand{\cont}{\mathbf{Cont}}
 \newcommand{\obj}{\textrm{ob}}
-\newcommand{\mor}{\textrm{mor}}
+\newcommand{\sub}{\mathbf{Sub}}
 \newcommand{\dist}[1]{\textrm{#1}}
-\newcommand{\pre}[1]{\hat{#1}}
+\newcommand{\pre}[1]{\widehat{#1}}
 
 
 \newcommand{\fun}[2]{[#1,#2]}
@@ -113,20 +114,22 @@
 
 \begin{document}
 
-\maketitle
+%\maketitle
 
-\pagebreak
-\tableofcontents
-\pagebreak
+%\pagebreak
+%\tableofcontents
+%\pagebreak
 
 % Start numbering with 0
 % \setcounter{section}{-1}
 
 \parindent0cm
 
-\input{src//introduction.tex} \pagebreak
-\input{src//presentableaccessible.tex} \pagebreak
-\input{src//sketches.tex} \pagebreak
+% Uncomment to display
+
+%\input{src//introduction.tex} \pagebreak
+%\input{src//presentableaccessible.tex} \pagebreak
+%\input{src//sketches.tex} \pagebreak
 \input{src//catstosketches.tex} \pagebreak
 \input{src//sketchesaccessible.tex} \pagebreak
 
@@ -136,6 +139,6 @@
 \nocite{*}
 
 \addcontentsline{toc}{section}{Bibliography}
-\printbibliography[title=Bibliography]
+%\printbibliography[title=Bibliography]
 
 \end{document}

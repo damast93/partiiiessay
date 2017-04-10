@@ -18,7 +18,7 @@ Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered c
 where the codomain is a set (as $\cat K$ is locally small). Now take the union of the sets of representatives for each $A_i \in \cat A$.
 \end{Proof}
 
-Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $\cat K$, formally given by the forgetful functor
+Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $K$, formally given by the forgetful functor
 \[ U : \cat A/K \to \cat K. \]
 We say that $K$ is the canonical colimit of $\cat A$-objects if the canonical cocone
 \[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
@@ -86,6 +86,50 @@ We call a functor $F : \cat A \to \catname{Set}$
 and we denote the full subcategories of $\fun {\cat A}{\catname{Set}}$ of $\lambda$-flat and $\lambda$-continuous functors as 
 \[ \flat_\lambda(\cat A), \cont_\lambda(\cat A) \text{ respectively}. \]
 \end{Definition}
+
+We'll prove several properties of flat functors, that will be discussed in terms of Kan extensions. \\
+
+Recall that the Yoneda embedding $y : \cat A \to \pre{\cat A}$ had the universal property of being the free cocompletion for $\cat A$. Any functor $F : \cat A \to \cat C$ into a cocomplete category $\cat C$ extends uniquely to a cocontinuous functor $F_!: \pre{\cat A} \to \cat C$. More precisely, there is an adjunction $F_! \dashv F^*$ in
+\[
+\xymatrix{
+\pre{\cat A} \ar@/^/[rr]^{F_!} & & \cat C \ar@/^/[ll]^{F^*} \\
+& \cat A \ar[lu]^{y} \ar[ru]_{F}
+}\]
+The uniqueness comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is the colimit of representables, which allows us to extend $F$ to $F_!$ up to isomorphism by cocontinuity
+\[ F_!(P) \cong F_!(\colim_i yA_i) \cong \colim_i F_!(yA_i) \cong \colim_i FA_i. \]
+Note that by the required adjunction, we get
+\[ \hom(F_!(yA),B) \cong \hom(yA,F^*(B)) \cong F^*(B)(A), \]
+so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\
+
+The way every presheaf is written as a colimit of representables has a canonical description. For $P : \cat A^\op \to \catname{Set}$, we let $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, we have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. \\
+
+Let $y' : \cat A^\op \to \fun{\cat A}{\catname{Set}}$ be the contravariant Yoneda embedding.
+
+\begin{Proposition}
+For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
+\begin{itemize}
+\item $F$ is $\lambda$-flat \label{item:fflat}
+\item $F_!$ is $\lambda$-continuous \label{item:kancont}
+\item $\el(F)$ is $\lambda$-filtered (considering $F$ as a presheaf in $\pre{\cat A^\op}$) \label{item:elfiltered}
+\end{itemize}
+\end{Proposition}
+\begin{Proof}
+\ref{item:elfiltered} $\Rightarrow$ \ref{item:fflat} is immediate. For \ref{item:fflat} $\Rightarrow$ \ref{item:kancont} let $F = \colim_i y'A_i$ be $\lambda$-filtered colimit of representables.
+\end{Proof}
+
+\begin{Corollary}
+$\flat_\lambda(\cat A)$ is closed unter $\lambda$-filtered limits in $\fun{\cat A}{\catname{Set}}$.
+\end{Corollary}
+\begin{Proof}
+Let $F = \colim_i F_i$ be $\lambda$-filtered colimit of $\lambda$-flat functors; we show that $F_!$ preserves $\lambda$-small limits. Let $(P_j)$ be a $\lambda$-small diagram of presheaves, then
+\begin{align*}
+F_!(\lim_j P_j) &\cong \colim_i (F_i)_!(\lim_j P_j) 
+\cong \colim_i \lim_j (F_i)_!(P_j) 
+\cong \lim_j \colim_i (F_i)_!(P_j) 
+\cong \lim_j F_!(P_j).
+\end{align*}
+because each $(F_i)_!$ preserves $\lambda$-small limits and \ref{prop:smallvsfiltered}.
+\end{Proof}
 
 \begin{Proposition}
 Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding consists precisely of the $\lambda$-flat functors, and we have an equivalence
