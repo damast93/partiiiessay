@@ -108,7 +108,7 @@ We'll give the canonical diagram of representables an explicit description: For 
 For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
 \begin{enumerate}
 \item $F$ is $\lambda$-flat \label{item:fflat}
-\item $F_!$ preserves $\lambda$-small limits
+\item $F_!$ preserves $\lambda$-small limits \label{item:kancont}
 \item $F_!$ preserves $\lambda$-small limits of representables \label{item:kanrepcont}
 \item $\el(F)$ is $\lambda$-filtered (considering $F$ as a presheaf in $\pre{\cat A^\op}$) \label{item:elfiltered}
 \end{enumerate}
@@ -143,7 +143,7 @@ Explicitly, $F_!(H)$ consists of compatible families $(\alpha_i \in FA_i), Fg_{i
 
 By definition of the Kan extension, we can compute $F_!(H)$ via the canonical colimit 
 \[ F_!(H) \cong \bigcolim_{yB \to H} FB, \]
-so there is morphism $yB \xrightarrow{f} H$ and $b \in B$ such that $(F_!f)b = h$. The morphisms $h_i\circ f : yB \to yA_i$ now satisfy
+so there is morphism $yB \xrightarrow{f} H$ and $b \in B$ such that $(F_!f)(b) = h$. The morphisms $h_i\circ f : yB \to yA_i$ now satisfy
 \[ F_!(h_i \circ f)(b) = h_i \]
 and by the Yoneda lemma get induced by morphisms $B \to A_i$. This means the diagram
 \[
