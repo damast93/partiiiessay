@@ -97,13 +97,14 @@ Recall that the Yoneda embedding $y : \cat A \to \pre{\cat A}$ had the universal
 \pre{\cat A} \ar@/^/[rr]^{F_!} & & \cat C \ar@/^/[ll]^{F^*} \\
 & \cat A \ar[lu]^{y} \ar[ru]_{F}
 }\]
-The uniqueness comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is the colimit of representables, which allows us to extend $F$ to $F_!$ up to isomorphism by cocontinuity
+
+The uniqueness comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is the canonical colimit of representables, which allows us to extend $F$ to $F_!$ up to isomorphism by cocontinuity
 \[ F_!(P) \cong F_!(\colim_i yA_i) \cong \colim_i F_!(yA_i) \cong \colim_i FA_i. \]
 Note that by the claimed adjunction, we get
 \[ \hom(F_!(yA),B) \cong \hom(yA,F^*(B)) \cong F^*(B)(A), \]
 so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\
 
-In fact, every presheaf is the canonical colimit of all representables. For $P : \cat A^\op \to \catname{Set}$, we define the ``category of elements'' $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, an element $x : yA \to P$ of $\el(P)$ is equivalent to a pair $(A,x), x \in PA$ where morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Ph(y) = x$. We have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. \\
+We'll give the canonical diagram of representables an explicit description: For a presheaf $P : \cat A^\op \to \catname{Set}$, we define the ``category of elements'' $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, an element $x : yA \to P$ of $\el(P)$ is equivalent to a pair $(A,x), x \in PA$ where morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Ph(y) = x$. We have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. \\
 
 Let $y' : \cat A^\op \to \fun{\cat A}{\catname{Set}}$ denote the contravariant Yoneda embedding.
 
@@ -127,42 +128,33 @@ G_!(\lim_j P_j) &\cong \colim_i (F_i)_!(\lim_j P_j) \\
 &\cong \lim_j G_!(P_j).
 \end{align*}
 
-% Rework!?
-For \ref{item:kancont} $\Rightarrow$ \ref{item:elfiltered}, we take a $\lambda$-small subcategory $\cat I$ of $(y' \downarrow F)$\footnote{note the double opposite categories} and construct a cocone over it. Let the subcategory look like this inside $\fun{\cat A}{\catname{Set}}$
+For \ref{item:kancont} $\Rightarrow$ \ref{item:elfiltered}, we take a $\lambda$-small subcategory of $\el(F)$, schematically
+\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j) \]
+and construct a cocone over it. We look at the diagram of presheaves $(yA_i)$ and take its limit $H$ in $\pre{\cat A}$
 \[
 \xymatrix{
-& F & \\
-y'A_i \ar[ru]^{a_i} \ar[rr]^{g_{ij}} & &  y'A_j \ar[lu]_{a_j}
+& H \ar[ld]_{h_i} \ar[rd]^{h_j} \\
+yA_i & & yA_j \ar[ll]_{yg_{ij}}
 }\]
-where the $a_i$ are given by elements $a_i \in FA_i$ which we denote by the same letters, and $g_{ij}$ is induced by maps $g_{ij} : A_j \to A_i$ in the opposite direction satisfying $g_{ij}(a_j) = a_i$. Now we consider the opposite of the base diagram in $\pre{\cat A}$ and take its limit $H$
+By assumption, applying $F_!$ preserves this limit, so by $F_!(yA_i) \cong FA_i$, we get the following limit diagram in $\catname{Set}$
 \[
 \xymatrix{
-& H \ar[rd]^{f_i} \ar[ld]_{f_j} & \\
-yA_i & & yA_j \ar[ll]_{g_{ij}}
-}\]
-Applying $F_!$ preserves the limit by assumption, so by $F_!(yA_i) = FA_i$, we get the following limit diagram in $\catname{Set}$:
-\[
-\xymatrix{
-& F_!(H) \ar[rd]^{F_!f_i} \ar[ld]_{F_!f_j} & \\
+& F_!(H) \ar[ld]_{F_!h_i} \ar[rd]^{F_!h_j} \\
 FA_i & & FA_j \ar[ll]_{Fg_{ij}}
 }\]
-Explicitly, elements of $F_!(H)$ consist of compatible collections of elements $(\alpha_i \in FA_i)$. In particular, there is a single element $h \in F_!(H)$ associated to our $(a_i)$ such that $F_!f_i(h) = a_i$ for all $i$. Next, note that \[ H \cong \bigcolim_{yB \to H} yB \]
-and $F_!$ is cocontinuous, thus 
+Explicitly, $F_!(H)$ consists of compatible families $(\alpha_i \in FA_i), Fg_{ij}\alpha_j = \alpha_i$. Our family of elements $(a_i)$ is compatible by assumption, so there is an element $h \in F_!(H)$ with $a_i = (F_!h_i)(h)$. \\
+
+By definition of the Kan extension, we can compute $F_!(H)$ via the canonical colimit 
 \[ F_!(H) \cong \bigcolim_{yB \to H} FB, \]
-i.e. there is an element $(B,b), b \in FB$ corresponding to a morphism $yA \xrightarrow{b} H$ which gives a compatible cone
+so there is morphism $yB \xrightarrow{f} H$ and $b \in B$ such that $(F_!f)b = h$. The morphisms $h_i\circ f : yB \to yA_i$ now satisfy
+\[ F_!(h_i \circ f)(b) = h_i \]
+and by the Yoneda lemma get induced by morphisms $B \to A_i$. This means the diagram
 \[
 \xymatrix{
-& yB \ar[d]_b \ar[ddl] \ar[ddr] & \\
-& H \ar[rd]^{f_i} \ar[ld]_{f_j} & \\
-yA_i & & yA_j \ar[ll]_{g_{ij}}
+& (B,b) & \\
+(A_i,a_i) \ar[ru]^{h_i \circ f} \ar[rr]^{g_{ij}} & & (A_j,a_j) \ar[lu]_{h_j \circ f} 
 }\]
-Turning around the diagram again to $\fun{\cat A}{\catname{Set}}$ gives the desired cocone in $y'\downarrow F$:
-\[
-\xymatrix{
-& F  & \\
-& y'B \ar[u]  & \\
-y'A_i \ar[ruu] \ar[rr] \ar[ru]& & y'A_j \ar[lu] \ar[luu]
-}\]
+is the desired cocone in $\el(F)$.
 \end{Proof}
 
 \begin{Corollary}
@@ -187,6 +179,7 @@ where the latter is a colimit of representables in $\fun{\cat A^\op}{\catname{Se
 Conversely, we have seen that $\flat_\lambda(\cat A)$ has $\lambda$-directed colimts. Furthermore representable functors are $\lambda$-presentable objects and by definition every $\lambda$-flat functor is $\lambda$-filtered colimits of these. So $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
 \end{Proof}
 
+
 % orthogonality small vs. filtered
 Note that this description leads to a strong characterisation in the locally presentable case.
 \begin{Proposition}
@@ -198,26 +191,26 @@ We first show that all functors coming from the canonical embedding are $\lambda
 
 The functors $EK = \hom(-, K)$ preserve all colimits in $\cat K$, thus in particular $\lambda$-small limits from $\cat A$. \\
 
-% Understand the element argument
-Now we let $F$ be $\lambda$-continuous and deduce that it's $\lambda$-flat by showing that $\el(F)$ is $\lambda$-filtered. Take a $\lambda$-small subcategory 
+Now we let $F$ be $\lambda$-continuous and deduce that it's $\lambda$-flat by showing that $\el(F)$ is $\lambda$-filtered (compare with the filteredness proof in \ref{prop:flat}). Take a $\lambda$-small subcategory of $\el(F)$, schematically
+\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j). \]
+We can take the limit of the $A_i$ in $\cat A$
 \[
 \xymatrix{
-& F & \\
-y'A_i \ar[ru]^{a_i} \ar[rr] & &  y'A_j \ar[lu]_{a_j}
+& A \ar[ld]_{f_i} \ar[rd]^{f_j} & \\
+A_i & & A_j \ar[ll]_{g_{ij}}
 }\]
-Because $\cat A$ has $\lambda$-small limits, we can take a limit $(A \to A_j)$ that gets preserved by $F$ as
+By assumption, $F$ turns this into a limit in $\catname{Set}$
 \[
 \xymatrix{
-& FA \ar[rd] \ar[ld] & \\
-FA_i & & FA_j \ar[ll]
+& FA \ar[ld]_{Ff_i} \ar[rd]^{Ff_j} & \\
+FA_i & & FA_j \ar[ll]_{Fg_{ij}}
 }\]
-The elements of $FA$ correspond to compatible collections of elements $(a_i \in FA_i)$, i.e. we have an upper bound
-\[
+so $FA$ consists of families $(\alpha_i \in FA_i)$ such that $Fg_{ij}(\alpha_j) = \alpha_i$. The familiy of elements $(a_i)$ is compatible, thus there exists $a \in FA$ with $(Ff_i)(a) = a_i$. This means \[
 \xymatrix{
-& F & \\
-& y'A \ar[u] & \\
-y'A_i \ar[ruu] \ar[ru]^{a_i} \ar[rr] & &  y'A_j \ar[lu]_{a_j} \ar[luu]
+& (A,a) & \\
+(A_i,a_i) \ar[ru]^{f_i} \ar[rr]^{g_{ij}} & & (A_j,a_j) \ar[lu]_{f_j}
 }\]
+is the desired cocone in $\el(F)$.
 \end{Proof}
 
 During the proof, it was actually enough to require that $\cat K$ have $\lambda$-small colimits. We can draw several corollaries
