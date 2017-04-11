@@ -226,10 +226,10 @@ Let $\cat K$ be a $\lambda$-accessible category. Then the following are equivale
 \begin{Proof}
 By the previous proposition, \ref{item:lcocomplete} implies that we have an equivalence $K \simeq \cont_\lambda(\cat A)$. The latter category is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits; thus it is complete. \\
 
-For \ref{item:complete} $\Rightarrow$ \ref{item:cocomplete}, we note that the $\cat K$ now has all limits and $E : \cat K \to \fun{\cat A}{\catname{Set}}$ preserves them. We can use the Adjoint Functor Theorem to show that $E$ has a left adjoint and thus $\cat K$ is cocomplete. The solution set condition is verified in [...].
+For \ref{item:complete} $\Rightarrow$ \ref{item:cocomplete}, we note that the $\cat K$ now has all limits and $E : \cat K \to \fun{\cat A}{\catname{Set}}$ preserves them. We can use the Adjoint Functor Theorem to show that $E$ has a left adjoint. This exhibits $\cat K$ as a reflective subcategory of a cocomplete category, thus it is cocomplete. The solution set condition is verified in [...]. 
 \end{Proof}
 
-From this it follows that every locally presentable category is complete and well-powered, as it has a strong generator and pullbacks.
+From this it follows that every locally presentable category is complete and well-powered, as it has a strong generator and pullbacks. Furthermore
 
 \begin{Corollary}\
 Every locally $\lambda$-presentable category is sketchable by a $\lambda$-small limit sketch.
@@ -240,7 +240,4 @@ Note that by definition
 where the sketch $\mathbb S$ collects all $\lambda$-small limit cones in $\cat A$.
 \end{Proof}
 
-It remains to show how we can sketch accessible categories. This reduces to the question of sketching $\flat_\lambda(\cat A)$. Note that by the universal property of the free cocompletion, we have an equivalence of categories
-\[ \fun{\pre{\cat A}}{\catname{Set}}_{\text{coco.}} \simeq \fun{\cat A}{\catname{Set}} \]
-given by precomposition with $y$ and Kan extension. \ref{prop:flat} shows that this restricts to
-\[ \fun{\pre{\cat A}}{\catname{Set}}_{\text{coco. + $\lambda$-cont.}} \simeq \flat_\lambda(A) \]
+It remains to show how we can sketch accessible categories. This reduces to the question of sketching $\flat_\lambda(\cat A)$. Note that by the universal property of the free cocompletion, we have an equivalence between functors $F : \cat A \to \catname{Set}$ and cocontinuous functors $F_! : \pre{\cat A} \to \catname{Set}$. Furthermore by \ref{prop:flat}, we have an equivalence between $\lambda$-flat functors $F : \cat A \to \catname{Set}$ and cocontinuous, $\lambda$-continuous functors $F_! : \pre{\cat A} \to \catname{Set}$. Morally, the latter condition is sketchable, just that the underlying category $\pre{\cat A}$ is not small. We'll show that this can be reduced
