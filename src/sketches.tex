@@ -106,7 +106,10 @@ Unitality was discussed in \ref{ex:unitality}, and the inversion operation amoun
 as paths $a^2 \to a$, where again $!: a^2 \to 1$. 
 \end{Example}
 
-This procedure gives an idea on how to turn any set of identities into a finite product sketch.
+This procedure gives an idea on how to turn any set of identities into a finite product sketch. \\
+
+The theory of varieties is easily extended to include \emph{many-sorted sets}, e.g. a graph is a two-sorted algebra on sorts $e,v$ with operations $s, t : e \to v$. Note than an $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed a discrete category. Prescribing product cones for $A$ just allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts. 
+
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.
 \end{Proposition}
@@ -117,13 +120,14 @@ Add equations
 \[ \id_r(x) = x \]
 and
 \[ f(g(x)) = (f \circ g)(x)  \]
-for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras as functors $F : \cat A \to \catname{Set}$. Now encode the limit conditions. For each cone $C = (s \xrightarrow{\pi_i} s_i) \in \dist L$, add an operation symbol $\hat c$ of arity
+for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras as functors $F : \cat A \to \catname{Set}$. The limit conditions require us to exhibit certain sorts as the products of others. Thus for each cone $C = (s \xrightarrow{\pi_i} s_i) \in \dist L$, add a ``packing operation'' operation $\hat c$ of arity
 \[ \hat c : s_1 \times \cdots \times s_n \to s \]
-and add equations
-\[ \hat c(\pi_1(x), \ldots, \pi_n(x)) = x \]
-for $x : s$ and 
-\[ \pi_i(\hat c(x_1, \ldots, x_n)) = x_i \]
-for all $i=1,\ldots,n$ where $x_i : s_i$.
+that is inverse to the projections, i.e.
+\begin{align*}
+\hat c(\pi_1(x), \ldots, \pi_n(x)) &= x \\
+\pi_i(\hat c(x_1, \ldots, x_n)) &= x_i
+\end{align*}
+for all $i=1,\ldots,n$ where $x : s, x_i : s_i$.
 Every functor $F : \cat A \to \catname{Set}$ that satisfies these equations will induce an isomorphism
 \[ F(s) \xrightarrow{(F\pi_1,\ldots, F\pi_n)} F(s_1) \times \cdots \times F(s_n) \]
 in $\catname{Set}$, i.e. be a model of the sketch.
