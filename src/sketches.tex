@@ -3,7 +3,7 @@
 
 \subsection{Definition of sketches}
 
-Sketches have been introduces by Ehresmann. \\
+Sketches have been introduces by Ehresmann. % More to say \\
 
 \begin{Definition}[Sketch]
 A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
@@ -45,12 +45,13 @@ We call $\mathbb S = (\cat A, \dist L, \dist C)$
 \item a \emph{limit sketch} if $\dist C$ is empty
 \item a \emph{product sketch} if $\dist C$ is empty and all cones in $\dist L$ are \emph{discrete}, i.e. an apex connected to a discrete diagram
 \item a \emph{finite product sketch} if $\dist C$ is empty and all cones in $\dist L$ are discrete and finite
+\item a \emph{sum sketch} if all cocones are discrete
 \item \emph{$\lambda$-small} if all cones and cocones have underlying $\lambda$-small diagrams
 \end{enumerate}
 We furthermore say \emph{mixed sketch} to stress that both $\dist L$ and $\dist C$ are nonempty.
 \end{Definition}
 
-\subsection{Examples}
+\subsection{Limit sketches}
 
 In this section, we will see examples on how to sketch theories for known some categories. Note that we have to be careful to distinguish between the vertices and edges of the sketch, and their ``meaning'' as objects and morphisms in a model. \\
 
@@ -108,8 +109,18 @@ as paths $a^2 \to a$, where again $!: a^2 \to 1$.
 
 This procedure gives an idea on how to turn any set of identities into a finite product sketch. \\
 
-The theory of varieties is easily extended to include \emph{many-sorted sets}, e.g. a graph is a two-sorted algebra on sorts $e,v$ with operations $s, t : e \to v$. Note than an $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed a discrete category. Prescribing product cones for $A$ just allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts. 
+Note that the theory of varieties allows for two straightforward extensions: 
 
+\begin{itemize}
+\item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$, for example the theory of semilattices with countable suprema can be given in terms of an operation
+\[ \bigvee(x_1, x_2, \ldots) \]
+and equations, forming an $\aleph_1$-ary variety. $\lambda$-ary varieties are locally $\lambda$-presentable categories.
+
+\item A \emph{many-sorted variety} consists of different sorts of underlying sets and the signature of operations are ``typed`` with respect to the sorts. For example, a graph is a two-sorted algebra on sorts $e,v$ with two operations $s, t : e \to v$. 
+\end{itemize}
+
+Note than an $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed a discrete category. Prescribing product cones for $A$ just allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
+ 
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.
 \end{Proposition}
@@ -133,8 +144,10 @@ Every functor $F : \cat A \to \catname{Set}$ that satisfies these equations will
 in $\catname{Set}$, i.e. be a model of the sketch.
 \end{Proof}
 
+By analogy, product sketches correspond to infinitary varieties.
+
 \begin{Example}[Torsion-free groups]
-Let's take a quasivariety like torsion-free groups and look at the implicational axiom
+Let's take a quasivariety like torsion-free groups and look at one implicational axiom like
 \[ x + x = 0 \quad \Rightarrow \quad x = 0. \]
 We can sketch this using equalisers. Take again vertices $1,a,a^2$ as before and $0_a : 1 \to a$. We can describe the set
 \[ e = \{ x : x + x = 0 \} \]
@@ -149,12 +162,12 @@ Now we add commutativity condition expressing $e = \{0\}$ by \[ j = 0_a\cdot !. 
 \end{Example}
 
 \begin{Example}[Simple graphs]
-A simple graph is a graph, i.e. a two-sorted variety on sort $v,e$ with operations
+A simple graph is a graph, i.e. a two-sorted algebra on sorts $v,e$ with operations
 \[ s, t : e \to v \]
 where there is at most one edge between two vertices, leading to the implicational condition
 \begin{equation}\label{eq:graph} s(x) = s(y),\, t(x) = t(y) \quad \Rightarrow \quad x = y \end{equation}
-for $x,y : e$. The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^2, \]
-in fact the condition (\ref{eq:graph}) just says that $(s,t)$ is injective, which is a pullback condition
+The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^. \]
+In fact the condition (\ref{eq:graph}) just says that $(s,t)$ is injective, which is a pullback condition
 \[
 \xymatrix{
  & e \ar[ld]_{\id} \ar[rd]^{id} & \\
@@ -163,8 +176,25 @@ e \ar[rd]_{(s,t)} &  & e \ar[ld]^{(s,t)} \\
 }\]
 \end{Example}
 
-The introduction of cocones allows for more interesting categories
+\textbf{Remark: } Recall that we could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as limits of other sorts, thus subsets of a product subject to equations. For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible inputs}, i.e.
+\[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
+This leads to the characterisation of limit sketches as so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \\
+
+In view of the sketchability theorem, we can identify the classes of locally presentable and essentially algebraic categories. \\
+
+Note that models of a finite limit sketch can be axiomatised in propositional logic. This will contrast finite mixed sketches. \\ % TODO
+
+We note that in essentially algebraic class can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
+
+\begin{Proposition}
+For every limit sketch $\mathbb S = (\cat A, \dist L)$, $\mod(S)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$.
+\end{Proposition}
+\begin{Proof}
+Limits are computed pointwise and commute with limits. % Annotate proof
+\end{Proof}
+
 \subsection{Mixed sketches}
+The introduction of cocones allows for more interesting categories
 
 \begin{Example}[Fields]
 We can almost sketch fields as varieties on the signature $\{0_k,1_k,+,\times,(-)^{-1}\}$ apart from the pathological axiom
@@ -176,10 +206,23 @@ Introduce a sketch as usual on vertices $1,k,k^2,k^3$ but also add a symbol $k^*
 & k & \\
 k^* \ar[ru]^{j} & & 1 \ar[lu]_{0_k}
 }\]
-has to become a coproduct cone, so add it to $\dist C$. Then define a map 
+has to become a coproduct, so add it to $\dist C$. Then define a map 
 \[ (x,x^{-1}) : k^* \to k^2 \]
 in the obvious way and add a condition on paths $k^* \to k$
 \[ \times \circ (x,x^{-1}) = 1_k \circ !. \]
 \end{Example}
+
+The category of fields can be neither complete nor cocomplete, as there are only homomorphisms between fields of the same characteristic. However, it has connected limits, for example the intersection of two subfields is again a subfield. This can be traced to the fact that the sketch we gave for $\catname{Fld}$ is a sum sketch. % Show accessibiliity
+
+\begin{Proposition}
+For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(S)$ is closed under connected limits in $\fun{\cat A}{\catname{Set}}$.
+\end{Proposition}
+\begin{Proof}
+Coproducts commute with connected limits in $\catname{Set}$.
+\end{Proof}
+
+This is not the case any more for arbitrary cocones in $\dist C$. Compare with our sketch for connected graphs in the introduction. Intersections of connected subgraphs needn't be connected. \\
+
+Worse, while models limit sketches with all finite cones could be described in first order logic, this is no longer true for mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. % Coequaliser description
 
 % Linear orders machen
