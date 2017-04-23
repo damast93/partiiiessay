@@ -18,7 +18,7 @@ Sketches form a category $\catname{Sk}$ by letting morphisms $(\cat A, \dist L, 
 \begin{Definition}[Model of a sketch]
 Given a sketch $\mathbb S = (\cat A, \dist L, \dist C)$ and a category $\cat K$, a \emph{model} of $\mathbb S$ in $\cat K$ is a functor
 \[ F : \cat A \to \cat K \]
-that turns all distinguished cones into limit cones and cocones into colimit cones in $\cat K$, i.e. \begin{itemize}
+that turns all distinguished cones into limit cones and cocones into colimit cocones in $\cat K$, i.e. \begin{itemize}
 \item for all $D \in \dist L$, $F \circ D$ is limiting,
 \item for all $D \in \dist C$, $F \circ D$ is colimiting.
 \end{itemize}
@@ -107,7 +107,9 @@ Unitality was discussed in \ref{ex:unitality}, and the inversion operation amoun
 as paths $a^2 \to a$, where again $!: a^2 \to 1$. 
 \end{Example}
 
-This procedure gives an idea on how to turn any set of identities into a finite product sketch. We want to show a converse with the following idea: An $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed as a discrete category. When $S$ is not discrete, the morphisms introduce operations between the sorts. Prescribing product cones for $A$ allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
+This procedure gives an idea on how to turn any set of identities into a finite product sketch. We want see a converse with the following idea: An $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed as a discrete category. When $S$ is a non-discrete category, the morphisms introduce operations between the sorts. \\
+
+Prescribing product cones for $A$ additionally declares certain sorts as products of other sorts, thereby allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
  
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.
@@ -119,7 +121,9 @@ Add equations
 \[ \id_r(x) = x \]
 and
 \[ f(g(x)) = (f \circ g)(x)  \]
-for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras as functors $F : \cat A \to \catname{Set}$. The limit conditions require us to exhibit certain sorts as the products of others. Thus for each cone $C = (s \xrightarrow{\pi_i} s_i) \in \dist L$, add a ``packing operation'' operation $\hat c$ of arity
+for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras as functors $F : \cat A \to \catname{Set}$. \\
+
+The limit conditions require us to exhibit certain sorts as the products of others. Thus for each cone $C = (s \xrightarrow{\pi_i} s_i) \in \dist L$, add a ``packing operation'' operation $\hat c$ of arity
 \[ \hat c : s_1 \times \cdots \times s_n \to s \]
 that is inverse to the projections, i.e.
 \begin{align*}
@@ -132,7 +136,7 @@ Every functor $F : \cat A \to \catname{Set}$ that satisfies these equations will
 in $\catname{Set}$, i.e. be a model of the sketch.
 \end{Proof}
 
-By analogy, product sketches correspond to infinitary varieties.
+Analogously, product sketches with larger cones correspond to infinitary varieties. We'll now look at examples of sketches with non-discrete cones:
 
 \begin{Example}[Torsion-free groups]
 Let's take a quasivariety like torsion-free groups and look at one implicational axiom like
@@ -168,13 +172,13 @@ e \ar[rd]_{(s,t)} &  & e \ar[ld]^{(s,t)} \\
 
 \textbf{Remark: } Recall that we could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as limits of other sorts, thus subsets of a product subject to equations. For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible inputs}, i.e.
 \[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
-This leads to the characterisation of limit sketches as so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \\
+This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \\
 
 In view of the sketchability theorem, we can identify the classes of locally presentable and essentially algebraic categories. \\
 
-Note that models of a finite limit sketch can be axiomatised in propositional logic. This will contrast finite mixed sketches. \\ % TODO
+Note that models of a finite limit sketches can be axiomatised in finitary first-order logic. This will contrast finite mixed sketches.
 
-We note that in essentially algebraic class can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
+We note that limits of models of essentially algebraic theories can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
 
 \begin{Proposition}
 For every limit sketch $\mathbb S = (\cat A, \dist L)$, $\mod(S)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$.
@@ -184,13 +188,13 @@ Limits are computed pointwise and commute with limits. % Annotate proof
 \end{Proof}
 
 \subsection{Mixed sketches}
-The introduction of cocones allows for more interesting categories
+The introduction of cocones allows for more complicated theories
 
 \begin{Example}[Fields]
 We can almost sketch fields as varieties on the signature $\{0_k,1_k,+,\times,(-)^{-1}\}$ apart from the pathological axiom
 \[ x = 0_k \,\vee\,x \times x^{-1} = 1_k. \] 
 % More work to be done? => Johnstone
-Introduce a sketch as usual on vertices $1,k,k^2,k^3$ but also add a symbol $k^*$ that we want to represent the nonzero elements of the field. This of course means
+Introduce a sketch as usual on vertices $1,k,k^2,k^3$ but also add a symbol $k^*$ which we want to represent the nonzero elements of the field. This of course means
 \[
 \xymatrix{
 & k & \\
@@ -202,7 +206,9 @@ in the obvious way and add a condition on paths $k^* \to k$
 \[ \times \circ (x,x^{-1}) = 1_k \circ !. \]
 \end{Example}
 
-The category of fields can be neither complete nor cocomplete, as there are only homomorphisms between fields of the same characteristic. However, it has connected limits, for example the intersection of two subfields is again a subfield. This can be traced to the fact that the sketch we gave for $\catname{Fld}$ is a sum sketch. % Show accessibiliity
+The category of fields can be neither complete nor cocomplete, as there are only homomorphisms between fields of the same characteristic. However, it has connected limits, so for example the intersection of two subfields is again a subfield. Note how the connectedness of the diagram precisely takes care of the condition on the characteristics. \\
+
+This can be traced to the fact that the sketch we gave for $\catname{Fld}$ is a sum sketch. 
 
 \begin{Proposition}
 For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(S)$ is closed under connected limits in $\fun{\cat A}{\catname{Set}}$.
@@ -211,8 +217,14 @@ For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(S)$ is clos
 Coproducts commute with connected limits in $\catname{Set}$.
 \end{Proof}
 
-This is not the case any more for arbitrary cocones in $\dist C$. Compare with our sketch for connected graphs in the introduction. Intersections of connected subgraphs needn't be connected. \\
+This is not the case any more for arbitrary cocones in $\dist C$. Recall the coequaliser cocone in the sketch for connected graphs from the introduction
+\[
+\xymatrix{
+& 1 \\
+e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
+}\]
+Intersections of connected subgraphs needn't be connected. \\
 
-Worse, while models limit sketches with all finite cones could be described in first order logic, this is no longer true for mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. % Coequaliser description
+Worse, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. 
 
 % Linear orders machen

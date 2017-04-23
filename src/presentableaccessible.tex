@@ -157,15 +157,15 @@ Using \ref{lemma:stronggen} we can now give more examples
 
 \item The category $\catname{Pos}$ of posets is locally finitely presentable, as it is cocomplete and $\{\mathbf 2\}$ is a strong generator. 
 
-\item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$. For example, the theory of semilattices with countable suprema can be given as an equational theory with an operation
-\[ \bigvee(x_1, x_2, \ldots) \]
-forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-ary varieties are locally $\lambda$-presentable categories. The only difference is that, while infinitary varieties are cocomplete, $\kappa$-filtered colimits are generally only created by the forgetful functor if $\kappa \geq \lambda$.
+\item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$. For example, semilattices with countable suprema can be axiomatised by an equational theory with an operation
+\[ \bigvee(x_1, x_2, \ldots), \]
+thus forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-ary varieties are locally $\lambda$-presentable categories. The only difference is that, while infinitary varieties are cocomplete, $\kappa$-filtered colimits are generally only created by the forgetful functor if $\kappa \geq \lambda$.
 
 \item The category $\catname{Fld}$ of fields is finitely accessible. Even though the category is not cocomplete, it has \emph{filtered} colimits created by the forgetful functor to $\catname{Set}$. \\
 
 Note that we captured the algebraic property that $F$ is finitely presentable as $\hom(F,-)$ preserving filtered colimits. In the same way, the statement that $F$ is finitely \emph{generated} translates into $\hom(F,-)$ perserving filtered colimits of monomorphisms. As every morphism in $\catname{Fld}$ is a monomorphism, this is no condition and the two notions coincide. Note that every field is the directed colimit of its finitely generated subfields by inclusion. \\
 
-It remains to show that the class of finitely generated fields has a set of representatives: If $F$ is finitely generated, we have extensions $F/L/F_p$ where $F_p$ is the prime field of $F$, $L=F_p(\alpha_1,\ldots,\alpha_n)$ is purely transcendental and $F/L$ is finitely generated and algebraic, thus finite and the ring homomorphism
+It remains to show that the class of finitely generated fields has a set of representatives: If $F$ is finitely generated, we have extensions $F/L/F_p$ where $F_p$ is the prime subfield of $F$, $L=F_p(\alpha_1,\ldots,\alpha_n)$ is purely transcendental and $F/L$ is finitely generated and algebraic, thus finite and the ring homomorphism
 \[ L[x_1,\ldots,x_m] \to F \]
 is surjective. Therefore the finitely generated fields are up to isomorphism quotients of the rings $F_p(\alpha_1, \ldots,\alpha_n)[x_1,\ldots,x_m]$ for the prime fields $F_0 = \mathbb Q$ and $F_p = \mathbb F_p$ for $p$ prime.
 \end{enumerate}
