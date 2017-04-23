@@ -2,29 +2,27 @@
 \phantomsection
 \addcontentsline{toc}{section}{Introduction}
 
-When thinking of a restricted class of categories with pleasant properties, \emph{(finitary) varieties} are among the first candidates: \emph{Sets}, \emph{groups}, \emph{rings} all form complete and cocomplete categories, are well-powered, well-copowered, have free objects, closure properties, commutativity ... \\
+This essay is about \emph{categorical model theory}. Given a logical theory, how does its category of models look like? And how do syntactic properties of the theory translate into categorical properties of the category of models? \\
 
-A variety $\cat K$ is given through a finitary signature $\Sigma$ and a set of term equations over $\Sigma$. Then $\cat K$ is the full subcategory of the algebras $\catname{Alg}(\Sigma)$ that satisfy all equations. Universal algebra has the following famous characterisation of varieties by Birkhoff's HSP-Theorem: Let $\cat K$ be a full subcategory of $\catname{Alg}(\Sigma)$. Then the following are equivalent
-\begin{enumerate}
-\item $\cat K$ is a variety
-\item $\cat K$ is closed under \underline{h}omomorphic images, \underline{s}ubobjects and \underline{p}roducts in $\catname{Alg}(\Sigma)$.
-\end{enumerate}
-This is a first correspondence of syntactical properties of a theory and properties of its model class. For example, we can deduce that the class of \emph{fields} cannot be described with a universal set of axioms, as the componentwise product of fields fails to be a field. \footnote{Of course, the category of fields cannot be equivalent to a variety either, as it's not complete. \emph{What characteristic would a terminal field have?}}  Still, Birkhoff's theorem is very much an extrinsic characterisation of varieties. Can we tell if a category is \emph{equivalent} to a variety, even when it doesn't look algebraic at all? In other words, what can we infer from categorical properties of $\cat K$ alone? \\
+A classical example are varieties, the categories of models of algebraic (equational) theories, like \emph{groups}, \emph{rings} or plain \emph{sets}. Varieties have plesant properties, e.g. they are complete and cocomplete, well-powered, co-well-powered and have free objects. Birkhoff's famous HSP-Theorem from universal algebra even gives a precise characterisation of varieties as full subcategories of $\catname{Alg}(\Sigma)$, the category of algebras over some signature $\Sigma$: $\cat K$ is variety if and only if it is closed under homomorphic images, subobjects and products in $\catname{Alg}(\Sigma)$. 
+This shows for example that the theory of fields cannot be equational, as the cartesian product of fields fails to be a field.\footnote{Of course, the category of fields can be neither be complete nor complete as there are no morphisms between fields of different characteristic.}
+Still, the HSP-Theorem is not an intrinsic characterisation of varieties. \\
 
-In this essay, I will introduce the theory of \emph{locally presentable} and \emph{accessible} categories, which generalise varieties while still maintaining nice properties. Now both are clean, intrinsically defined categorical notions: Local presentability roughly means that a cocomplete category is generated in a certain sense by ``small objects'' via colimits. This notion already covers a wide range of everyday categories, including all varieties, quasivarieties, but also Banach spaces or posets. \\
+There are several generalisations of algebraic theories to describe more interesting structures. Varieties can be extended to include multiple sorts or operations of infinite arities. Implicational theories give rise to quasivarieties (torsion-free groups, graphs). In the end, one can even start using fragments of infinitary first-order logic to describe structures like connected graphs. \\
+
+In section \ref{sec:presentableaccessible}, I will introduce the notions of \emph{locally presentable} and \emph{accessible} categories. These subsume all of the above examples and in fact a considerable range of everyday categories while still maintaining nice properties. Nonetheless, they are completely intrinsic categorical notions: Local presentability roughly means that a cocomplete category is generated in a certain sense by a set of ``small objects'' via colimits. This case includes well-behaved categories like varieties, quasivarieties, or the category of posets. \\
 
 Accessibility weakens the requirement of cocompleteness, giving us back wilder categories like the categories of fields, linear orders, sets with monomorphisms or connected graphs. \\
 
-% Entirely avoid logic?
-It turns out that again, both locally presentable and accessible categories can be axiomatised as categories of models of certain kinds of theories, e.g. in infinitary propositional logic. Instead of introducing that kind of language, we'll take another approach using the formalism of \emph{sketches}: \\
+It turns out that locally presentable and accessible categories precisely capture the categories of models of certain kinds of theories. These theories have a syntactic description in infinitary logic, however in this essay, I will deliberately avoid first-order language and in section \ref{sec:sketches} introduce another way of presenting a theory completely based on category theory: The formalism of \emph{sketches}. \\
 
-A sketch is merely a small category $\cat A$ with distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
+A sketch is merely a small category $\cat A$ with a set of distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & \\
 a & a & a
 }\]
-and the prescribed cone
+and one prescribed cone
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
@@ -48,12 +46,11 @@ Now add to $\cat A$ an object $1$, let $L$ be the cone with apex $1$ over an emp
 & 1 \\
 e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
 }\]
-Models $F: \cat A \to \catname{Set}$ of this sketch give us graphs $(V,E)$ where $V=F(v),E=F(e)$. Turning the cone $L$ into a limit means that $F(1)$ becomes a terminal object $\star$ in $\catname{Set}$. Furthermore, $F$ turns $C$ into a coequaliser
-\[ \star \cong V/(Fs(e)\sim Ft(e)). \]
+Models $F: \cat A \to \catname{Set}$ of this sketch give us graphs $(V,E)$ where $V=F(v),E=F(e)$. Turning the cone $L$ into a limit means that $F(1)$ becomes a terminal object $\bullet$ in $\catname{Set}$. Furthermore, $F$ turns $C$ into a coequaliser
+\[ \bullet \cong V/(Fs(e)\sim Ft(e)). \]
 The equivalence relation identifies all vertices that are connected by an edge, so we have to end up with precisely one connected component. The sketch axiomatised connected graphs. \\
 
-% Reformulate
-In fact, sketches eliminate the need to define terms and formulas for our theories entirely. We have a purely categorical concept right at our disposal. Still, limits and colimits provide us with all the expressive power we need. This will be our main theorem:
+Sketches eliminate the need for a language when writing down theories, but the ``geometry'' of the sketch will determine the categorical properties of its category of models. The core statement is the following:
 
 \begin{Theorem}[Sketchability]\
 \begin{enumerate}
@@ -61,14 +58,12 @@ In fact, sketches eliminate the need to define terms and formulas for our theori
 
 \item A category is locally presentable iff it is sketchable by a \emph{limit sketch}, i.e. a sketch that only prescribes \emph{cones}.
 
-\item A category is a (many-sorted) variety iff it is sketchable by only prescribing finite discrete cones.
+\item A category is equivalent to a (finitary) many-sorted variety iff it is sketchable by only prescribing (finite) discrete cones.
 \end{enumerate}
 \end{Theorem}
 
-The main goal of this essay is to give a proof of the accessible $\Leftrightarrow$ sketchable-equivalence. \\
+The main goal of this essay is to give a proof of the accessible $\Leftrightarrow$ sketchable-equivalence. I will try to give a parallel treatment of locally presentable and accesible categories for as long as possible, but eventually focus on the accessible case. \\
 
- In sections \ref{sec:presentableaccessible}, I will define what locally presentable and accessible categories are and give first properties and examples. In \ref{sec:sketches}, I will introduce the formalism of sketches and sketch several known categories. \\
+Sections \ref{seq:catstoskeches} and \ref{sec:sketchesaccessible} will be dedicated to the two directions of the equivalence. In \ref{seq:catstoskeches}, I will analyse the structure of locally presentable and accessible categories and show how to embed them into functor categories, eventually exhibiting them as models categories of sketches. \\
 
-I'll try giving a parallel treatment of locally presentable and accesible categories for as long as possible, but eventually focus on the accessible case. \\
-
-In section \ref{seq:catstoskeches}, I will analyse the structure of these categories further and show how to embed them into functor categories and eventually models of a sketch. Section \ref{sec:sketchesaccessible} will contain the other direction of the theorem, that model categories of sketches are indeed accessible.
+In section \ref{sec:sketchesaccessible}, I will use the downward Löwenheim-Skolem theorem to show that that model categories of sketches are indeed accessible.

@@ -13,7 +13,7 @@ Note that for convenience, we treat our cones not as natural transformations but
 
 Sketches form a category $\catname{Sk}$ by letting morphisms $(\cat A, \dist L, \dist C) \to (\cat A', \dist{L'}, \dist{C'})$ be functors $F : \cat A \to \cat A'$ that respect the distinguished cones and cocones, i.e. for all $D \in \dist L$, we have $F \circ D \in \dist{L'}$ and similarly $F \circ D \in \dist{C'}$ for all $D \in \dist C$. \\
 
-\textbf{Remark: } The way we will actually write down sketches to present a theory will look slightly different: Instead of the category $\cat A$, we will usually specify an underlying graph\footnote{directed multigraph} $G$, together with a set $D$ of commutativity conditions between pairs of paths of the same starting- and endpoint. We will then prescribe the cones and cocones accordingly. Note that we get back to our original definition by taking $\cat A$ to be the category freely presented by $G$ modulo the congruence given by $D$. 
+\textbf{Remark: } The way we will actually write down sketches to present a theory will look slightly different: Instead of the category $\cat A$, we will usually specify an underlying graph $G$, together with a set $D$ of commutativity conditions between pairs of paths of the same starting- and endpoint. We will then prescribe the cones and cocones accordingly. Note that we get back to our original definition by taking $\cat A$ to be the category freely presented by $G$ modulo the congruence given by $D$. 
 
 \begin{Definition}[Model of a sketch]
 Given a sketch $\mathbb S = (\cat A, \dist L, \dist C)$ and a category $\cat K$, a \emph{model} of $\mathbb S$ in $\cat K$ is a functor
@@ -107,19 +107,7 @@ Unitality was discussed in \ref{ex:unitality}, and the inversion operation amoun
 as paths $a^2 \to a$, where again $!: a^2 \to 1$. 
 \end{Example}
 
-This procedure gives an idea on how to turn any set of identities into a finite product sketch. \\
-
-Note that the theory of varieties allows for two straightforward extensions: 
-
-\begin{itemize}
-\item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$, for example the theory of semilattices with countable suprema can be given in terms of an operation
-\[ \bigvee(x_1, x_2, \ldots) \]
-and equations, forming an $\aleph_1$-ary variety. $\lambda$-ary varieties are locally $\lambda$-presentable categories.
-
-\item A \emph{many-sorted variety} consists of different sorts of underlying sets and the signature of operations are ``typed`` with respect to the sorts. For example, a graph is a two-sorted algebra on sorts $e,v$ with two operations $s, t : e \to v$. 
-\end{itemize}
-
-Note than an $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed a discrete category. Prescribing product cones for $A$ just allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
+This procedure gives an idea on how to turn any set of identities into a finite product sketch. We want to show a converse with the following idea: An $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed as a discrete category. When $S$ is not discrete, the morphisms introduce operations between the sorts. Prescribing product cones for $A$ allows us to declare certain sorts as products of other sorts, allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
  
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.

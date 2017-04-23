@@ -1,27 +1,25 @@
 \section{Locally presentable and accessible categories}
 \label{sec:presentableaccessible}
 
-% Moral introduction
-
-Every set is the union of its finite subsets. Furthermore, every algebra is the union of its finitely presented subalgebras. We will transfer these properties into a categorical setting. \\
+Every set is the union of its finite subsets. More generally, every algebra in a variety $\cat K$ is a certain colimit of finitely presented algebras and there is, up to isomorphism, only a set of finitely presented algebras. We want to make precise in what sense this set ``generates'' the category $\cat K$ and then generalise these notions. \\
 
 \textbf{Convention: } All categories in this essay will be locally small. All cardinals will be infinite regular cardinals.
 
 \subsection{Directed and filtered colimits}
 
-Let's recall the definitions of directed colimits (confusingly known as ``direct limits'' in algebra):
+Let us recall the definition of directed colimits (confusingly known as ``direct limits'' in algebra):
 \begin{Definition}
 A nonempty poset is called \emph{$\lambda$-directed} if every subset of cardinality less than $\lambda$ has an upper bound.
 \end{Definition}
 
-We can generalise the notion of directedness to arbitrary categories.
+We can generalise the notion of directedness from posets to arbitrary categories.
 
 \begin{Definition}\
 \begin{enumerate}
 \item A category is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms.
-\item A category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory has a cocone over it. 
+\item A category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory admits a cocone over it. 
 \end{enumerate}
-A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered ($\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (or a $\lambda$-directed poset considered as a category). 
+A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered (resp. $\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (resp. a $\lambda$-directed poset). We'll just say \emph{filtered (resp. directed)} for $\lambda = \aleph_0$.
 \end{Definition}
 
 It turns out that both notions are equivalent, and we will use them interchangably.
@@ -32,7 +30,7 @@ It turns out that both notions are equivalent, and we will use them interchangab
 \begin{Example}\label{ex:Q}
 In $\catname{Grp}$, we have 
 \[ \text{``}\mathbb Q = \varinjlim \frac 1 n \mathbb Z\text{''}. \]
-More precisely, $\mathbb Q$ is the $\aleph_0$-directed colimit of the diagram
+More precisely, $\mathbb Q$ is the colimit of the directed diagram
 \begin{align*}
  D : (\mathbb N, |) &\to \catname{Grp}, n \mapsto \mathbb Z \\
  (n\, | \,m) &\mapsto \left(\mathbb Z \xrightarrow{m/n} \mathbb Z\right)
@@ -103,7 +101,7 @@ thus $(\pi u) \kappa_1 = \id_A$ as $\pi$ is an epimorphism.
 \end{enumerate}
 
 \begin{Example}
-The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of these, thus $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; note that indeed we have a presentation
+The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of copies of $\mathbb Z$, thus it is $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; note that we can indeed read off a presentation from the diagram as
 \[ \mathbb Q \cong \left\langle x_n : n \in \mathbb N\,|\,x_n = k \cdot x_{nk} \right \rangle\]
 \end{Example}
 
@@ -111,7 +109,7 @@ The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathb
 \begin{Example}
 An element $c$ of a lattice $L$ is finitely presentable iff it is a \emph{compact element}, i.e. whenever
 \[ c \leq \bigvee_i d_i \]
-for a directed join, we have $c \leq d_i$ for some $i$. This really generalizes the usual compactness from the semilattice of open sets of a topological space (every open cover has a finite subcover).
+for a directed join, we have $c \leq d_i$ for some $i$. This generalises the topological notion of a compact set, where we take $L$ to be the lattice of open subsets.
 \end{Example}
 
 
@@ -119,7 +117,6 @@ for a directed join, we have $c \leq d_i$ for some $i$. This really generalizes 
 
 %% Coole einleitende Sätze!
 
-% Change things to filteredness
 \begin{Definition}[Locally presentable category]
 A category $\cat K$ is \emph{locally $\lambda$-presentable} if
 \begin{enumerate}
@@ -141,10 +138,10 @@ A category $\cat K$ is \emph{$\lambda$-accessible} if
 We say a category is \emph{accessible} (\emph{locally presentable}) if it is $\lambda$-accessible (locally $\lambda$-presentable) for some $\lambda$. Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. 
 
 \begin{Example}
-The category $\catname{Set}$ is locally finitely presentable, as every set is $\aleph_0$-directed colimit of its finite subsets.
+The category $\catname{Set}$ is locally finitely presentable, as every set is $\aleph_0$-directed colimit of its finite subsets by inclusion.
 \end{Example}
 
-Recall that a set $G$ of $\cat K$-objects is called a \emph{strong generator} if morphisms out of $G$-objects can distinguish morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ is a strong generator. For locally presentable categories, we have a converse that allows for a simpler definition:
+Recall that in a category $\cat K$, a set $G$ of objects is called a \emph{strong generator} if morphisms out of $G$-objects can separate morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ forms a strong generator for $\cat K$. For locally presentable categories, we have a converse that allows for a simpler definition:
 
 \begin{Lemma}\label{lemma:stronggen}
 A cocomplete category $\mathcal K$ is locally $\lambda$-presentable iff it has a strong generator of $\lambda$-presentable objects. 
@@ -158,14 +155,28 @@ Using \ref{lemma:stronggen} we can now give more examples
 \begin{enumerate}
 \item Every variety is locally finitely presentable by the strong generator $\{ F(x) \}$ on the one-generator free algebra.
 
-\item To give an example that is not equivalent to a variety -- the category $\catname{Pos}$ of posets is locally finitely presentable, as $\{\mathbf 2\}$ is a strong generator. % Why isn't that a variety?
+\item The category $\catname{Pos}$ of posets is locally finitely presentable, as it is cocomplete and $\{\mathbf 2\}$ is a strong generator. 
 
-\item The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. Let $y'A = \hom(A,-)$ denote the Yoneda embedding, then $\hom(y'A,-)$ actually preserves \emph{all} colimits as 
-\[ \hom(y'A, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(y'A, F_i). \]
-Therefore, representable functors are finitely presentable objects, and by the Yoneda lemma form generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $y'A \xrightarrow{x} G$ doesn't factor through $F$. % This is a variety
+\item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$. For example, the theory of semilattices with countable suprema can be given as an equational theory with an operation
+\[ \bigvee(x_1, x_2, \ldots) \]
+forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-ary varieties are locally $\lambda$-presentable categories. The only difference is that, while infinitary varieties are cocomplete, $\kappa$-filtered colimits are generally only created by the forgetful functor if $\kappa \geq \lambda$.
+
+\item The category $\catname{Fld}$ of fields is finitely accessible. Even though the category is not cocomplete, it has \emph{filtered} colimits created by the forgetful functor to $\catname{Set}$. \\
+
+Note that we captured the algebraic property that $F$ is finitely presentable as $\hom(F,-)$ preserving filtered colimits. In the same way, the statement that $F$ is finitely \emph{generated} translates into $\hom(F,-)$ perserving filtered colimits of monomorphisms. As every morphism in $\catname{Fld}$ is a monomorphism, this is no condition and the two notions coincide. Note that every field is the directed colimit of its finitely generated subfields by inclusion. \\
+
+It remains to show that the class of finitely generated fields has a set of representatives: If $F$ is finitely generated, we have extensions $F/L/F_p$ where $F_p$ is the prime field of $F$, $L=F_p(\alpha_1,\ldots,\alpha_n)$ is purely transcendental and $F/L$ is finitely generated and algebraic, thus finite and the ring homomorphism
+\[ L[x_1,\ldots,x_m] \to F \]
+is surjective. Therefore the finitely generated fields are up to isomorphism quotients of the rings $F_p(\alpha_1, \ldots,\alpha_n)[x_1,\ldots,x_m]$ for the prime fields $F_0 = \mathbb Q$ and $F_p = \mathbb F_p$ for $p$ prime.
 \end{enumerate}
 \end{Example}
 
-% Examples for accessible categories
-% Example for lambda > w? Accessible example?
+Another important example is the following
+\begin{Example}
+The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. We'll show that representable functors are finitely presentable objects. Let $yA = \hom(A,-)$ then $\hom(yA,-)$ actually preserves \emph{all} colimits as 
+\[ \hom(yA, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(yA, F_i). \]
+By the Yoneda lemma, representables form generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
+
+\textbf{Remark: } We'll see in [??] that $\fun{\cat A}{\catname{Set}}$ is equivalent to a variety, so local presentability is no surprise.
+\end{Example}
 
