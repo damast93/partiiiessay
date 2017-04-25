@@ -1,8 +1,6 @@
 \section{Models are accessible}
 \label{sec:sketchesaccessible}
 
-% Some properties of Mod(S) already in the section about sketeches
-
 The goal of this section is the remaining direction in the sketchability theorem: To show that $\mod(\mathbb S)$ is accessible for every sketch $\mathbb S$. \\
 
 As an outline, let's look at the following crude proof that the category of groups is $\aleph_1$-accessible. For every infinite regular cardinal $\lambda$, every group $G$ of cardinality less than $\lambda$ is $\lambda$-presentable by \ref{prop:varietypresentable}, because we have a presentation of $G$ by its own elements and multiplication table
@@ -16,12 +14,43 @@ is still smaller than $\lambda$ by regularity. The subgroup $\langle A \rangle$ 
 \begin{equation} |\langle A \rangle| \leq |A|\cdot \aleph_0 < \lambda. \label{eq:skolembound} \end{equation}
 Therefore $\sub_\lambda(G)$ is $\lambda$-directed. $\blacksquare$ \\
 
-We'll give an analogous argument for models of a sketch $\mathbb S$. The hard part will obtaining the bound on the size of ``generated submodels'' like \eqref{eq:skolembound}. Note that the rather explicit construction of the generated subgroup is a special case of the classical Skolem hull-construction in model theory
+We'll give an analogous argument for models of a sketch $\mathbb S$. The hard part will obtaining the bound on the size of ``generated submodels'' like \eqref{eq:skolembound}. Note that the rather explicit construction of the generated subgroup is a special case of the classical Skolem hull-construction in model theory, which builds up a model by inductively including all witnesses for existential formulae 
 \begin{Theorem}[Downward Löwenheim-Skolem theorem]
-Given a set $\Phi$ of formulae in a first-order language $L$, a model $N \models \Phi$ and a subset $A \subseteq N$, the Skolem hull
-\[ M := \mathcal H^N(A) \]
-is a submodel of $N$ of $\Phi$, containing $A$. Furthermore $|M| \leq |A| + |\Phi| + \aleph_0$. 
+Given a set $\Phi$ of formulae in a first-order language $L$, a model $M \models \Phi$ and a subset $A \subseteq M$, the Skolem hull
+\[ \bar A := \mathcal H^N(A) \]
+is a submodel of $N$, containing $A$. Furthermore $|\bar A| \leq |A| + |\Phi| + \aleph_0$, independently of $|N|$. % Bound formulation?
 \end{Theorem}
+
+We need a formulation of this theorem for models of sketches. Note that this will have to be analogous to an infinitary version of Löwenheim-Skolem. Some terminology:
+\begin{Definition}
+Let $M : \cat S \to \catname{Set}$ be a model of a sketch $\mathbb S$ and $S = \obj(\cat S)$. We will think of $M$ as an $S$-sorted set endowed unary with operations and write $s_M$ for the set $M(s)$ as well as $f_M : s_M \to s'_M$ for $M(f)$ if $f : s \to s'$ is a morphism in $\cat S$.
+\begin{enumerate}
+\item We define the cardinality of an $S$-sorted set $A$ to be \[ |A| = \sum_s |s_A|. \]
+\item Subsets and submodels $B \subseteq A$ and other set-theoretic notions like unions will be considered sort-by-sort.
+\item We call a (many-sorted) set $A$ $\lambda$-small if $|A|<\lambda$.
+\end{enumerate}
+\end{Definition}
+
+\begin{Theorem}[Downward Löwenheim-Skolem for Sketches]
+Let $\mathbb S$ be a sketch. Then there is a regular cardinal $\kappa$, depending on $\mathbb S$, such that for every model $M \in \mod(\mathbb S)$ the following holds: Every subset $A \subseteq M$ of cardinality less than $\kappa$ is contained in a submodel $\bar A \subseteq M$ of cardinality less than $\kappa$.
+\end{Theorem}
+We'll prove the theorem in [...] and describe the cardinal $\kappa$ explicitly. \\
+
+\begin{Theorem}
+$\mod(\mathbb S)$ is accessible for every sketch $\mathbb S$
+\end{Theorem}
+\begin{Proof}
+Let $\kappa$ be the cardinal from LS.
+\begin{enumerate}
+\item Recall directed colimits
+\item Every $\kappa$-small model is $\kappa$-presentable.
+\item For every model $M$, write $\sub_\kappa(M)$ for the poset of its $\kappa$-small submodels. By the Löwenheim-Skolem theorem, this poset is $\kappa$-directed, because if $\{A_i\}$ is a $\kappa$-small family of such submodels, the set
+\[ A = \bigcup_i A_i \]
+has cardinality smaller than $\kappa$, so $A$ is contained in a submodel from $\sub_\kappa(M)$. Now $M$ is the (set-theoretic) $\kappa$-directed colimit of $\sub_\kappa(M)$, and the essentially small collection of all models of cardinality less than $\kappa$ form a generating set of $\mod(\mathbb S)$ in the definition of accessibility.
+\end{enumerate}
+\end{Proof}
+
+
 
 \begin{Corollary}
 Locally presentable categories are precisely the model categories of limit sketches.
