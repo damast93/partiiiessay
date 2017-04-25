@@ -107,9 +107,15 @@ Unitality was discussed in \ref{ex:unitality}, and the inversion operation amoun
 as paths $a^2 \to a$, where again $!: a^2 \to 1$. 
 \end{Example}
 
-This procedure gives an idea on how to turn any set of identities into a finite product sketch. We want see a converse with the following idea: An $S$-sorted set $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed as a discrete category. When $S$ is a non-discrete category, the morphisms introduce operations between the sorts. \\
+This procedure gives an idea on how to turn any set of identities into a finite product sketch. There is a inverse construction to this.
 
-Prescribing product cones for $A$ additionally declares certain sorts as products of other sorts, thereby allowing us to reduce all operations to unary ones at the cost of introducing more sorts.
+\begin{Definition}
+Let $S$ be a set. An \emph{$S$-sorted set} $A$ is just a functor $A : S \to \catname{Set}$ with $S$ viewed as a discrete category.
+\end{Definition}
+
+When $S$ is a non-discrete category, functors $A : S \to \catname{Set}$ can be viewed as $S$-sorted sets endowed with (unary) operations between the sorts. \\
+
+Prescribing product cones for $A$ additionally declares certain sorts as products of other sorts, thus allowing us to express operations of higher arities in terms of just unary ones.
  
 \begin{Proposition}
 Model categories of finite product sketches are precisely the many-sorted varieties.
@@ -121,11 +127,11 @@ Add equations
 \[ \id_r(x) = x \]
 and
 \[ f(g(x)) = (f \circ g)(x)  \]
-for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras as functors $F : \cat A \to \catname{Set}$. \\
+for all morphisms $g : r \to s, f : s \to t$ in $\cat A$ where $x$ is a variable of sort $r$. We can now think of algebras satisfying these equations as functors $F : \cat A \to \catname{Set}$. \\
 
 The limit conditions require us to exhibit certain sorts as the products of others. Thus for each cone $C = (s \xrightarrow{\pi_i} s_i) \in \dist L$, add a ``packing operation'' operation $\hat c$ of arity
 \[ \hat c : s_1 \times \cdots \times s_n \to s \]
-that is inverse to the projections, i.e.
+that is inverse to the projections in the sense that
 \begin{align*}
 \hat c(\pi_1(x), \ldots, \pi_n(x)) &= x \\
 \pi_i(\hat c(x_1, \ldots, x_n)) &= x_i
@@ -136,7 +142,9 @@ Every functor $F : \cat A \to \catname{Set}$ that satisfies these equations will
 in $\catname{Set}$, i.e. be a model of the sketch.
 \end{Proof}
 
-Analogously, product sketches with larger cones correspond to infinitary varieties. We'll now look at examples of sketches with non-discrete cones:
+Analogously, product sketches with $\lambda$-small cones correspond to $\lambda$-ary varieties. \\
+
+Let's now look what expressive power we gain through by prescribing non-discrete cones:
 
 \begin{Example}[Torsion-free groups]
 Let's take a quasivariety like torsion-free groups and look at one implicational axiom like
@@ -155,7 +163,7 @@ Now we add commutativity condition expressing $e = \{0\}$ by \[ j = 0_a\cdot !. 
 
 \begin{Example}[Simple graphs]
 A simple graph is a graph, i.e. a two-sorted algebra on sorts $v,e$ with operations
-\[ s, t : e \to v \]
+\[ s, t : e \to v, \]
 where there is at most one edge between two vertices, leading to the implicational condition
 \begin{equation}\label{eq:graph} s(x) = s(y),\, t(x) = t(y) \quad \Rightarrow \quad x = y \end{equation}
 The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^. \]
@@ -168,23 +176,22 @@ e \ar[rd]_{(s,t)} &  & e \ar[ld]^{(s,t)} \\
 }\]
 \end{Example}
 
-% Just call things essentially algebraic
-
 \textbf{Remark: } Recall that we could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as limits of other sorts, thus subsets of a product subject to equations. For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible inputs}, i.e.
 \[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
 This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \\
 
-In view of the sketchability theorem, we can identify the classes of locally presentable and essentially algebraic categories. \\
+For example, the theory of posets (rep. small categories) is essentially algebraic and can be obtained from the theory of simple graphs (resp. graphs). The relevant notion of transitivity/composition can be given as a partial operation $o : e \times e \to e$ with
+\[ o(f, g) \text{ defined if } t(f) = s(g). \]
 
-Note that models of a finite limit sketches can be axiomatised in finitary first-order logic. This will contrast finite mixed sketches.
+In view of the sketchability theorem, we can identify the locally presentable with essentially algebraic categories. Note also that models of a finite limit sketches can be axiomatised in finitary first-order logic. This will contrast finite mixed sketches, see \ref{ex:cxgraph}. \\
 
-We note that limits of models of essentially algebraic theories can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
+Limits of models of essentially algebraic theories can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
 
 \begin{Proposition}
 For every limit sketch $\mathbb S = (\cat A, \dist L)$, $\mod(S)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$.
 \end{Proposition}
 \begin{Proof}
-Limits are computed pointwise and commute with limits. % Annotate proof
+Limits in the functor category are computed pointwise and limits commute with limits.
 \end{Proof}
 
 \subsection{Mixed sketches}
@@ -206,7 +213,7 @@ in the obvious way and add a condition on paths $k^* \to k$
 \[ \times \circ (x,x^{-1}) = 1_k \circ !. \]
 \end{Example}
 
-The category of fields can be neither complete nor cocomplete, as there are only homomorphisms between fields of the same characteristic. However, it has connected limits, so for example the intersection of two subfields is again a subfield. Note how the connectedness of the diagram precisely takes care of the condition on the characteristics. \\
+The category of fields can be neither complete nor cocomplete, as there are only homomorphisms between fields of the same characteristic. However, it still has \emph{connected limits}, so for example the intersection of two subfields is again a subfield.\footnote{Note how the connectedness requirement precisely takes care of the restriction on the characteristics.} \\
 
 This can be traced to the fact that the sketch we gave for $\catname{Fld}$ is a sum sketch. 
 
@@ -217,14 +224,16 @@ For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(S)$ is clos
 Coproducts commute with connected limits in $\catname{Set}$.
 \end{Proof}
 
-This is not the case any more for arbitrary cocones in $\dist C$. Recall the coequaliser cocone in the sketch for connected graphs from the introduction
+This is not the case any more for arbitrary cocones in $\dist C$.
+\begin{Example}[Connected graphs] 
+\label{ex:cxgraph}
+Recall the coequaliser cocone in the sketch for connected graphs from the introduction
 \[
 \xymatrix{
 & 1 \\
 e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
 }\]
+\end{Example}
 Intersections of connected subgraphs needn't be connected. \\
 
-Worse, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. 
-
-% Linear orders machen
+Also, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. 

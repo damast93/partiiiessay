@@ -10,7 +10,7 @@ We will then show that the condition of flatness can be captured by a sketch.
 Let $\cat K$ be a $\lambda$-accessible category. We know that every object is $\lambda$-filtered colimit of some set $\cat A$ of $\lambda$-presentable objects. In fact, we can pick a canonical such set generating set by considering all $\lambda$-presentable objects.
 
 \begin{Proposition}
-For every $\lambda$-accessible category $\cat K$, the full subcategory of $\lambda$-presentable objects is essentially small. 
+For every $\lambda$-accessible category $\cat K$, the full subcategory of all $\lambda$-presentable objects is essentially small. 
 \end{Proposition}
 \begin{Proof}
 Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered colimit $B \xrightarrow{\sim} \colim_i A_i$ of objects in $\cat A$. The isomorphism factors through one of the $A_i$, exhibiting $B$ as a retract $B \xrightarrow{j} A_i \xrightarrow{r} B$ of $A_i$. Note that $jr$ is an idempotent endomorphism of $A_i$, and retracts that induce the same endomorphism are isomorphic. Thus we have an class injection
@@ -25,19 +25,19 @@ We say that $K$ is the canonical colimit of $\cat A$-objects if the canonical co
 is colimiting. We call $\cat A$ \emph{dense} in $\cat K$ if every object of $\cat K$ is the canonical colimit of $\cat A$-objects.
 
 \begin{Proposition}\label{prop:presdense}
-For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and the canonical diagram is $\lambda$-filtered.
+For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and its canonical diagram is $\lambda$-filtered.
 \end{Proposition}
 \begin{Proof}
-Let $K$ be an object of $\cat K$. We know that it is $\lambda$-filtered colimit of some $\lambda$-presentable objects $(B_i)$. Looking at the canonical diagram $A : \cat A/K \to \cat K$, we see that the diagram $B$ sits inside of it like this
+Let $K$ be an object of $\cat K$. We know that it is $\lambda$-filtered colimit of some $\lambda$-presentable objects $(B_i)$. The digram $B$ sits inside the canonical diagram $A : \cat A/K \to \cat K$ like this
 \[
 \xymatrix{
   & & K & & \\
 & B_i \ar[rr] \ar[ru] & & B_j \ar[lu] & \\
 A_r \ar[rrrr] \ar@/^2pc/[rruu] \ar@{.>}[ru]_{\exists} & & & & A_s \ar@{.>}[lu]^{\exists} \ar@/_2pc/[lluu]
 }\]
-Because $A_r$ are all locally $\lambda$-presentable, we get the dashed morphisms into some $B_i$. The larger diagram therefore factors through $B$ in a compatible way, in the terminology of [...AR], $B$ is cofinal in $A$, and the diagrams have the same colimit. \\
+Because the $A_r$ are all locally $\lambda$-presentable, we get the dashed factorisations through some of the $B_i$. The larger diagram therefore factors through $B$ in a compatible way, in the terminology of [...AR], $B$ is cofinal in $A$, and the diagrams have the same colimit. \\
 
-For $\lambda$-filteredness, note that each $\lambda$-small subcategory of $\cat A/K$ admits factorisations into less than $\lambda$ $B$-objects, but by $\lambda$-directedness of $B$, everything in fact factors through a single $B$-object, so the subcategory has a cocone over it. 
+For $\lambda$-filteredness, note that each $\lambda$-small subcategory of $\cat A/K$ has factorisations through less than $\lambda$ $B$-objects, but by $\lambda$-directedness of $B$, everything then factors through a single $B$-object, so the subcategory has a cocone over it. 
 \end{Proof}
 
 % Use actual confinal diag B in A/K, index stuff with U_f
