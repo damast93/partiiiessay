@@ -42,8 +42,14 @@ $\mod(\mathbb S)$ is accessible for every sketch $\mathbb S$
 \begin{Proof}
 Let $\kappa$ be the cardinal from LS.
 \begin{enumerate}
-\item Recall directed colimits
-\item Every $\kappa$-small model is $\kappa$-presentable.
+\item Recall from \ref{prop:modsdirectedcolimits} that $\mod(\mathbb S)$ is closed under $\kappa$-directed colimits, computed sort-by-sort.
+\item Every $\kappa$-small model is $\kappa$-presentable. We show that this is true in general for $\fun{\cat S}{\catname{Set}}$, so the same has to hold in the full subcategory $\mod(\mathbb S)$ that computes the same relevant colimits: \\
+
+Let $F : \cat S \to \catname{Set}$ be $\kappa$-small. We know that $F$ is the canonical colimit of representable functors, which are finitely presentable objects by \ref{ex:representablepresentable}. The morphisms of the canonical diagram $y \downarrow F$ are given by \[ (s,x) \to (s',x'), x \in F(s), x' \in F(x'), h : s \to s' \]
+thus we can bound its size as
+\[ |y \downarrow F| \leq |F|^2|S|^3 = |F||S| < \kappa. \]
+By \ref{prop:smallcolim}, $F$ is $\kappa$-presentable.
+
 \item For every model $M$, write $\sub_\kappa(M)$ for the poset of its $\kappa$-small submodels. By the Löwenheim-Skolem theorem, this poset is $\kappa$-directed, because if $\{A_i\}$ is a $\kappa$-small family of such submodels, the set
 \[ A = \bigcup_i A_i \]
 has cardinality smaller than $\kappa$, so $A$ is contained in a submodel from $\sub_\kappa(M)$. Now $M$ is the (set-theoretic) $\kappa$-directed colimit of $\sub_\kappa(M)$, and the essentially small collection of all models of cardinality less than $\kappa$ form a generating set of $\mod(\mathbb S)$ in the definition of accessibility.

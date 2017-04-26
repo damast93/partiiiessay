@@ -8,8 +8,8 @@ Sketches have been introduces by Ehresmann. % More to say \\
 \begin{Definition}[Sketch]
 A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
 \end{Definition}
-% Todo better explanation
-Note that for convenience, we treat our cones not as natural transformations but as diagrams $D : \cat I \to \cat A$ of a special form. $\cat I$ consists of a distinguished apex $\cat I^+$ and a basis diagram $\cat I_0$ with unique morphisms $(\cat I^+ \to B)_{B \in \cat I_0}$ and no morphisms from the basis into $\cat I^+$; analogously for cocones. \\
+
+Note that for convenience, we treat our cones not as natural transformations but as diagrams $D : \cat I^+ \to \cat A$ of a special form. $\cat I^+$ consists of a distinguished apex $I^+$ and a basis diagram $\cat I$ with unique morphisms $(I^+ \to B)_{B \in \cat I}$ and no morphisms from the basis into $\cat I^+$; analogously for cocones. \\
 
 Sketches form a category $\catname{Sk}$ by letting morphisms $(\cat A, \dist L, \dist C) \to (\cat A', \dist{L'}, \dist{C'})$ be functors $F : \cat A \to \cat A'$ that respect the distinguished cones and cocones, i.e. for all $D \in \dist L$, we have $F \circ D \in \dist{L'}$ and similarly $F \circ D \in \dist{C'}$ for all $D \in \dist C$. \\
 
@@ -22,13 +22,12 @@ that turns all distinguished cones into limit cones and cocones into colimit coc
 \item for all $D \in \dist L$, $F \circ D$ is limiting,
 \item for all $D \in \dist C$, $F \circ D$ is colimiting.
 \end{itemize}
+
 A \emph{morphism of models} is just a natural transformation between the functors, making the category \[ \mod(\mathbb S, \cat K) \]
 of $\mathbb S$-models in $\cat K$ a full subcategory of $\fun{\cat A}{\cat K}$. We write
 \[ \mod(\mathbb S) := \mod(\mathbb S, \catname{Set}) \]
 for the category of set-valued models of $\mathbb S$. Set-valued models will in fact be so important that we call a category \emph{sketchable} if it is equivalent to $\mod(\mathbb S)$ for a sketch $\mathbb S$.
 \end{Definition}
-
-% Normal sketches??
 
 \textbf{Remark: } By ignoring set-theoretic restrictions, we could think of taking model categories as a functor
 \begin{equation}
@@ -38,7 +37,7 @@ Isomorphism of sketches is a stronger notion than equivalence of their categorie
 \[ U(\cat K) = (\cat K, \dist L, \dist C) \]
 where $\dist L$ collects all limit cones, $\dist C$ all colimit cones in $\cat K$. Then a model $F : \mathbb S \to \cat K$ is nothing but a sketch morphism $F : \mathbb S \to U(\cat K)$ and (\ref{eq:modfunctor}) is just given by composition of morphisms. \\
 
-We can now give names to the the syntactic (rather: geometric) properties of sketches.
+We can classify sketches based on the geometric properties of their shapes
 \begin{Definition}
 We call $\mathbb S = (\cat A, \dist L, \dist C)$
 \begin{enumerate}
@@ -46,10 +45,17 @@ We call $\mathbb S = (\cat A, \dist L, \dist C)$
 \item a \emph{product sketch} if $\dist C$ is empty and all cones in $\dist L$ are \emph{discrete}, i.e. an apex connected to a discrete diagram
 \item a \emph{finite product sketch} if $\dist C$ is empty and all cones in $\dist L$ are discrete and finite
 \item a \emph{sum sketch} if all cocones are discrete
-\item \emph{$\lambda$-small} if all cones and cocones have underlying $\lambda$-small diagrams
 \end{enumerate}
-We furthermore say \emph{mixed sketch} to stress that both $\dist L$ and $\dist C$ are nonempty.
+We furthermore say \emph{mixed sketch} to stress that both $\dist L$ and $\dist C$ are nonempty. \\
+
+We attach two infinite regular cardinal $\lambda_\mathbb S, \mu_\mathbb S$ to the sketch $\mathbb S$ that measure its size
+\begin{enumerate}
+\item the \emph{limit size} $\lambda_\mathbb S$ is the least infinite regular cardinal $\geq$ the size of the underlying diagrams of all cones in $\dist L$.
+
+\item the \emph{total size} $\mu_\mathbb S$ is the least infinite regular cardinal that is $\geq$ the size of the underlying diagrams of all cones in $\dist L$, cocones in $\dist C$ and the cardinalities $|\dist L|$ and $|\dist C|$.
+\end{enumerate}
 \end{Definition}
+
 
 \subsection{Limit sketches}
 
@@ -142,7 +148,7 @@ Every functor $F : \cat A \to \catname{Set}$ that satisfies these equations will
 in $\catname{Set}$, i.e. be a model of the sketch.
 \end{Proof}
 
-Analogously, product sketches with $\lambda$-small cones correspond to $\lambda$-ary varieties. \\
+Analogously, product sketches with limit size $\lambda$ correspond to $\lambda$-ary varieties. \\
 
 Let's now look what expressive power we gain through by prescribing non-discrete cones:
 
@@ -185,7 +191,7 @@ For example, the theory of posets (rep. small categories) is essentially algebra
 
 In view of the sketchability theorem, we can identify the locally presentable with essentially algebraic categories. Note also that models of a finite limit sketches can be axiomatised in finitary first-order logic. This will contrast finite mixed sketches, see \ref{ex:cxgraph}. \\
 
-Limits of models of essentially algebraic theories can still be computed on the level of the underlying sets, sort-by-sort. This translates back to the following observation:
+Categories of models of essentially algebraic theories are complete, as their limits can be computed on the level of the underlying sets, sort-by-sort. For limit sketches, this translates back to the following observation:
 
 \begin{Proposition}
 For every limit sketch $\mathbb S = (\cat A, \dist L)$, $\mod(S)$ is closed under limits in $\fun{\cat A}{\catname{Set}}$.
@@ -218,7 +224,7 @@ The category of fields can be neither complete nor cocomplete, as there are only
 This can be traced to the fact that the sketch we gave for $\catname{Fld}$ is a sum sketch. 
 
 \begin{Proposition}
-For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(S)$ is closed under connected limits in $\fun{\cat A}{\catname{Set}}$.
+For every sum sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(\mathbb S)$ is closed under connected limits in $\fun{\cat A}{\catname{Set}}$.
 \end{Proposition}
 \begin{Proof}
 Coproducts commute with connected limits in $\catname{Set}$.
@@ -236,6 +242,16 @@ e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
 \end{Example}
 Intersections of connected subgraphs needn't be connected. \\
 
-Also, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs are not first-order axiomatisable by the compactness theorem. \\
+Also, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs cannot be axiomatised in that way by the compactness theorem. Instead, a countable disjunction
+\[ \forall x y \left(x \sim y \vee \exists z(x \sim z \wedge z \sim y) \vee \cdots\right) \] would be needed.
 
-What we can say in general is that $\mod(\mathbb S)$ has $\lambda$-directed colimits.?!?!
+% Notation Consistency for S/S
+% Write out one of those proofs
+\begin{Proposition}\label{prop:modsdirectedcolimits}
+For any sketch $\mathbb S$, $\mod(\mathbb S)$ is closed under $\lambda_\mathbb S$-filtered colimits in $\fun{\cat S}{\catname{Set}}$.
+\end{Proposition}
+\begin{Proof}
+Consider the pointwise $\lambda_\mathbb S$-filtered $F$ colimit of models $F_i$. Then $F$ will turn the distinguished cocones into colimits because each $F_i$ does and colimits commute with colimits. \\
+
+It will also turn all distinguished cones into limits because by construction, all of those are $\lambda_\mathbb S$-small and $\lambda_\mathbb S$-filtered colimits commute with $\lambda_\mathbb S$-small limits.
+\end{Proof}

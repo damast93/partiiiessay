@@ -16,8 +16,8 @@ We can generalise the notion of directedness from posets to arbitrary categories
 
 \begin{Definition}\
 \begin{enumerate}
-\item A category is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms.
-\item A category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory admits a cocone over it. 
+\item A small category $\cat C$ is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms. We will write $|\cat C|$ for the cardinality of the set of morphisms of $C$. 
+\item A small category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory admits a cocone over it. 
 \end{enumerate}
 A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered (resp. $\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (resp. a $\lambda$-directed poset). We'll just say \emph{filtered (resp. directed)} for $\lambda = \aleph_0$.
 \end{Definition}
@@ -172,7 +172,7 @@ is surjective. Therefore the finitely generated fields are up to isomorphism quo
 \end{Example}
 
 Another important example is the following
-\begin{Example}
+\begin{Example}\label{ex:representablepresentable}
 The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. We'll show that representable functors are finitely presentable objects. Let $yA = \hom(A,-)$ then $\hom(yA,-)$ actually preserves \emph{all} colimits as 
 \[ \hom(yA, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(yA, F_i). \]
 By the Yoneda lemma, representables form generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
