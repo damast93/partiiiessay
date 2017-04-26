@@ -96,13 +96,20 @@ Recall that for every small category $\cat A$, the Yoneda embedding $y : \cat A 
 & \cat A \ar[lu]^{y} \ar[ru]_{F}
 }\]
 
-We call $F_!$ the \emph{left Kan extension} or \emph{Yoneda extension} of $F$. The uniqueness of $F_!$ comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is the canonical colimit of representables, which allows us to extend $F$ to $F_!$ up to isomorphism by cocontinuity
+We call $F_!$ the \emph{left Kan extension} or \emph{Yoneda extension} of $F$. The uniqueness of $F_!$ comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is a colimit of representables, which allows us to determine $F_!$ up to isomorphism by cocontinuity
 \[ F_!(P) \cong F_!(\colim_i yA_i) \cong \colim_i F_!(yA_i) \cong \colim_i FA_i. \]
 Note that by the claimed adjunction, we get
 \[ \hom(F_!(yA),B) \cong \hom(yA,F^*(B)) \cong F^*(B)(A), \]
-so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\
+so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\ 
 
-We'll give the canonical diagram of representables an explicit description: For a presheaf $P : \cat A^\op \to \catname{Set}$, we define the ``category of elements'' $\el(P)$ be the category $(y \downarrow P)$. By the Yoneda lemma, an element $x : yA \to P$ of $\el(P)$ is equivalent to a pair $(A,x), x \in PA$ where morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Ph(y) = x$. We have a forgetful functor $\pi : \el(P) \to \cat A$ and $P \cong \colim y\circ \pi$. We denote the contravariant Yoneda embedding by $y' : \cat A^\op \to \fun{\cat A}{\catname{Set}}$.
+% Am I using F*?
+
+\textbf{Remark: } Every presheaf $F$ is in fact \emph{the canonical colimit} of representables, i.e. colimit over the index category $y \downarrow F$. We'll call this category the ``category of elements'' of $F$ and write $\el(F)$. By the Yoneda lemma, we can give $\el(F)$ a more explicit description:
+\begin{enumerate}
+\item An element $x : yA \to F$ of $\el(F)$ is given by a pair $(A,x), x \in FA$
+\item Morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Fh(y) = x$.
+\end{enumerate}
+The obvious forgetful functor $\pi : \el(F) \to \cat A$ satisfies $F \cong \colim (y\circ \pi)$. \\
 
 \begin{Proposition}\label{prop:flat}
 For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
@@ -114,8 +121,8 @@ For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
 \end{enumerate}
 \end{Proposition}
 \begin{Proof}
-\ref{item:elfiltered} $\Rightarrow$ \ref{item:fflat} is immediate. For \ref{item:fflat} $\Rightarrow$ \ref{item:kancont}, we first note that the Kan extension of a representable functor is again representable. Let $F=\hom(A,-)$, there is the cocontinuous extension \[ \widehat F(P) := P(A) \cong \pre{\cat A}(yA,P), \]
-thus by uniqueness $F_! \cong \widehat F$. In particular, $F_!$ preserves all limits. \\
+\ref{item:elfiltered} $\Rightarrow$ \ref{item:fflat} is immediate. For \ref{item:fflat} $\Rightarrow$ \ref{item:kancont}, we first note that the Kan extension of a representable functor is again representable. The functor $F=\hom(A,-)$ has a cocontinuous extension \[ \widehat F(P) := P(A) \cong \pre{\cat A}(yA,P), \]
+thus by uniqueness $F_! \cong \widehat F$. In particular, this $F_!$ preserves all limits. \\
 
 Now let $G = \colim_i F_i$ be $\lambda$-filtered colimit of representables, and $(P_j)$ a $\lambda$-small diagram of presheaves. Because taking the Kan extension is cocontinuous and $\lambda$-small limits commute with $\lambda$-filtered colimits, we get
 \begin{align*}
@@ -125,6 +132,7 @@ G_!(\lim_j P_j) &\cong \colim_i (F_i)_!(\lim_j P_j) \\
 &\cong \lim_j G_!(P_j).
 \end{align*}
 
+% In what direction does y go here (contravariance?)
 For \ref{item:kanrepcont} $\Rightarrow$ \ref{item:elfiltered}, we take a $\lambda$-small subcategory of $\el(F)$, schematically
 \[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j) \]
 and construct a cocone over it. We look at the diagram of presheaves $(yA_i)$ and take its limit $H$ in $\pre{\cat A}$

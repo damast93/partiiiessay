@@ -159,7 +159,7 @@ Using \ref{lemma:stronggen} we can now give more examples % ?
 
 \item An infinitary ($\lambda$-ary) variety allows operations to have infinite arities $< \lambda$. For example, semilattices with countable suprema can be axiomatised by an equational theory with an operation
 \[ \bigvee(x_1, x_2, \ldots), \]
-thus forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-ary varieties are locally $\lambda$-presentable categories. The only difference is that, while infinitary varieties are cocomplete, $\kappa$-filtered colimits are generally only created by the forgetful functor if $\kappa \geq \lambda$.
+thus forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-ary varieties are locally $\lambda$-presentable categories. The only difference is that, while infinitary varieties are also cocomplete, $\kappa$-filtered colimits are generally \emph{only} created by the forgetful functor if $\kappa \geq \lambda$.
 
 \item The category $\catname{Fld}$ of fields is finitely accessible. Even though the category is not cocomplete, it has \emph{filtered} colimits created by the forgetful functor to $\catname{Set}$. \\
 
@@ -171,12 +171,15 @@ is surjective. Therefore the finitely generated fields are up to isomorphism quo
 \end{enumerate}
 \end{Example}
 
-Another important example is the following
+Another important example is the following:
 \begin{Example}\label{ex:representablepresentable}
-The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. We'll show that representable functors are finitely presentable objects. Let $yA = \hom(A,-)$ then $\hom(yA,-)$ actually preserves \emph{all} colimits as 
-\[ \hom(yA, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(yA, F_i). \]
-By the Yoneda lemma, representables form generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
-
-\textbf{Remark: } We'll see in [??] that $\fun{\cat A}{\catname{Set}}$ is equivalent to a variety, so local presentability is no surprise.
+The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. 
 \end{Example}
+\begin{Proof}
+We'll show that representable functors are finitely presentable objects. Let $yA = \hom(A,-)$ then $\hom(yA,-)$ actually preserves \emph{all} colimits as 
+\[ \hom(yA, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(yA, F_i). \]
+By the Yoneda lemma, representables form a generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
+
+\textbf{Remark: } We'll see in \ref{prop:modelsarevarieties} that $\fun{\cat A}{\catname{Set}}$ is equivalent to a variety, so local presentability is no surprise.
+\end{Proof}
 
