@@ -31,7 +31,7 @@ Let $M : \cat S \to \catname{Set}$ be a model of a sketch $\mathbb S$ and $S = \
 \begin{Theorem}[Downward Löwenheim-Skolem for Sketches]\label{thm:ls}
 Let $\mathbb S$ be a sketch. Then there is a regular cardinal $\kappa > \mu_{\mathbb S}$, such that for every model $M \in \mod(\mathbb S)$ the following holds: Every subset $A \subseteq M$ of cardinality less than $\kappa$ is contained in a submodel $\bar A \subseteq M$ of cardinality less than $\kappa$.
 \end{Theorem}
-We'll prove the theorem in the next subsection and describe the cardinal $\kappa$ explicitly. \\
+We'll prove the theorem in the next subsection and describe the cardinal $\kappa$ explicitly. % Quote from logic, attempt to prove \\
 
 \begin{Theorem}
 $\mod(\mathbb S)$ is $\kappa$-accessible for every sketch $\mathbb S$.
@@ -97,14 +97,23 @@ For a cardinal $\mu$, let
 The cardinality of $A^+$ is thus bounded by
 \[ |A^+| \leq |\{ (f,\vec a) : \vec a \in A^{< \lambda} \}| = \mu \cdot |A|^{< \lambda}. \]
 
-Just as a finite sequence of finite sequences is essentially still a finite sequence, repeated applications of the isolated step can't add more to the cardinality, as the following lemma shows:
+Just as a finite sequence of finite sequences can be compressed into a single finite sequence, the impact of repeated applications can be easily bounded by the following lemma:
 
 \begin{Lemma}
 For $\mu \geq \lambda$ and $\lambda$ regular, 
 \[ \left(\mu^{< \lambda}\right)^{< \lambda} = \mu^{< \lambda}. \]
 \end{Lemma}
+\begin{Proof}
+We have $(\mu^{< \lambda})^\alpha = \mu^{< \lambda}$ for all $\alpha < \lambda$. A function $\alpha \to \mu^{< \lambda}$ is equivalent to giving a function $c : \alpha \to \mathfrak L$ where $\mathfrak L$ is the set of cardinals $< \lambda$ and for each $i< \alpha$ an element of $\mu^{c(i)}$. Therefore 
+\begin{align*}
+(\mu^{< \lambda})^\alpha = \sum_{c : \alpha \to \mathfrak L} \prod_{i < \alpha} \mu^{c(i)} 
+= \sum_{c : \alpha \to \mathfrak L} \mu^{\sum_{i < \alpha} c(i)}
+\end{align*}
+Now $|\mathfrak L^\alpha| \leq \lambda^\alpha \leq \mu^{< \lambda}$ and by regularity, $\sum_{i < \alpha} c(i) < \lambda$, thus the whole sum is bounded by $\mu^{< \lambda}$. Therefore we get
+\[ (\mu^{< \lambda})^{< \lambda} = \sum_{\alpha < \lambda} (\mu^{< \lambda})^\alpha \leq \mu^{< \lambda}. \]
+\end{Proof}
 
-Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we'll show inductively that $|A_i| \leq \beta^{< \lambda}$ for all $i \leq \lambda$.
+As a corollary, we can compute the bound \eqref{eq:skolembound} for the $\lambda$-ary algebra: Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we'll show inductively that $|A_i| \leq \beta^{< \lambda}$ for all $i \leq \lambda$.
 \begin{description}
 \item[Successor step] If $|A_i| \leq \beta^{< \lambda}$, then
 \[ |A_i^+| = \mu \cdot |A_i|^{< \lambda} \leq \left(\beta^{< \lambda}\right)^{< \lambda} = \beta^{< \lambda}. \]
@@ -112,7 +121,6 @@ Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we'l
 \[ |A_\alpha| \leq \sum_{i < \alpha} |A_i| \leq \beta^{< \lambda} \]
 by regularity.
 \end{description}
-Therefore, the cardinal $\kappa = \left[(\mu + \lambda)^{<\lambda}\right]^+$ gives the bound \eqref{eq:skolembound} for the type of algebra we considered. \\
 
 We can use the same closure process for models of a sum-sketch $\mathbb S$. This is because by \ref{prop:sumconnectedlimits}, intersections of submodels are still submodels, therefore the description of the ``generated submodel'' stays the same as for varieties.
 \begin{Proposition}
@@ -137,3 +145,21 @@ This process stabilises for $A_\lambda$ with the smallest submodel containing $A
 \item[Limit step] follows by regularity of $\kappa$.
 \end{description}
 \end{Proof}
+
+The final step of the proof of Löwenheim-Skolem is to generalise the result for sum sketches to arbitrary sketches: \\
+
+Every colimit specification in a sketch can be formulated using only coproducts and coequalisers. By a technique called Morleyisation, we can even restrict ourselves to coproducts and \emph{effective coequalisers} (\emph{regular epi specifications}). Those are distinguished coequaliser cocones of the form
+\[
+\xymatrix{
+a \ar@/^/[r]^{f_1} \ar@/_/[r]_{f_2} & b \ar[r]^{g} & c
+}\]
+where at the same time $(f_1,f_2)$ is specified as a kernel pair (pullback) cone of $c$. We call a sketch coherent if every cocone is either discrete or a an effective coequaliser cocone. \\ % Make Morley more precise, coherent?!'
+
+We want to show that we can drop the effective coequaliser specifications and use our result for the remaining sum sketch. The idea is that in $\catname{Set}$, given a map and its kernel pair, stating it is effective (coequaliser of the kernel pair) just requires stating that is surjective. Furthermore in $\catname{Set}$, every epimorphism splits. We create a new sketch $\mathbb S'$ by adding to every effective coequaliser specification a splitting morphism
+\[
+\xymatrix{
+a \ar@/^/[r]^{f_1} \ar@/_/[r]_{f_2} & b \ar[r]^{g} & c \ar@/^/[l]^{r}
+}\]
+together with the condition $g \cdot r = \id_c$. Let $\mathbb S''$ be the sketch $\mathbb S'$ with all effective coequaliser specifications removed. \\
+
+Given a model $M \in \mod(\mathbb S)$ and $A \subseteq M$, we obtain a model $M'$ of $\mathbb S'$ by choosing appropriate splittings. As described above, we can identify the models of $\mathbb S'$ and $\mathbb S''$ as the kernel pairs are enough to determine the coequalisers given surjectivity. However $\mathbb S''$ is a sum sketch, so we can apply the closure process to $A$. The generated submodel will be a submodel of $M$ by forgetting the splittings.
