@@ -1,11 +1,37 @@
-\section{Conclusion}
+\section{Conclusion \& Outlook}
 \label{sec:conclusion}
 
-% Internal & external
-We have shown two interesting characterisations of a broad and important class of categories and proven that they agree. One via categorical properties and the other via models of certain theories. 
+We have given two characterisations of a broad and important class of categories -- one syntactical and one semantical -- and proven that they agree. Interesting examples can be derived form these: For example the category $\catname{Ban}$ of Banach spaces is locally $\aleph_1$-presentable while the category $\catname{Hilb}$ of Hilbert spaces is $\aleph_1$-accessible. Furthermore, for every infinitary sentence $\Phi$, the category $\catname{Elem}(\Phi)$ of models of $\Phi$ with \emph{elementary embeddings} as morphisms is accessible. \\
 
-% Examples: Hilbert, Banach
-% Important properties
-% Internalisation
-% Theories
-% Vopenka
+Locally presentable and accessible categories retain many plesant properties of $\catname{Set}$ and are closed under important categorical constructions. For example
+\begin{enumerate}
+\item Locally presentable categories are co-well-powered
+\item In every locally $\lambda$-presentable category, $\lambda$-small limits commute with $\lambda$-filtered colimits.
+\item Slice categories $\cat K/K$, $K/\cat K$ and functor categories $\fun{\cat A}{\cat K}$ are locally presentable for $\cat K$ locally presentable and $\cat A$ small. $\fun{\cat A}{\cat K}$ is accessible for $\cat K$ accessible.
+\end{enumerate}
+There is a natural notion of \emph{accessible functors} between $\lambda$-accessible categories, namely functors preserving $\lambda$-filtered colimits. Importantly
+\begin{enumerate}[resume]
+\item Comma categories $F \downarrow G$ of accessible functors are accessible.
+\item The solution set condition for accessible functors is automatic (we used this in \ref{coro:completecocomplete}).
+\end{enumerate}
+Curiously, the only locally presentable categories whose opposite categories are also locally presentable are complete lattices. For example, unlike $\catname{Ban}$, $\catname{Hilb}$ cannot be locally presentable category as it is self-dual by Riesz' representation theorem. Furthermore, opposites like $\catname{Set}^\op$ are examples of non-accessible categories. \\
+
+The presentation of a theory by a sketch $\mathbb S$ is a step towards the \emph{internalisation} of that theory, as we can look at the models of $\mathbb S$ not only in $\catname{Set}$ but in other categories $\cat K$. However, the set-valued models are already a sufficiently general case:
+\begin{enumerate}[resume]
+\item For every locally presentable category $\cat K$, $\mod(\mathbb S, \cat K)$ is accessible.
+\item If $\mathbb S$ is a limit sketch, $\mod(\mathbb S, \cat K)$ is locally presentable. More explicitly, given $\cat K \cong \mod(\mathbb T)$, we can define a tensor product $\mathbb S \otimes \mathbb T$ of sketches such that 
+\[ \mod(\mathbb S, \mod(\mathbb T)) \cong \mod(\mathbb S \otimes \mathbb T, \catname{Set}). \] 
+\end{enumerate}
+
+At last, it is interesting to note that many structural questions about locally presentable and accessible categories are dependent on the underlying set theory. For example, the two generalisations of the facts above 
+
+\begin{enumerate}[resume]
+\item Are all accessible categories co-well-powered?
+\item Is $\mod(\mathbb S, \cat K)$ accessible for every \emph{accessible} category $\cat K$?
+\end{enumerate} 
+
+are independent of ZFC. They do in fact follow from a powerful large cardinal axiom called \emph{Vopěnka's principle}: We call a class $G$ of objects of a category \emph{rigid} if the induced subcategory of $G$ is discrete, i.e. there are no non-identity morphisms between the objects. Vopěnka's principle states that the category of simple graphs contains no large rigid class. \\
+
+Vopěnka's principle can be strengthened to the assertion that no accessible category contains a large rigid class. As $\catname{Elem}(\Phi)$ is accessible, we can use this to state an embedding principle in logic: ``For every large class of models of $\Phi$, one model has an elementary embedding into another one.'' \\
+
+Lastly, Vopěnka's principle allows us to simplify the definition of local presentability to a point where there is no reference to presentable objects at all: A category is locally presentable iff it is cocomplete and has a small full subcategory $\cat A$ such that every object is a colimit of $\cat A$-objects.
