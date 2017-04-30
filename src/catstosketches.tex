@@ -1,50 +1,52 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
 
-In this section, we will see how to embed accessible categories into the functor category $\fun{\cat A}{\catname{Set}}$ for some small category $\cat A$. More precisely, $\lambda$-accessible categories will be precisely those equivalent to the subcategories $\flat_\lambda(\cat A)$ of so-called \emph{$\lambda$-flat} functors $\cat A \to \catname{Set}$. \\
+In this section shows how to embed accessible categories into the functor category $\fun{\cat A}{\catname{Set}}$ for some small category $\cat A$. More precisely, $\lambda$-accessible categories will be precisely those equivalent to the subcategories $\flat_\lambda(\cat A)$ of so-called \emph{$\lambda$-flat} functors $\cat A \to \catname{Set}$. \\
 
-We will then show that the condition of flatness can be captured by a sketch.
+We will then show that the condition of flatness can be captured by a sketch. \\
+
+The introductory part of this section is covered in detail in the first two chapters of \cite{AdamekRosicky}. The proof structure then follows \cite[Chapter 2]{MakkaiPare} and \cite[D2.3]{elephant}.
 
 \subsection{Canonical colimits}
 
-Let $\cat K$ be a $\lambda$-accessible category. We know that every object is $\lambda$-filtered colimit of some set $\cat A$ of $\lambda$-presentable objects. In fact, we can pick a canonical such set generating set by considering all $\lambda$-presentable objects.
+Let $\cat K$ be a $\lambda$-accessible category. Every object of $\cat K$ is $\lambda$-filtered colimit of some set $\cat A$ of $\lambda$-presentable objects. In fact, there is a canonical such set generating set:
 
 \begin{Proposition}
 For every $\lambda$-accessible category $\cat K$, the full subcategory of all $\lambda$-presentable objects is essentially small. 
 \end{Proposition}
 \begin{Proof}
-Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered colimit $B \xrightarrow{\sim} \colim_i A_i$ of objects in $\cat A$. The isomorphism factors through one of the $A_i$, exhibiting $B$ as a retract $B \xrightarrow{j} A_i \xrightarrow{r} B$ of $A_i$. Note that $jr$ is an idempotent endomorphism of $A_i$, and retracts that induce the same endomorphism are isomorphic. Thus we have an class injection
+Take any $\lambda$-presentable object $B$ and write it as a $\lambda$-filtered colimit $B \xrightarrow{\sim} \colim_i A_i$ of objects in $\cat A$. The isomorphism factors through one of the $A_i$, exhibiting $B$ as a retract $B \xrightarrow{j} A_i \xrightarrow{r} B$ of $A_i$. The composite $jr$ is an idempotent endomorphism of $A_i$, and retracts that induce the same endomorphism are isomorphic. Thus we have an class injection
 \[ \{ \text{retracts of } A_i \}/\text{isomorphism} \hookrightarrow \hom(A_i,A_i) \]
-where the codomain is a set (as $\cat K$ is locally small). Now take the union of the sets of representatives for each $A_i \in \cat A$.
+where the codomain is a set, as $\cat K$ is locally small. Now take the union of the sets of representatives for each $A_i \in \cat A$.
 \end{Proof}
 
-Let's write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $K$, formally given by the forgetful functor
+Write $\cat K_\lambda$ for any set of representatives of the $\lambda$-presentable objects up to isomorphism. \\
+
+Given an object $K$ and small full subcategory $\cat A$ of $\cat K$, the canonical diagram with respect to $\cat A$ is the diagram of all morphisms of $\cat A$-objects into $K$, formally given by the forgetful functor
 \[ U : \cat A/K \to \cat K. \]
 We say that $K$ is the canonical colimit of $\cat A$-objects if the canonical cocone
 \[ (A \xrightarrow{f} K) \xrightarrow{f} K \]
 is colimiting. We call $\cat A$ \emph{dense} in $\cat K$ if every object of $\cat K$ is the canonical colimit of $\cat A$-objects.
 
 \begin{Proposition}\label{prop:presdense}
-For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and its canonical diagram is $\lambda$-filtered.
+For every $\lambda$-accessible category $\cat K$ and $\cat A = K_\lambda$, every object is canonical colimit of $\cat A$-objects and the canonical diagram is $\lambda$-filtered.
 \end{Proposition}
 \begin{Proof}
-Let $K$ be an object of $\cat K$. We know that it is $\lambda$-filtered colimit of some $\lambda$-presentable objects $(B_i)$. The digram $B$ sits inside the canonical diagram $A : \cat A/K \to \cat K$ like this
+Let $K$ be an object of $\cat K$. We know that it is A $\lambda$-filtered colimit of some diagram $B$ of $\lambda$-presentable objects. The morphisms $(B_i \to K)$ sit inside the canonical diagram $A : \cat A/K \to \cat K$ like this
 \[
 \xymatrix{
   & & K & & \\
 & B_i \ar[rr] \ar[ru] & & B_j \ar[lu] & \\
 A_r \ar[rrrr] \ar@/^2pc/[rruu] \ar@{.>}[ru]_{\exists} & & & & A_s \ar@{.>}[lu]^{\exists} \ar@/_2pc/[lluu]
 }\]
-Because the $A_r$ are all locally $\lambda$-presentable, we get the dashed factorisations through some of the $B_i$. The larger diagram therefore factors through $B$ in a compatible way, in the terminology of [...AR], $B$ is cofinal in $A$, and the diagrams have the same colimit. \\
+Because the $A_r$ are all locally $\lambda$-presentable, we get the dashed factorisations through some of the $B_i$. The canonical diagram therefore factors through $B$ in a compatible way, in the terminology of \cite[\nopp~0.11]{AdamekRosicky}, $B$ is cofinal in $A$, and the diagrams have the same colimit. \\
 
 For $\lambda$-filteredness, note that each $\lambda$-small subcategory of $\cat A/K$ has factorisations through less than $\lambda$ $B$-objects, but by $\lambda$-directedness of $B$, everything then factors through a single $B$-object, so the subcategory has a cocone over it. 
 \end{Proof}
 
-% Use actual confinal diag B in A/K, index stuff with U_f
-
-Given a small full subcategory $\cat A$ of $\cat K$, we have a functor 
+Given a small full subcategory $\cat A$ of $\cat K$, let the functor 
 \[ E : \cat K \to \fun{\cat A^\op}{\catname{Set}} \]
-that sends an object $K$ to the domain restriction of $\hom(-, K)$ to $\cat A^\op$. We can restate the properties of $\cat A$ in terms of $E$ in the following way:
+send an object $K$ to the domain restriction of $\hom(-, K)$ to $\cat A^\op$. In \cite[\nopp~2.8]{AdamekRosicky}, the properties of $\cat A$ are restated in terms of $E$ in the following way:
 
 \begin{Proposition}\
 \label{prop:canonicalproperties}
@@ -53,41 +55,40 @@ that sends an object $K$ to the domain restriction of $\hom(-, K)$ to $\cat A^\o
 \item $E$ preserves $\lambda$-filtered colimits if all objects of $\cat A$ are $\lambda$-presentable. \label{item:limits}
 \end{enumerate}
 \end{Proposition}
-% Make stuff iff again
 
 \begin{Proof}
-\ref{item:fullyfaithful}: Let $U : \cat A/K \to \cat K$ be the canonical diagram; we claim that a cocone $(U_f \to K')$ corresponds to a natural transformation $EK \to EK'$. Indeed such a cocone has for each $A \xrightarrow{f} K$ a morphism $A \xrightarrow{\hat f} K'$, such that for all commutative triangles
+\ref{item:fullyfaithful}: Let $U : \cat A/K \to \cat K$ be the canonical diagram; a cocone $(U_f \to K')$ corresponds to a natural transformation $EK \to EK'$. Indeed such a cocone features for each $A \xrightarrow{f} K$ a morphism $A \xrightarrow{\hat f} K'$, such that for all commutative triangles
 \[
 \xymatrix{
 A \ar[rr]^{h} \ar[rd]_{f} & & A' \ar[ld]^{g} \\
 & K
 }\]
-we have $\hat f = \hat g \cdot h$. This amounts precisely to a family of maps $(\widehat{-})_A: \hom(A,K) \to \hom(A,K')$, natural in $A$. We get the desired equation
+it holds that $\hat f = \hat g \cdot h$. This amounts precisely to a family of maps $(\widehat{-})_A: \hom(A,K) \to \hom(A,K')$, natural in $A$. We get the desired isomorphism of Hom-sets
 \[ \hom(EK,EK') \cong \textrm{Cocones}(U, K') \cong \hom(K,K') \] 
-if and only if the cocone into $K$ is universal, thus $\cat A$ is dense. \\
+if and only if the canonical cocone into $K$ is initial for all $K$, and thus $\cat A$ is dense. \\
 
-For \ref{item:limits}, note that colimits of functors are computed pointwise. For all $\lambda$-filtered colimits, we have
+For \ref{item:limits}, we use that colimits of functors are computed pointwise. For all $\lambda$-filtered colimits
 \[ E(\colim_i K_i)(A) \cong \hom(A,\colim_i K_i) \cong \colim_i \hom(A,K_i) \]
 as $A$ is $\lambda$-presentable, therefore $E(\colim_i K_i) \cong \colim_i EK_i$.
 \end{Proof}
 
-Together with Proposition \ref{prop:presdense}, we see that for $\lambda$-accessible categories $\cat K$, we get a canonical embedding
+Together with Proposition \ref{prop:presdense}, we see that for $\lambda$-accessible categories $\cat K$, there is a canonical embedding
 \[ E : \cat K \to \fun{\cat A}{\catname{Set}} \text{ where } \cat A = \cat K^\op_\lambda. \]
 
 \subsection{Flat functors}
 We want to characterise precisely which subcategories of $\fun{\cat A}{\catname{Set}}$ occur via embeddings of accessible categories.
 
 \begin{Definition}\
-We call a functor $F : \cat A \to \catname{Set}$
+A functor $F : \cat A \to \catname{Set}$ is called
 \begin{enumerate}
 \item \emph{$\lambda$-flat} if it is $\lambda$-filtered colimit of representable functors
 \item \emph{$\lambda$-continuous} if it preserves $\lambda$-small limits
 \end{enumerate}
 and we denote the full subcategories of $\fun {\cat A}{\catname{Set}}$ of $\lambda$-flat and $\lambda$-continuous functors as 
-\[ \flat_\lambda(\cat A), \cont_\lambda(\cat A) \text{ respectively}. \]
+\[ \flat_\lambda(\cat A)  \text{ and } \cont_\lambda(\cat A). \]
 \end{Definition}
 
-We'll prove several properties of flat functors, that will be discussed in terms of Kan extensions. \\
+Several properties of flat functors can be discussed in terms of \emph{Kan extensions}. I refer to \cite[\nopp~8.11,\nopp~9.16]{Awodey} for the definitions. \\
 
 Recall that for every small category $\cat A$, the Yoneda embedding $y : \cat A \to \pre{\cat A}$ has the universal property of being the free cocompletion for $\cat A$. Any functor $F : \cat A \to \cat C$ into a cocomplete category $\cat C$ extends uniquely to a cocontinuous functor $F_!: \pre{\cat A} \to \cat C$. More precisely, there is an adjunction $F_! \dashv F^*$ with $F_! \circ y \cong F$ of the form
 \[
@@ -96,20 +97,18 @@ Recall that for every small category $\cat A$, the Yoneda embedding $y : \cat A 
 & \cat A \ar[lu]^{y} \ar[ru]_{F}
 }\]
 
-We call $F_!$ the \emph{left Kan extension} or \emph{Yoneda extension} of $F$. The uniqueness of $F_!$ comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is a colimit of representables, which allows us to determine $F_!$ up to isomorphism by cocontinuity
+As a left adjoint, $F_!$ is cocontinuous as claimed. We call $F_!$ the \emph{left Kan extension} or \emph{Yoneda extension} of $F$. The uniqueness of $F_!$ comes from the fact that every presheaf $P$ in $\pre{\cat A}$ is a colimit of representables, which allows us to determine $F_!$ up to isomorphism by cocontinuity
 \[ F_!(P) \cong F_!(\colim_i yA_i) \cong \colim_i F_!(yA_i) \cong \colim_i FA_i. \]
-Note that by the claimed adjunction, we get
+By the claimed adjunction, we get
 \[ \hom(F_!(yA),B) \cong \hom(yA,F^*(B)) \cong F^*(B)(A), \]
 so $F^*(B)$ has to be defined as $\hom(F(-),B)$. \\ 
 
-% Am I using F*?
-
-\textbf{Remark: } Every presheaf $F$ is in fact \emph{the canonical colimit} of representables, i.e. colimit over the index category $y \downarrow F$. We'll call this category the ``category of elements'' of $F$ and write $\el(F)$. By the Yoneda lemma, we can give $\el(F)$ a more explicit description:
+\textbf{Remark:} Every presheaf $F$ is in fact \emph{the canonical colimit} of representables, that is colimit over the index category $y \downarrow F$. We call this category the ``category of elements'' of $F$ and write $\el(F)$. The Yoneda lemma gives $\el(F)$ a more explicit description:
 \begin{enumerate}
 \item An element $x : yA \to F$ of $\el(F)$ is given by a pair $(A,x), x \in FA$
 \item Morphisms $(A,x) \xrightarrow{h} (B,y)$ are morphisms $A \xrightarrow{h} B$ satisfying $Fh(y) = x$.
 \end{enumerate}
-The obvious forgetful functor $\pi : \el(F) \to \cat A$ satisfies $F \cong \colim (y\circ \pi)$. \\
+The obvious forgetful functor $\pi : \el(F) \to \cat A$ satisfies $F \cong \colim\, (y\circ \pi)$. \\
 
 \begin{Proposition}\label{prop:flat}
 For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
@@ -121,7 +120,9 @@ For a functor $F : \cat A \to \catname{Set}$, the following are equivalent
 \end{enumerate}
 \end{Proposition}
 \begin{Proof}
-\ref{item:elfiltered} $\Rightarrow$ \ref{item:fflat} is immediate. For \ref{item:fflat} $\Rightarrow$ \ref{item:kancont}, we first note that the Kan extension of a representable functor is again representable. The functor $F=\hom(A,-)$ has a cocontinuous extension \[ \widehat F(P) := P(A) \cong \pre{\cat A}(yA,P), \]
+This is theorem 1.2.2. in \cite{MakkaiPare}, for the proof I also refer to 2.24 in \cite{AdamekRosicky}. \\
+
+\ref{item:elfiltered} $\Rightarrow$ \ref{item:fflat} is immediate. For \ref{item:fflat} $\Rightarrow$ \ref{item:kancont}, we first note that the Kan extension of a representable functor is again representable. The functor $F=\hom(A,-)$ has a cocontinuous extension \[ \widehat F(P) := P(A) \cong \hom(yA,P), \]
 thus by uniqueness $F_! \cong \widehat F$. In particular, this $F_!$ preserves all limits. \\
 
 Now let $G = \colim_i F_i$ be $\lambda$-filtered colimit of representables, and $(P_j)$ a $\lambda$-small diagram of presheaves. Because taking the Kan extension is cocontinuous and $\lambda$-small limits commute with $\lambda$-filtered colimits, we get
@@ -132,10 +133,9 @@ G_!(\lim_j P_j) &\cong \colim_i (F_i)_!(\lim_j P_j) \\
 &\cong \lim_j G_!(P_j).
 \end{align*}
 
-% In what direction does y go here (contravariance?)
 For \ref{item:kanrepcont} $\Rightarrow$ \ref{item:elfiltered}, we take a $\lambda$-small subcategory of $\el(F)$, schematically
-\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j) \]
-and construct a cocone over it. We look at the diagram of presheaves $(yA_i)$ and take its limit $H$ in $\pre{\cat A}$
+\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j) \text{ where } g_{ij} : A_j \to A_i \]
+and construct a cocone over it. Let $y : \cat A \to \pre{\cat A}$ denote the Yoneda embedding. Consider the diagram of presheaves $(yA_i)$ and take its limit $H$ in $\pre{\cat A}$
 \[
 \xymatrix{
 & H \ar[ld]_{h_i} \ar[rd]^{h_j} \\
@@ -147,13 +147,13 @@ By assumption, applying $F_!$ preserves this limit, so by $F_!(yA_i) \cong FA_i$
 & F_!(H) \ar[ld]_{F_!h_i} \ar[rd]^{F_!h_j} \\
 FA_i & & FA_j \ar[ll]_{Fg_{ij}}
 }\]
-Explicitly, $F_!(H)$ consists of compatible families $(\alpha_i \in FA_i), Fg_{ij}\alpha_j = \alpha_i$. Our family of elements $(a_i)$ is compatible by assumption, so there is an element $h \in F_!(H)$ with $a_i = (F_!h_i)(h)$. \\
+Explicitly, $F_!(H)$ consists of compatible families $(\alpha_i \in FA_i), Fg_{ij}\alpha_j = \alpha_i$. The family of elements $(a_i)$ is compatible by assumption, so there is an element $h \in F_!(H)$ with $a_i = (F_!h_i)(h)$. \\
 
-By definition of the Kan extension, we can compute $F_!(H)$ via the canonical colimit 
+By definition of the Kan extension, $F_!(H)$ can be computed by the canonical colimit 
 \[ F_!(H) \cong \bigcolim_{yB \to H} FB, \]
 so there is morphism $yB \xrightarrow{f} H$ and $b \in B$ such that $(F_!f)(b) = h$. The morphisms $h_i\circ f : yB \to yA_i$ now satisfy
 \[ F_!(h_i \circ f)(b) = h_i \]
-and by the Yoneda lemma get induced by morphisms $B \to A_i$. This means the diagram
+and by the Yoneda lemma induce morphisms $B \to A_i$. This means the diagram
 \[
 \xymatrix{
 & (B,b) & \\
@@ -166,31 +166,31 @@ is the desired cocone in $\el(F)$.
 $\flat_\lambda(\cat A)$ is closed unter $\lambda$-filtered colimits in $\fun{\cat A}{\catname{Set}}$.
 \end{Corollary}
 \begin{Proof}
-By the same argument as in \ref{item:fflat} $\Rightarrow$ \ref{item:kancont} for \ref{prop:flat}, a $\lambda$-filtered colimit of functors that satisfy \ref{item:kancont} also satisfies \ref{item:kancont}.
+We can use the equivalent characterisation \ref{item:kancont} from \ref{prop:flat}: A $\lambda$-filtered colimit $F$ of functors $F_i$ satisfies condition \ref{item:kancont} if each of the $F_i$ satisfies \ref{item:kancont}. This is the same argument as in \ref{item:fflat}$\Rightarrow$\ref{item:kancont}.
 \end{Proof}
 
 \subsection{Embedding theorems}
 
-Our first claim is that the $\lambda$-accessible categories are precisely those equivalent to $\flat_\lambda(\cat A)$ for small categories $\cat A$.
+The $\lambda$-accessible categories are precisely those equivalent to $\flat_\lambda(\cat A)$ for small categories $\cat A$.
 
 \begin{Proposition}
-Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding consists of the $\lambda$-flat functors, and we have an equivalence
+Let $\cat K$ be $\lambda$-accessible and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding $E$ consists of the $\lambda$-flat functors, and we have an equivalence
 \[ \cat K \simeq \flat_\lambda(\cat A). \]
 Conversely, for $\cat A$ small, the category $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
 \end{Proposition}
 \begin{Proof}
-The first statement follows pretty much from the definition of flatness and the properties in \ref{prop:canonicalproperties}; $E$ preserves $\lambda$-filtered colimits, and every object $K$ can be written as one, so
+The canonical embedding preserves $\lambda$-filtered colimits by 
+\ref{prop:canonicalproperties}. As every object $K$ of $\cat K$ is a $\lambda$-filtered colimit of objects $A_i$ from $\cat A$, 
 \[ EK \cong E(\colim_i A_i) \cong \colim_i \hom(-,A_i), \]
-where the latter is a colimit of representables in $\fun{\cat A^\op}{\catname{Set}}$.
-% comment on both directions
-Conversely, we have seen that $\flat_\lambda(\cat A)$ has $\lambda$-directed colimts. Furthermore representable functors are $\lambda$-presentable objects and by definition every $\lambda$-flat functor is $\lambda$-filtered colimits of these. So $\flat_\lambda(\cat A)$ is $\lambda$-accessible.
+which is $\lambda$-filtered colimit of representables in $\fun{\cat A}{\catname{Set}}$ and thus $\lambda$-flat. Coversely, every $\lambda$-flat functor $F=\colim_i \hom(-,A_i)$ is isomorphic to $EK$ for $K=\colim_i A_i$, which exists in $\cat K$. \\
+
+Towards accessibility of $\flat_\lambda(\cat A)$, we have already shown that the category has $\lambda$-filtered colimits, and they agree with those from $\fun{\cat A}{\catname{Set}}$. Representable functors are in particular $\lambda$-presentable objects by \ref{ex:representablepresentable} and every $\lambda$-flat functor is by definition $\lambda$-filtered colimit of these. 
 \end{Proof}
 
 
-% orthogonality small vs. filtered
 We can sharpen this characterisation in the locally presentable case.
 \begin{Proposition}
-Let $\cat K$ be $\lambda$-accessible \emph{and cocomplete}, i.e. locally $\lambda$-presentable, and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding restricts to the $\lambda$-continuous functors, so 
+Let $\cat K$ be $\lambda$-accessible \emph{and cocomplete}, that islocally $\lambda$-presentable, and $\cat A = \cat K^\op_\lambda$. Then the essential image of the canonical embedding restricts to the $\lambda$-continuous functors, so 
 \[ \cat K \simeq \flat_\lambda(\cat A) \simeq \cont_\lambda(\cat A). \]
 \end{Proposition}
 \begin{Proof}
@@ -198,8 +198,8 @@ We first show that all functors coming from the canonical embedding are $\lambda
 
 The functors $EK = \hom(-, K)$ preserve all colimits in $\cat K$, thus in particular $\lambda$-small limits from $\cat A$. \\
 
-Now we let $F$ be $\lambda$-continuous and deduce that it's $\lambda$-flat by showing that $\el(F)$ is $\lambda$-filtered (compare with the filteredness proof in \ref{prop:flat}). Take a $\lambda$-small subcategory of $\el(F)$, schematically
-\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j). \]
+Now let $F$ be $\lambda$-continuous. We want to deduce that it is $\lambda$-flat by showing that $\el(F)$ is $\lambda$-filtered (compare with the filteredness proof in \ref{prop:flat}). Take a $\lambda$-small subcategory of $\el(F)$, schematically
+\[ (A_i,a_i) \xrightarrow{g_{ij}} (A_j,a_j) \text{ where } g_{ij} : A_j \to A_i. \]
 We can take the limit of the $A_i$ in $\cat A$
 \[
 \xymatrix{
@@ -220,7 +220,7 @@ so $FA$ consists of families $(\alpha_i \in FA_i)$ such that $Fg_{ij}(\alpha_j) 
 is the desired cocone in $\el(F)$.
 \end{Proof}
 
-During the proof, it was actually enough to require that $\cat K$ have $\lambda$-small colimits. We can draw several corollaries
+During the proof, it was actually enough to require that $\cat K$ have $\lambda$-small colimits. We can draw several conclusions:
 
 \begin{Corollary}\label{coro:completecocomplete}
 Let $\cat K$ be a $\lambda$-accessible category. Then the following are equivalent
@@ -231,9 +231,9 @@ Let $\cat K$ be a $\lambda$-accessible category. Then the following are equivale
 \end{enumerate}
 \end{Corollary}
 \begin{Proof}
-By the previous proposition, \ref{item:lcocomplete} implies that we have an equivalence $K \simeq \cont_\lambda(\cat A)$. The latter category is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits; thus it is complete. \\
+By the previous proposition, \ref{item:lcocomplete} implies an equivalence $K \simeq \cont_\lambda(\cat A)$. The latter category is closed under limits in $\fun{\cat A}{\catname{Set}}$, as limits commute with limits; thus it is complete. \\
 
-For \ref{item:complete} $\Rightarrow$ \ref{item:cocomplete}, we note that $\cat K$ now has all limits and $E : \cat K \to \fun{\cat A}{\catname{Set}}$ preserves them. We can use the Adjoint Functor Theorem to show that $E$ has a left adjoint. This exhibits $\cat K$ as a reflective subcategory of a cocomplete category, thus it is cocomplete. The solution set condition is verified in [...]. 
+For \ref{item:complete} $\Rightarrow$ \ref{item:cocomplete}, we note that $\cat K$  has all small limits and $E : \cat K \to \fun{\cat A}{\catname{Set}}$ preserves them. We can use the Adjoint Functor Theorem to show that $E$ has a left adjoint. This exhibits $\cat K$ as a reflective subcategory of a cocomplete category, thus it is cocomplete. The solution set condition is verified in \cite[\nopp~2.47]{AdamekRosicky}. 
 \end{Proof}
 
 From this it follows that every locally presentable category is complete and well-powered, as it has a strong generator and pullbacks. Furthermore
@@ -242,29 +242,26 @@ From this it follows that every locally presentable category is complete and wel
 Every locally $\lambda$-presentable category is sketchable by a $\lambda$-small limit sketch.
 \end{Corollary}
 \begin{Proof}
-Note that by definition
-\[ \cont_\lambda(\cat A) \simeq \mod(\mathbb S) \]
-where the sketch $\mathbb S$ collects all $\lambda$-small limit cones in $\cat A$.
+By definition $\cont_\lambda(\cat A) \simeq \mod(\mathbb S)$ where the sketch $\mathbb S$ collects all $\lambda$-small limit cones in $\cat A$.
 \end{Proof}
 
-It remains to show how we can sketch accessible categories. This reduces to the question of sketching $\flat_\lambda(\cat A)$. Note that by \ref{prop:flat}, we have an equivalence between $\lambda$-flat functors $F : \cat A \to \catname{Set}$ and cocontinuous, $\lambda$-continuous functors $F_! : \pre{\cat A} \to \catname{Set}$. This condition is alredy sketchable by a ``large sketch'' on the large category $\pre{\cat A}$. We can reduce it to a small sketch by virtue of \ref{prop:flat}.\ref{item:kanrepcont}. \\
+It remains to show how accessible categories can be sketched. This reduces to the question of sketching $\flat_\lambda(\cat A)$. Note that by \ref{prop:flat}, we have a correspondence between $\lambda$-flat functors $F : \cat A \to \catname{Set}$ and cocontinuous, $\lambda$-continuous functors $F_! : \pre{\cat A} \to \catname{Set}$. This condition is alredy sketchable by a ``large sketch'' on the large category $\pre{\cat A}$. We can reduce it to a small sketch by virtue of \ref{prop:flat}.\ref{item:kanrepcont}, following \cite[\nopp~2.58]{AdamekRosicky} \\
 
 
 \begin{Theorem}
 Every accessible category is sketchable.
 \end{Theorem}
 \begin{Proof}
-Let $A \simeq \cat D_0$ be the full subcategory of $\pre{\cat A}$ of representable presheaves, i.e. the image of the Yoneda embedding. We can construct a sketch $\mathbb S = (\cat D, \dist L, \dist C)$ in the following way:
+Let $\cat A$ be a small category and $\cat A \simeq \cat D_0$ denote the full subcategory of $\pre{\cat A}$ of representable presheaves, that is the image of the Yoneda embedding. We can construct a sketch $\mathbb S = (\cat D, \dist L, \dist C)$ for $\flat_\lambda(\cat A)$ in the following way:
 
 \begin{enumerate}
-\item Let $\dist L$ be a system of representatives of all $\lambda$-small limit cones over $\cat D_0$, which might produce a set of new limits $\cat D'$.
+\item Let $\dist L$ be a system of representatives of all $\lambda$-small limit cones over $\cat D_0$, which might feature a set of new limits $\cat D'$.
 \item Let $\cat D = \cat D_0 \cup \cat D'$
-\item Let $\dist C$ be the set of all canonical cocones into the new limits with respect to $\cat D_0$.
+\item Let $\dist C$ be the set of all canonical cocones into $D$ with respect to $\cat D_0$.
 \end{enumerate}
 
-Preserving the colimits in $\dist C$ ensures that models $F : \cat D_0 \cup \cat D' \to \catname{Set}$ of $\mathbb S$ can still be extended by cocontinuity to functors $F_! : \pre{\cat A} \to \catname{Set}$. Those then preserve $\lambda$-small limits of representables by $\dist L$. \\
+Functors $F : \cat D_0 \to \catname{Set}$ can be extended to cocontinuous functors $F_! : \pre{\cat A} \to \catname{Set}$. Preserving the colimits from $\dist C$ is a compatibility condition such that the same holds for models $\cat D \to \catname{Set}$. Now, respecting $\dist L$ means that $F_!$ will preserve $\lambda$-small limits of representables. \\
 
-On the other hand, every cocontinuous functor $F_! : \pre{\cat A} \to \catname{Set}$ preserving $\lambda$-small limits induces a model of $\mathbb S$ when restricted to $\cat D$. This gives an equivalence
-\[ \mod(\mathbb S) \simeq \cat \flat_\lambda(\cat A). \]
+On the other hand, every cocontinuous functor $F_! : \pre{\cat A} \to \catname{Set}$ preserving $\lambda$-small limits induces a model of $\mathbb S$ when restricted to $\cat D$. This gives an equivalence $\mod(\mathbb S) \simeq \cat \flat_\lambda(\cat A)$.
 \end{Proof}
 

@@ -7,8 +7,7 @@ The idea of presenting theories by sketches originated from C. Ehresmann and his
 
 In this section, I will introduce the formalism and give examples of different types of sketches. We will see how the geometric properties of the sketch relate to categorical properties of its models and make connections to algebra and the syntax of the corresponding logical theories. \\
 
-% More precise references
-Sketches are covered in various books including \cite{MakkaiPare, TTT, CTCS, elephant}, though precise definitions vary slightly. Most examples follow \cite{AdamekRosicky}, who are also most explicit about the equivalent logical formulation (introducing \emph{essentially algebraic theories}).
+Sketches are covered in various books, for example \cite{MakkaiPare}, \cite{CTCS}, \cite{TTT}, though definitions vary slightly. In my examples, I follow \cite[Chapter D2.1.]{elephant} and \cite[Chapter 1.C]{AdamekRosicky}, who are also most explicit about the equivalent algebraic descriptions, introducing \emph{essentially algebraic theories}.
 
 \begin{Definition}[Sketch]
 A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
@@ -18,7 +17,7 @@ For convenience, we treat our cones not as natural transformations but as diagra
 
 Sketches form a category $\catname{Sk}$ taking morphisms $(\cat A, \dist L, \dist C) \to (\cat A', \dist{L'}, \dist{C'})$ to be functors $F : \cat A \to \cat A'$ that respect the distinguished cones and cocones, that is for all $D \in \dist L$, we have $F \circ D \in \dist{L'}$ and similarly $F \circ D \in \dist{C'}$ for all $D \in \dist C$. \\
 
-\textbf{Remark:} The practical way to write down sketches for presenting a theory will look slightly different: Instead of the category $\cat A$, we will usually specify an underlying graph $G$, together with a set $D$ of commutativity conditions between pairs of paths of the same starting- and endpoint. We will then prescribe the cones and cocones accordingly. Note that we retrieve our original definition by taking $\cat A$ to be the category freely presented by $G$ modulo the congruence given by $D$. 
+\textbf{Remark:} The practical way of writing down sketches to present a theory will look slightly different: Instead of the category $\cat A$, we will usually specify an underlying graph $G$, together with a set $D$ of commutativity conditions between pairs of paths of the same starting- and endpoint. We will then prescribe the cones and cocones in the graph. Our original definition of sketches can be retrieved by taking $\cat A$ to be the category freely presented by $G$ modulo the congruence given by $D$. This approach is taken for example by \cite{MakkaiPare} and \cite{elephant}.
 
 \begin{Definition}[Model of a sketch]
 Given a sketch $\mathbb S = (\cat A, \dist L, \dist C)$ and a category $\cat K$, a \emph{model} of $\mathbb S$ in $\cat K$ is a functor
@@ -77,7 +76,7 @@ we start with a graph on vertices $1, a, a^2$ and edges as pictured
   & a^2 \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & & 1 \ar[d]_{e} \\
 a & a & a & a
 }\]
-Even though $1$ and $a^2$ are suggestively named, these are just symbols at the moment; we need to fix their intended meaning in the models by limits and colimits. To make $a^2$ become the product of two copies of $a$, we added
+Even though $1$ and $a^2$ are suggestively named, these are just symbols at the moment; we need to fix their intended meaning in the models via limits and colimits. To make $a^2$ become the product of two copies of $a$, we added
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
@@ -180,7 +179,7 @@ A simple graph is a graph, namely a two-sorted algebra on sorts $v,e$ with opera
 where there is at most one edge between two vertices, leading to the implicational condition
 \begin{equation}\label{eq:graph} s(x) = s(y),\, t(x) = t(y) \quad \Rightarrow \quad x = y \end{equation}
 The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^. \]
-In fact the condition (\ref{eq:graph}) just says that $(s,t)$ is injective, which is a pullback condition
+In fact, condition (\ref{eq:graph}) just says that $(s,t)$ is injective, which is a pullback condition
 \[
 \xymatrix{
  & e \ar[ld]_{\id} \ar[rd]^{id} & \\
@@ -189,14 +188,16 @@ e \ar[rd]_{(s,t)} &  & e \ar[ld]^{(s,t)} \\
 }\]
 \end{Example}
 
-\textbf{Remark:} Recall that we could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as \emph{limits} of other sorts, thus subsets of a product subject to equations. For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible inputs}, i.e.
+We could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as \emph{limits} of other sorts, thus subsets of a product subject to equations. \\
+
+For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible} pairs of edges:
 \[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
 This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \cite[Chapter 3.D]{AdamekRosicky} \\
 
 For example, the theories of posets and small categories are essentially algebraic and can be obtained from the theories of simple graphs and graphs. The relevant notion of transitivity or composition can be given as a partial operation $o : e \times e \to e$ with
 \[ o(f, g) \text{ defined if } t(f) = s(g). \]
 
-In view of the sketchability theorem, we can identify the locally presentable with essentially algebraic categories. Note also that models of a finite limit sketches can be axiomatised in finitary first-order logic. This will contrast finite mixed sketches, see \ref{ex:cxgraph}. \\
+In view of the sketchability theorem, we can identify the locally presentable with essentially algebraic categories. Note also models of finite limit sketches can be axiomatised in finitary first-order logic. This will contrast with finite mixed sketches, see \ref{ex:cxgraph}. \\
 
 Categories of models of essentially algebraic theories are complete, as their limits can be computed on the level of the underlying sets, sort-by-sort. For limit sketches, this translates back to the following observation:
 
@@ -252,13 +253,11 @@ Intersections of connected subgraphs need not be connected. \\
 Also, while models of finite limit sketches could be described in finitary first-order logic, this is no longer true for finite mixed sketches. Connected graphs cannot be axiomatised in that way by the compactness theorem. Instead, a countable disjunction
 \[ \forall x y \left(x \sim y \vee \exists z(x \sim z \wedge z \sim y) \vee \cdots\right) \] would be needed.
 
-% Notation Consistency for S/S
-
 \begin{Proposition}\label{prop:modsdirectedcolimits}
-For any sketch $\mathbb S$, $\mod(\mathbb S)$ is closed under $\lambda_\mathbb S$-filtered colimits in $\fun{\cat S}{\catname{Set}}$.
+For any sketch $\mathbb S = (\cat A, \dist L, \dist C)$, $\mod(\mathbb S)$ is closed under $\lambda_\mathbb S$-filtered colimits in $\fun{\cat A}{\catname{Set}}$.
 \end{Proposition}
 \begin{Proof}
 Consider the pointwise $\lambda_\mathbb S$-filtered colimit $F$ of models $F_i$. Then $F$ will turn all distinguished cocones into colimits because each $F_i$ does and colimits commute with colimits. \\
 
-It will also turn all distinguished cones into limits because by construction, all of those are $\lambda_\mathbb S$-small and $\lambda_\mathbb S$-filtered colimits commute with $\lambda_\mathbb S$-small limits.
+It will also turn all distinguished cones into limits because by construction, all of these limits are $\lambda_\mathbb S$-small and $\lambda_\mathbb S$-filtered colimits commute with $\lambda_\mathbb S$-small limits.
 \end{Proof}
