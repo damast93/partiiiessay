@@ -1,9 +1,11 @@
 \section{Locally presentable and accessible categories}
 \label{sec:presentableaccessible}
 
-Every set is the union of its finite subsets. More generally, every algebra in a variety $\cat K$ is a certain colimit of finitely presented algebras and there is, up to isomorphism, only a set of finitely presented algebras. We want to make precise in what sense this set ``generates'' the category $\cat K$ and then generalise these notions. \\ %
+Every set is the union of its finite subsets. More generally, every algebra in a variety is a filtered colimit of finitely presented algebras and there is, up to isomorphism, only a set of such algebras. These observations will be the starting point for the definiton of locally presentable and accessible categories. \\
 
-\textbf{Convention: } All categories in this essay will be locally small. All cardinals will be infinite regular cardinals.
+Locally presentable categories have been introduced by Gabriel and Ulmer in \cite{GabrielUlmer}. The more recent concept of accessible categories is due to Makkai and Paré. In this introduction, I will follow Chapter 1-2 of their book \cite{MakkaiPare} as well as Chapter 1 of \cite{AdamekRosicky}.\\
+
+\textbf{Convention: } All categories in this essay will be locally small. All cardinals $\mu,\lambda$ will be infinite regular cardinals.
 
 \subsection{Directed and filtered colimits}
 
@@ -12,19 +14,19 @@ Let us recall the definition of directed colimits (confusingly known as ``direct
 A nonempty poset is called \emph{$\lambda$-directed} if every subset of cardinality less than $\lambda$ has an upper bound.
 \end{Definition}
 
-We can generalise the notion of directedness from posets to arbitrary categories.
+The notion of directedness generalises from posets to arbitrary categories:
 
 \begin{Definition}\
 \begin{enumerate}
-\item A small category $\cat C$ is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms. We will write $|\cat C|$ for the cardinality of the set of morphisms of $C$. 
+\item A small category $\cat C$ is called \emph{$\lambda$-small} if has less than $\lambda$ morphisms. 
 \item A small category is called \emph{$\lambda$-filtered} if it is nonempty and every $\lambda$-small subcategory admits a cocone over it. 
 \end{enumerate}
-A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered (resp. $\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (resp. a $\lambda$-directed poset). We'll just say \emph{filtered (resp. directed)} for $\lambda = \aleph_0$.
+A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtered (resp. $\lambda$-directed)} if $\cat I$ is a $\lambda$-filtered category (resp. a $\lambda$-directed poset). We say \emph{filtered (resp. directed)} in the case $\lambda = \aleph_0$.
 \end{Definition}
 
-It turns out that both notions are equivalent, and we will use them interchangably.
+It turns out that both types of colimits are equivalent, and we will use them interchangably.
 
-\begin{Proposition}A category $\cat C$ has $\lambda$-filtered colimits iff it has $\lambda$-directed colimits. For such categories, a functor $F : \cat C \to \cat D$ preserves $\lambda$-filtered colimits iff it preserves $\lambda$-directed ones.
+\begin{Proposition}A category $\cat C$ has $\lambda$-filtered colimits if and only if it has $\lambda$-directed colimits. For such categories, a functor $F : \cat C \to \cat D$ preserves $\lambda$-filtered colimits iff it preserves $\lambda$-directed ones. \cite[Remark 1.21]{AdamekRosicky}
 \end{Proposition}
 
 \begin{Example}\label{ex:Q}
@@ -35,7 +37,7 @@ More precisely, $\mathbb Q$ is the colimit of the directed diagram
  D : (\mathbb N, |) &\to \catname{Grp}, n \mapsto \mathbb Z \\
  (n\, | \,m) &\mapsto \left(\mathbb Z \xrightarrow{m/n} \mathbb Z\right)
 \end{align*}
-Note that unlike e.g. coproducts, the underlying set of a filtered colimit is easy to describe. In all varieties, the forgetful functor to $\catname{Set}$ creates filtered colimits.
+Unlike arbitrary colimits (for example coproducts), the underlying set of a filtered colimit is easy to describe. In all varieties, the forgetful functor to $\catname{Set}$ creates filtered colimits.
 \end{Example}
 
 The trademark feature of filtered colimits is that they commute with small limits in $\catname{Set}$.
@@ -43,7 +45,7 @@ The trademark feature of filtered colimits is that they commute with small limit
 \begin{Lemma}\label{prop:smallvsfiltered}
 For every diagram $D : \cat I \times \cat J \to \catname{Set}$ with $\cat I$ $\lambda$-small and $\cat J$ $\lambda$-filtered, the induced morphism
 \[ \colim_j \lim_i D(i,j) \to \lim_i \colim_j D(i,j) \]
-is an isomorphism.
+is an isomorphism. \cite[Theorem 1.2.1]{MakkaiPare}
 \end{Lemma}
 
 \subsection{Presentable objects}
@@ -58,12 +60,12 @@ and the factorisation is essentially unique, so if \[ f = c_i\cdot f_i = c_j \cd
 there is an index $k$ in the diagram and maps $i \to k, j \to k$ such that
 \[ D(i \to k)\cdot f_i = D(j \to k) \cdot f_j. \]
 
-Note that every $\lambda$-presentable object is $\lambda'$-presentable for $\lambda' \geq \lambda$. In the case $\lambda=\aleph_0$, we simply say \emph{finitely presentable}. \\
+Every $\lambda$-presentable object is $\lambda'$-presentable for $\lambda' \geq \lambda$. In the case $\lambda=\aleph_0$, we simply say \emph{finitely presentable}. \\
 
 \begin{Lemma}\label{prop:smallcolim} A $\lambda$-small colimit of $\lambda$-presentable objects is again $\lambda$-presentable.
 \end{Lemma}
 \begin{Proof}
-Take a $\lambda$-small diagram $(A_i)$ of $\lambda$-presentable objects, and a $\lambda$-filtered diagram $(D_j)$. By the property \ref{prop:smallvsfiltered}, we get
+Take a $\lambda$-small diagram $(A_i)$ of $\lambda$-presentable objects, and a $\lambda$-filtered diagram $(D_j)$. By the property \ref{prop:smallvsfiltered},
 \begin{align*}
 \hom(\colim_i A_i, \colim_j D_j) &\cong \lim_i \hom(A_i, \colim_j D_j) \\
 &\cong \lim_i \colim_j \hom(A_i, D_j) \\
@@ -76,56 +78,55 @@ therefore $\hom(\colim_i A_i, -)$ preserves $\lambda$-filtered colimits as claim
 \begin{Example}
 In $\catname{Set}$, the singleton set $1$ is finitely presentable as $\hom(1,X) \cong X$ for every set, therefore
 \[ \hom(1,\colim_i A_i) \cong \colim_i \hom(1,A_i) \]
-for every diagram $(A_i)$. By \ref{prop:smallcolim}, a nonempty set $A$ is $\lambda$-presentable iff $|A| < \lambda$.
+for every diagram $(A_i)$. By \ref{prop:smallcolim}, sets of cardinality $< \lambda$ are $\lambda$-presentable (the converse is also true).
 \end{Example}
 
 The definition of presentable objects really captures what the name suggests: 
 
-\begin{Proposition}\label{prop:varietypresentable} In a variety, an object $A$ is $\lambda$-presentable iff it has a presentation with less than $\lambda$ generators and relations in the usual algebraic sense.
+\begin{Proposition}\label{prop:varietypresentable} In a variety, an object $A$ is $\lambda$-presentable if and only if it has a presentation with less than $\lambda$ generators and relations in the usual algebraic sense. \cite[Chapter 3.A]{AdamekRosicky}
 \end{Proposition}
-\textit{Idea: } Take $A$ with presentation on less than $\lambda$ generators and relations and take map $f : A \to C = \colim_i D_i$. Then all generators have to map set-theoretically into some $D_i$. Take a cocone over these, so all generators map into a single $D$, but the relations don't have to hold in $D$ yet, so we can't extend to a homomorphism of algebras. However the relations hold in $C$, so each relation has to start holding after some $D \to D_j$. Take a cocone over these to some $D^*$, now we can factor $f$ through it. \\
+\textit{Sketch of proof:} Take $A$ with presentation on less than $\lambda$ generators and relations and take a map $f : A \to C = \colim_i D_i$. All generators have to map set-theoretically into some $D_i$. By filteredness, there is a cocone over these, so all generators map into a single $D$; however the relations don't have to hold in $D$ yet, so we can't extend the map to a homomorphism of algebras. However the relations hold in $C$, so each relation has to start holding after some $D \to D_j$. Take a cocone over these to some $D^*$, through which $f$ now factors. \\
 
 Conversely, let $A$ be $\lambda$-presentable.
 \begin{enumerate}
-\item \label{item:varietygen} $A$ is generated by less than $\lambda$ generators. Note that $A$ is the $\lambda$-directed union of its subalgebras with less than $\lambda$ generators, ordered by inclusion. The identity $A \xrightarrow{\id} A$ factors through one of these subalgebras as $A \to A_0 \to A$, but $A_0 \to A$ is an inclusion, thus we have an isomorphism. Denote the set of generators by $X$ where $|X| < \lambda$
+\item \label{item:varietygen} $A$ is generated by less than $\lambda$ generators: $A$ is the $\lambda$-directed union of its subalgebras with less than $\lambda$ generators, ordered by inclusion. The identity $A \xrightarrow{\id} A$ factors through one of these subalgebras as $A \to A_0 \to A$, but $A_0 \to A$ is an inclusion, thus it has to be an isomorphism. Denote the corresponding set of generators by $X$.
 \item Let \[ E = \{ (t_1 = t_2) \,|\, A \models (t_1 = t_2) \} \] be the set of equations in the generators $X$ that hold in $A$. $A$ is the $\lambda$-directed colimit of the diagram
 \[ D = \{ \langle X|E_0\rangle : E_0 \subseteq E, |E_0| < \lambda \} \]
 where the maps $\langle X|E_i\rangle \xrightarrow{\pi_{ij}} \langle X|E_j\rangle$ are the canonical projections corresponding to the inclusions $E_i \subseteq E_j$. Again we get a factorisation 
 \[ A \xrightarrow{u} \langle X|E_0 \rangle \xrightarrow{\kappa_0} A \]
-of the identity. Note that by \ref{item:varietygen}, $\langle X|E_0 \rangle$ is itself $\lambda$-presentable object and we have two factorisations $\kappa_0 = \kappa_0 \cdot u\kappa_0$ of a map into $A$. By the essential uniqueness in \ref{def:presentableobject}, we get a factorisation of $\kappa_0$ through some $\langle X|E_1 \rangle \xrightarrow{\kappa_1} A$ satisfying $\pi u \kappa_0 = \pi$. Now, $\kappa_1$ is an isomorphism as
+of the identity. By \ref{item:varietygen}, $\langle X|E_0 \rangle$ is itself a $\lambda$-presentable object and we have two factorisations $\kappa_0 = \kappa_0 \cdot u\kappa_0$ of a map into $A$. By the essential uniqueness in \ref{def:presentableobject}, we get a factorisation of $\kappa_0$ as
+
+\[ \langle X|E_0 \rangle \xrightarrow{\pi} \langle X|E_1 \rangle \xrightarrow{\kappa_1} A \] satisfying $\pi u \kappa_0 = \pi$. Now, $\kappa_1$ is an isomorphism as
 \begin{align*}
 \kappa_1 (\pi u) &= \kappa_0 u = \id_A \\
 (\pi u) \kappa_1 \cdot \pi &= \pi u \kappa_0 = \id_A \cdot \pi
 \end{align*}
-thus $(\pi u) \kappa_1 = \id_A$ as $\pi$ is an epimorphism.
+and thus $(\pi u) \kappa_1 = \id_A$ as $\pi$ is an epimorphism.
 \end{enumerate}
 
 \begin{Example}
-The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of copies of $\mathbb Z$, thus it is $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; note that we can indeed read off a countable presentation from the diagram as
+The group $\mathbb Z$ is finitely presentable and by Example \ref{ex:Q}, $\mathbb Q$ is a $\aleph_1$-small colimit of copies of $\mathbb Z$, thus it is $\aleph_1$-presentable by Proposition \ref{prop:smallcolim}; indeed it has a corresponding countable presentation as
 \[ \mathbb Q \cong \left\langle x_n : n \in \mathbb N\,|\,x_n = k \cdot x_{nk} \right \rangle\]
 \end{Example}
 
-% Remove this?!
 \begin{Example}
-An element $c$ of a lattice $L$ is finitely presentable iff it is a \emph{compact element}, i.e. whenever
+An element $c$ of a lattice $L$ is finitely presentable if and only if it is a \emph{compact element}, that is whenever
 \[ c \leq \bigvee_i d_i \]
-for a directed join, we have $c \leq d_i$ for some $i$. This generalises the topological notion of a compact set, where we take $L$ to be the lattice of open subsets.
+for a directed join, there is some $i$ such that $c \leq d_i$. This generalises the topological notion of a compact set, where $L$ is the lattice of open subsets.
 \end{Example}
 
 
 \subsection{Locally presentable and accessible categories}
 
-%% Coole einleitende Sätze!
-
 \begin{Definition}[Locally presentable category]
 A category $\cat K$ is \emph{locally $\lambda$-presentable} if
 \begin{enumerate}
-\item $\cat K$ is cocomplete \label{item:cocomplete}
+\item \label{item:kcocomplete} $\cat K$ is cocomplete
 \item there is a set $\mathcal A$ of $\lambda$-presentable objects such that every object of $\cat K$ is a $\lambda$-filtered colimit of objects of $\mathcal A$.
 \end{enumerate}
 \end{Definition}
 
-Accessibility is a weakening of condition \ref{item:cocomplete}:
+Accessibility is a weakening of condition \ref{item:kcocomplete}:
 
 \begin{Definition}[Accessible category]
 A category $\cat K$ is \emph{$\lambda$-accessible} if
@@ -135,21 +136,19 @@ A category $\cat K$ is \emph{$\lambda$-accessible} if
 \end{enumerate}
 \end{Definition}
 
-We say a category is \emph{accessible} (\emph{locally presentable}) if it is $\lambda$-accessible (locally $\lambda$-presentable) for some $\lambda$. Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. 
+A category is \emph{accessible} (\emph{locally presentable}) if it is $\lambda$-accessible (locally $\lambda$-presentable) for some $\lambda$. Again, for $\lambda = \aleph_0$, we say locally finitely presentable and finitely accessible. 
 
 \begin{Example}
 The category $\catname{Set}$ is locally finitely presentable, as every set is $\aleph_0$-directed colimit of its finite subsets by inclusion.
 \end{Example}
 
-Recall that in a category $\cat K$, a set $G$ of objects is called a \emph{strong generator} if morphisms out of $G$-objects can separate morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ forms a strong generator for $\cat K$. For locally presentable categories, we have a converse that allows for a simpler definition:
+Recall that in a category $\cat K$, a set $G$ of objects is called a \emph{strong generator} if morphisms out of $G$-objects can separate morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ forms a strong generator for $\cat K$. For locally presentable categories, the converse holds and allows for a simpler definition:
 
 \begin{Lemma}\label{lemma:stronggen}
-A cocomplete category $\mathcal K$ is locally $\lambda$-presentable iff it has a strong generator of $\lambda$-presentable objects. 
+A cocomplete category $\mathcal K$ is locally $\lambda$-presentable if and only if it has a strong generator of $\lambda$-presentable objects. \cite[Theorem 1.20]{AdamekRosicky}
 \end{Lemma}
 
-As an immediate corollary, we get that every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$; the same strong generator will do. This situation stands in interesting contrast with the accessible case, where we only get the following: For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible. \\
-
-Using \ref{lemma:stronggen} we can now give more examples % ?
+As an immediate corollary, every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$; the same strong generator will do. This stands in interesting contrast to the accessible case, where only the following holds: For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible. \cite[Theorem 2.14]{AdamekRosicky} \\
 
 \begin{Example}\
 \begin{enumerate}
@@ -163,11 +162,11 @@ thus forming an $\aleph_1$-ary variety. Analogously to finitary case, $\lambda$-
 
 \item The category $\catname{Fld}$ of fields is finitely accessible. Even though the category is not cocomplete, it has \emph{filtered} colimits created by the forgetful functor to $\catname{Set}$. \\
 
-Note that we captured the algebraic property that $F$ is finitely presentable as $\hom(F,-)$ preserving filtered colimits. In the same way, the statement that $F$ is finitely \emph{generated} translates into $\hom(F,-)$ perserving filtered colimits of monomorphisms. As every morphism in $\catname{Fld}$ is a monomorphism, this is no condition and the two notions coincide. Note that every field is the directed colimit of its finitely generated subfields by inclusion. \\
+We captured the algebraic property that $F$ is finitely presentable as $\hom(F,-)$ preserving filtered colimits. In the same way, the statement that $F$ is finitely \emph{generated} translates into $\hom(F,-)$ preserving filtered colimits \emph{of monomorphisms}. As every morphism in $\catname{Fld}$ is a monomorphism, this is no condition and the two notions coincide. Every field is the directed colimit of its finitely generated subfields by inclusion. \\
 
-It remains to show that the class of finitely generated fields has a set of representatives: If $F$ is finitely generated, we can find via transcendence bases extensions $F/L/F_p$ where $F_p$ is the prime subfield of $F$, $L=F_p(\alpha_1,\ldots,\alpha_n)$ is purely transcendental and $F/L$ is finitely generated and algebraic. Thus $F/L$ is finite and the ring homomorphism
+It remains to show that the class of finitely generated fields is essentially small: If $F$ is finitely generated, we can use transcendence bases to show that there are extensions $F/L/F_p$ where $F_p$ is the prime subfield of $F$, $L=F_p(\alpha_1,\ldots,\alpha_n)$ is purely transcendental and $F/L$ is finitely generated and algebraic. Thus $F/L$ is finite and the ring homomorphism
 \[ L[x_1,\ldots,x_m] \to F \]
-is surjective. Therefore the finitely generated fields are up to isomorphism quotients of the rings $F_p(\alpha_1, \ldots,\alpha_n)[x_1,\ldots,x_m]$ for the prime fields $F_0 = \mathbb Q$ and $F_p = \mathbb F_p$ for $p$ prime.
+is surjective. Therefore the finitely generated fields are up to isomorphism quotients of the rings $F_p(\alpha_1, \ldots,\alpha_n)[x_1,\ldots,x_m]$ for the prime fields $F_0 = \mathbb Q$ or $F_p = \mathbb F_p$ for $p$ prime.
 \end{enumerate}
 \end{Example}
 
@@ -176,10 +175,10 @@ Another important example is the following:
 The functor category $\fun{\cat A}{\catname{Set}}$ is locally finitely presentable for every small category $\cat A$. 
 \end{Example}
 \begin{Proof}
-We'll show that representable functors are finitely presentable objects. Let $yA = \hom(A,-)$ then $\hom(yA,-)$ actually preserves \emph{all} colimits as 
+Representable functors are finitely presentable objects. Let $yA = \hom(A,-)$, then $\hom(yA,-)$ actually preserves \emph{all} colimits by the Yoneda lemma, as 
 \[ \hom(yA, \colim_i F_i) \cong (\colim_i F_i)(A) \cong \colim_i F_i(A) \cong \colim_i \hom(yA, F_i). \]
-By the Yoneda lemma, representables form a generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
+Representables form a generator of the functor category. To see that this generator is strong, note that the monomorphisms $F \xrightarrow{\alpha} G$ are pointwise-injective natural transformations because $\catname{Set}$ has pullbacks. Thus a proper subobject $\alpha$ leads to some element $x \in GA \setminus \alpha_A(FA)$ and the natural transformation $yA \xrightarrow{x} G$ doesn't factor through $F$. \\
 
-\textbf{Remark: } We'll see in \ref{prop:modelsarevarieties} that $\fun{\cat A}{\catname{Set}}$ is equivalent to a variety, so local presentability is no surprise.
+Note that $\fun{\cat A}{\catname{Set}}$ is equivalent to a variety, as we will see in \ref{prop:modelsarevarieties}, so local presentability is no surprise.
 \end{Proof}
 
