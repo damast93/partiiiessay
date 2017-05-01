@@ -3,11 +3,11 @@
 
 \subsection{Definition of sketches}
 
-The idea of presenting theories by sketches originated from C. Ehresmann and his French school of category theorists \cite{Ehresmann}. \\
+The idea of presenting theories by sketches has been developed by C. Ehresmann and his French school of category theorists \cite{Ehresmann}. \\
 
 In this section, I will introduce the formalism and give examples of different types of sketches. We will see how the geometric properties of the sketch relate to categorical properties of its models and make connections to algebra and the syntax of the corresponding logical theories. \\
 
-Sketches are covered in various books, for example \cite{MakkaiPare}, \cite{CTCS}, \cite{TTT}, though definitions vary slightly. In my examples, I follow \cite[Chapter D2.1.]{elephant} and \cite[Chapter 1.C]{AdamekRosicky}, who are also most explicit about the equivalent algebraic descriptions, introducing \emph{essentially algebraic theories}.
+Sketches are covered in various books, for example \cite{MakkaiPare}, \cite{CTCS}, \cite{TTT}, though definitions vary slightly. In my examples, I follow \cite[Chapter D2.1]{elephant} and \cite[Chapter 1.C]{AdamekRosicky}, who are also most explicit about the equivalent algebraic descriptions, introducing \emph{essentially algebraic theories}.
 
 \begin{Definition}[Sketch]
 A sketch is tuple $\mathbb S = (\cat A, \dist L, \dist C)$ where $\cat A$ is a small category, $\dist L$ is a set of cones in $\cat A$ and $\dist C$ a set of cocones in $\cat A$.
@@ -130,7 +130,7 @@ When $S$ is a non-discrete category, functors $A : S \to \catname{Set}$ can be v
 Prescribing product cones for $A$ additionally declares certain sorts to be products of other sorts, allowing us to express operations of higher arities in terms of just unary ones.
  
 \begin{Proposition}\label{prop:modelsarevarieties}
-Model categories of finite product sketches are precisely the many-sorted varieties.
+Model categories of finite product sketches are precisely the many-sorted varieties (see \cite[3.17]{AdamekRosicky}).
 \end{Proposition}
 \begin{Proof}
 Given a finite product sketch $\mathbb S = (\cat A, \dist L)$, we define a variety equivalent to its models: Start by defining a signature with one sort for each object of $\cat A$ and unary operation symbols $f : s \to t$ for every morphism $f : s \to t$ in $\cat A$. \\
@@ -192,7 +192,7 @@ We could think of models of product sketches as many-sorted algebras where certa
 
 For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible} pairs of edges:
 \[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
-This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones. \cite[Chapter 3.D]{AdamekRosicky} \\
+This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones (see \cite[Chapter 3.D]{AdamekRosicky}). \\
 
 For example, the theories of posets and small categories are essentially algebraic and can be obtained from the theories of simple graphs and graphs. The relevant notion of transitivity or composition can be given as a partial operation $o : e \times e \to e$ with
 \[ o(f, g) \text{ defined if } t(f) = s(g). \]
