@@ -26,7 +26,7 @@ A colimit of a diagram $D : \cat I \to \cat K$ is called \emph{$\lambda$-filtere
 
 It turns out that both types of colimits are equivalent, and we will use them interchangably.
 
-\begin{Proposition}A category $\cat C$ has $\lambda$-filtered colimits if and only if it has $\lambda$-directed colimits. If $\cat C$ has $\lambda$-filtered colimits, a functor $F : \cat C \to \cat D$ preserves them if and only if it just preserves $\lambda$-directed ones. (see \cite[Remark 1.21]{AdamekRosicky})
+\begin{Proposition}A category $\cat C$ has $\lambda$-filtered colimits if and only if it has $\lambda$-directed colimits. If $\cat C$ has $\lambda$-filtered colimits, a functor $F : \cat C \to \cat D$ preserves them if and only if it just preserves $\lambda$-directed ones (see \cite[Remark 1.21]{AdamekRosicky}).
 \end{Proposition}
 
 \begin{Example}\label{ex:Q}
@@ -45,7 +45,7 @@ The trademark feature of filtered colimits is that they commute with small limit
 \begin{Lemma}\label{prop:smallvsfiltered}
 For every diagram $D : \cat I \times \cat J \to \catname{Set}$ with $\cat I$ $\lambda$-small and $\cat J$ $\lambda$-filtered, the induced morphism
 \[ \colim_j \lim_i D(i,j) \to \lim_i \colim_j D(i,j) \]
-is an isomorphism. \cite[Theorem 1.2.1]{MakkaiPare}
+is an isomorphism (see \cite[Theorem 1.2.1]{MakkaiPare}).
 \end{Lemma}
 
 \subsection{Presentable objects}
@@ -65,7 +65,7 @@ Every $\lambda$-presentable object is $\lambda'$-presentable for $\lambda' \geq 
 \begin{Lemma}\label{prop:smallcolim} A $\lambda$-small colimit of $\lambda$-presentable objects is again $\lambda$-presentable.
 \end{Lemma}
 \begin{Proof}
-Take a $\lambda$-small diagram $(A_i)$ of $\lambda$-presentable objects, and a $\lambda$-filtered diagram $(D_j)$. By the property \ref{prop:smallvsfiltered},
+Take a $\lambda$-small diagram $(A_i)$ of $\lambda$-presentable objects, and a $\lambda$-filtered diagram $(D_j)$. By property \ref{prop:smallvsfiltered},
 \begin{align*}
 \hom(\colim_i A_i, \colim_j D_j) &\cong \lim_i \hom(A_i, \colim_j D_j) \\
 &\cong \lim_i \colim_j \hom(A_i, D_j) \\
@@ -83,9 +83,9 @@ for every diagram $(A_i)$. By \ref{prop:smallcolim}, sets of cardinality $< \lam
 
 The definition of presentable objects really captures what the name suggests: 
 
-\begin{Proposition}\label{prop:varietypresentable} In a variety, an object $A$ is $\lambda$-presentable if and only if it has a presentation with less than $\lambda$ generators and relations in the usual algebraic sense. \cite[Chapter 3.A]{AdamekRosicky}
+\begin{Proposition}\label{prop:varietypresentable} In a variety, an object $A$ is $\lambda$-presentable if and only if it has a presentation with less than $\lambda$ generators and relations in the usual algebraic sense (see \cite[Chapter 3.A]{AdamekRosicky}).
 \end{Proposition}
-\textit{Sketch of proof:} Take $A$ with presentation on less than $\lambda$ generators and relations and take a map $f : A \to C = \colim_i D_i$. All generators have to map set-theoretically into some $D_i$. By filteredness, there is a cocone over these, so all generators map into a single $D$; however the relations don't have to hold in $D$ yet, so we can't extend the map to a homomorphism of algebras. However the relations hold in $C$, so each relation has to start holding after some $D \to D_j$. Take a cocone over these to some $D^*$, through which $f$ now factors. \\
+\textit{Sketch of proof:} Take $A$ with presentation on less than $\lambda$ generators and relations and let $f : A \to C = \colim_i D_i$ be a map into a $\lambda$-filtered colimit. All generators of $A$ have to map set-theoretically into some $D_i$. By filteredness, there is a cocone over these, so all generators map into a single $D$; however the relations do not have to hold in $D$ yet, so we cannot extend the map to a homomorphism of algebras. However the relations do hold in $C$, so each relation has to start holding after some map $D \to D_j$. Take a cocone over these to some $D^*$, through which $f$ now factors. \\
 
 Conversely, let $A$ be $\lambda$-presentable.
 \begin{enumerate}
@@ -145,10 +145,10 @@ The category $\catname{Set}$ is locally finitely presentable, as every set is $\
 Recall that in a category $\cat K$, a set $G$ of objects is called a \emph{strong generator} if morphisms out of $G$-objects can separate morphisms and proper subobjects in $\cat K$. If $\cat K$ is $\lambda$-accessible, the set $\mathcal A$ forms a strong generator for $\cat K$. For locally presentable categories, the converse holds and allows for a simpler definition:
 
 \begin{Lemma}\label{lemma:stronggen}
-A cocomplete category $\mathcal K$ is locally $\lambda$-presentable if and only if it has a strong generator of $\lambda$-presentable objects. \cite[Theorem 1.20]{AdamekRosicky}
+A cocomplete category $\mathcal K$ is locally $\lambda$-presentable if and only if it has a strong generator of $\lambda$-presentable objects (see \cite[Theorem 1.20]{AdamekRosicky}).
 \end{Lemma}
 
-As an immediate corollary, every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$; the same strong generator will do. This stands in interesting contrast to the accessible case, where only the following holds: For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible. \cite[Theorem 2.14]{AdamekRosicky} \\
+As an immediate corollary, every locally $\lambda$-presentable category is also locally $\lambda'$-presentable for $\lambda' \geq \lambda$; the same strong generator will do. This stands in interesting contrast to the accessible case, where only the following holds: For every regular cardinal $\lambda$ there are arbitrarily large regular cardinals $\mu \geq \lambda$ such that every $\lambda$-accessible category is $\mu$-accessible (see \cite[Theorem 2.14]{AdamekRosicky}). \\
 
 \begin{Example}\
 \begin{enumerate}

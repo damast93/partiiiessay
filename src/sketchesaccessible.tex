@@ -19,7 +19,7 @@ We will give an analogous argument for the models of a sketch. The hard part wil
 During this section, we fix notation for sketches as $\mathbb S = (\cat S, \dist L, \dist C)$ and let $S=\obj(\cat S)$ be a set of sorts. Some futher terminology:
 
 \begin{Definition}
-We will consider models $M : \cat S \to \catname{Set}$ of $\mathbb S$ as $S$-sorted set, endowed with unary operations. We write $s_M$ for the set $M(s)$ as well as $f_M : s_M \to s'_M$ for the operation $M(f)$ if $f : s \to s'$ is a morphism in $\cat S$.
+We will consider models $M : \cat S \to \catname{Set}$ of $\mathbb S$ as $S$-sorted sets, endowed with unary operations. We write $s_M$ for the set $M(s)$ as well as $f_M : s_M \to s'_M$ for the operation $M(f)$ if $f : s \to s'$ is a morphism in $\cat S$.
 \begin{enumerate}
 \item The cardinality of an $S$-sorted set $A$ is \[ |A| = \sum_{s \in S} |s_A|. \]
 \item Subsets and submodels $B \subseteq A$ and other set-theoretic notions like unions will be defined sort-by-sort.
@@ -112,7 +112,7 @@ Now $|\mathfrak L^\alpha| \leq \lambda^\alpha \leq \mu^{< \lambda}$ and by regul
 \[ (\mu^{< \lambda})^{< \lambda} = \sum_{\alpha < \lambda} (\mu^{< \lambda})^\alpha \leq \mu^{< \lambda}. \]
 \end{Proof}
 
-As a corollary, we can compute the bound \eqref{eq:skolembound} $\lambda$-ary algebras: Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we'll show inductively that $|A_i| \leq \beta^{< \lambda}$ for all $i \leq \lambda$.
+As a corollary, we can compute the bound \eqref{eq:skolembound} $\lambda$-ary algebras: Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we can show inductively that $|A_i| \leq \beta^{< \lambda}$ for all $i \leq \lambda$.
 \begin{description}
 \item[Successor step] If $|A_i| \leq \beta^{< \lambda}$, then
 \[ |A_i^+| \leq \mu \cdot |A_i|^{< \lambda} \leq \left(\beta^{< \lambda}\right)^{< \lambda} = \beta^{< \lambda}. \]
@@ -121,7 +121,7 @@ As a corollary, we can compute the bound \eqref{eq:skolembound} $\lambda$-ary al
 by regularity.
 \end{description}
 
-As noted in \cite[\nopp~3.3.3]{MakkaiPare}, we can use the same closure process for models of a sum-sketch $\mathbb S$. This is because by \ref{prop:sumconnectedlimits}, intersections of submodels are still submodels, therefore the description of the ``generated submodel'' stays the same as for varieties.
+As noted in \cite[\nopp~3.3.3]{MakkaiPare}, we can use the same closure process for models of a sum-sketch. This is because by \ref{prop:sumconnectedlimits}, intersections of submodels are still submodels, therefore the description of the ``generated submodel'' stays the same as for varieties.
 \begin{Proposition}
 Let $\mathbb S$ be a sum sketch. Take the regular cardinals $\lambda = \lambda^+_\mathbb S, \mu = (\lambda + \mu_\mathbb S)^+$ and $\kappa = (\mu^{< \lambda})^+$. Then every subset $A$ of cardinality $< \kappa$ of a model of $\mathbb S$ is contained in a submodel of cardinality $< \kappa$.
 \end{Proposition}

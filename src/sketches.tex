@@ -29,7 +29,7 @@ that turns all distinguished cones into limit cones and cocones into colimit coc
 
 A \emph{morphism of models} is just a natural transformation between the functors, making the category \[ \mod(\mathbb S, \cat K) \]
 of $\mathbb S$-models in $\cat K$ a full subcategory of $\fun{\cat A}{\cat K}$. Set-valued models of sketches will be the most important special case, and we define
-\[ \mod(\mathbb S) := \mod(\mathbb S, \catname{Set}) \]
+\[ \mod(\mathbb S) := \mod(\mathbb S, \catname{Set}). \]
 A category is \emph{sketchable} if it is equivalent to $\mod(\mathbb S)$ for a sketch $\mathbb S$.
 \end{Definition}
 
@@ -178,7 +178,7 @@ A simple graph is a graph, namely a two-sorted algebra on sorts $v,e$ with opera
 \[ s, t : e \to v, \]
 where there is at most one edge between two vertices, leading to the implicational condition
 \begin{equation}\label{eq:graph} s(x) = s(y),\, t(x) = t(y) \quad \Rightarrow \quad x = y \end{equation}
-The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^. \]
+The right hand side can be expressed as a pullback of the map \[ (s,t) : e \to v^2. \]
 In fact, condition (\ref{eq:graph}) just says that $(s,t)$ is injective, which is a pullback condition
 \[
 \xymatrix{
@@ -190,7 +190,7 @@ e \ar[rd]_{(s,t)} &  & e \ar[ld]^{(s,t)} \\
 
 We could think of models of product sketches as many-sorted algebras where certain sorts encoded products of other sorts. Prescribing more general cones determines certain sorts as \emph{limits} of other sorts, thus subsets of a product subject to equations. \\
 
-For example, the pullback above means that we have a ``partial packing operation'' $\hat c : e \times e \to e$ which is only defined on \emph{compatible} pairs of edges:
+For example, the pullback above means that we have a ``partial packing operation'' \[ \hat c : e \times e \to e \] which is only defined on \emph{compatible} pairs of edges:
 \[ \hat c(x,y) \text{ defined iff } (s,t)(x) = (s,t)(y). \]
 This leads to the equivalence of limit sketches with so called \emph{essentially algebraic theories}, which are equational theories with total and partial operations, where the domains of the partial operations are given by equations in the total ones (see \cite[Chapter 3.D]{AdamekRosicky}). \\
 

@@ -1,7 +1,7 @@
 \section{From categories to sketches}
 \label{seq:catstoskeches}
 
-In this section shows how to embed accessible categories into the functor category $\fun{\cat A}{\catname{Set}}$ for some small category $\cat A$. More precisely, $\lambda$-accessible categories will be precisely those equivalent to the subcategories $\flat_\lambda(\cat A)$ of so-called \emph{$\lambda$-flat} functors $\cat A \to \catname{Set}$. \\
+This section shows how to embed accessible categories into the functor category $\fun{\cat A}{\catname{Set}}$ for some small category $\cat A$. More precisely, $\lambda$-accessible categories will be precisely those equivalent to the subcategories $\flat_\lambda(\cat A)$ of so-called \emph{$\lambda$-flat} functors $\cat A \to \catname{Set}$. \\
 
 We will then show that the condition of flatness can be captured by a sketch. \\
 
@@ -90,7 +90,7 @@ and we denote the full subcategories of $\fun {\cat A}{\catname{Set}}$ of $\lamb
 
 Several properties of flat functors can be discussed in terms of \emph{Kan extensions}. I refer to \cite[\nopp~8.11,\nopp~9.16]{Awodey} for the definitions. \\
 
-Recall that for every small category $\cat A$, the Yoneda embedding $y : \cat A \to \pre{\cat A}$ has the universal property of being the free cocompletion for $\cat A$. Any functor $F : \cat A \to \cat C$ into a cocomplete category $\cat C$ extends uniquely to a cocontinuous functor $F_!: \pre{\cat A} \to \cat C$. More precisely, there is an adjunction $F_! \dashv F^*$ with $F_! \circ y \cong F$ of the form
+Recall that for every small category $\cat A$, the Yoneda embedding $y : \cat A \to \pre{\cat A}=\fun{\cat A^\op}{\catname{Set}}$ has the universal property of being the free cocompletion for $\cat A$. Any functor $F : \cat A \to \cat C$ into a cocomplete category $\cat C$ extends uniquely to a cocontinuous functor $F_!: \pre{\cat A} \to \cat C$. More precisely, there is an adjunction $F_! \dashv F^*$ with $F_! \circ y \cong F$ of the form
 \[
 \xymatrix{
 \pre{\cat A} \ar@/^/[rr]^{F_!} & & \cat C \ar@/^/[ll]^{F^*} \\
@@ -257,7 +257,7 @@ Let $\cat A$ be a small category and $\cat A \simeq \cat D_0$ denote the full su
 \begin{enumerate}
 \item Let $\dist L$ be a system of representatives of all $\lambda$-small limit cones over $\cat D_0$, which might feature a set of new limits $\cat D'$.
 \item Let $\cat D = \cat D_0 \cup \cat D'$
-\item Let $\dist C$ be the set of all canonical cocones into $D$ with respect to $\cat D_0$.
+\item Let $\dist C$ be the set of all canonical cocones into $\cat D$ with respect to $\cat D_0$.
 \end{enumerate}
 
 Functors $F : \cat D_0 \to \catname{Set}$ can be extended to cocontinuous functors $F_! : \pre{\cat A} \to \catname{Set}$. Preserving the colimits from $\dist C$ is a compatibility condition such that the same holds for models $\cat D \to \catname{Set}$. Now, respecting $\dist L$ means that $F_!$ will preserve $\lambda$-small limits of representables. \\
