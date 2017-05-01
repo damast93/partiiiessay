@@ -1,7 +1,7 @@
 \section{Categories of models are accessible}
 \label{sec:sketchesaccessible}
 
-The goal of this section is the remaining direction in the sketchability theorem: To show that $\mod(\mathbb S)$ is accessible for every sketch $\mathbb S$. The structure of the argument is outlined in \cite[\nopp~3.3.5]{MakkaiPare} and \cite[D2.3.11]{elephant}. \\
+The goal of this section is the remaining direction in the sketchability theorem: To show that $\mod(\mathbb S)$ is accessible for every sketch $\mathbb S$. The structure of the argument follows \cite[\nopp~3.3.5]{MakkaiPare} and \cite[\nopp~D2.3.11]{elephant}. \\
 
 As an outline, let us examine the following crude proof that the category of groups is $\aleph_1$-accessible. For every infinite regular cardinal $\kappa$, every group $G$ of cardinality less than $\kappa$ is $\kappa$-presentable by \ref{prop:varietypresentable}, because we have a presentation of $G$ by its own elements and multiplication table
 \[ G \cong \langle e_g : g \in G \,|\, e_g e_h = e_{gh} \rangle. \]
@@ -115,7 +115,7 @@ Now $|\mathfrak L^\alpha| \leq \lambda^\alpha \leq \mu^{< \lambda}$ and by regul
 As a corollary, we can compute the bound \eqref{eq:skolembound} $\lambda$-ary algebras: Let $\beta \geq \mu + \lambda$ and say $|A_0| \leq \beta^{< \lambda}$, then we'll show inductively that $|A_i| \leq \beta^{< \lambda}$ for all $i \leq \lambda$.
 \begin{description}
 \item[Successor step] If $|A_i| \leq \beta^{< \lambda}$, then
-\[ |A_i^+| = \mu \cdot |A_i|^{< \lambda} \leq \left(\beta^{< \lambda}\right)^{< \lambda} = \beta^{< \lambda}. \]
+\[ |A_i^+| \leq \mu \cdot |A_i|^{< \lambda} \leq \left(\beta^{< \lambda}\right)^{< \lambda} = \beta^{< \lambda}. \]
 \item[Limit step] If $|A_i| \leq \beta^{< \lambda}$ for each $i < \alpha \leq \lambda$ then
 \[ |A_\alpha| \leq \sum_{i < \alpha} |A_i| \leq \beta^{< \lambda} \]
 by regularity.
@@ -147,14 +147,14 @@ This process stabilises for $A_\lambda$ with the smallest submodel containing $A
 
 The final step of the proof of Löwenheim-Skolem is to generalise the result for sum sketches to arbitrary sketches, as done in \cite[55]{MakkaiPare} \\
 
-Every colimit specification in a sketch can be formulated using only coproducts and coequalisers. By a technique called Morleyization\footnote{see \url{https://ncatlab.org/nlab/show/coherent+logic} or \cite[\nopp~3.2.4, \nopp~3.2.7]{MakkaiPare}}, we can even restrict ourselves to coproducts and \emph{effective coequalisers} (\emph{regular epi specifications}). Those are distinguished coequaliser cocones of the form
+Every colimit specification in a sketch can be formulated using only coproducts and coequalisers. By a technique called Morleyization\footnote{see \url{https://ncatlab.org/nlab/show/coherent+logic}}, we can even restrict the latter to \emph{effective coequalisers} (\emph{regular epi specifications}). Those are distinguished coequaliser cocones of the form
 \[
 \xymatrix{
 a \ar@/^/[r]^{f_1} \ar@/_/[r]_{f_2} & b \ar[r]^{g} & c
 }\]
-where at the same time $(f_1,f_2)$ is specified as a kernel pair (pullback) cone of $c$. \\
+where at the same time $(f_1,f_2)$ is specified as a kernel pair (pullback) cone of $c$. Furthermore, the construction does not change the cardinals $\lambda_\mathbb S, \mu_\mathbb S$ (see \cite[\nopp~3.2.4, \nopp~3.2.7]{MakkaiPare}). \\
 
-We want to show that we can drop the effective coequaliser specifications and use our result for the remaining sum sketch. The idea is that in $\catname{Set}$, given a map and its kernel pair, stating it is an effective epimorphism (coequaliser of the kernel pair) just requires stating that is surjective. Furthermore in $\catname{Set}$, every epimorphism splits. We create a new sketch $\mathbb S'$ by adding to every effective coequaliser specification a splitting morphism
+We want to show that we can drop the effective coequaliser specifications and use our result for the remaining sum sketch. The idea is that in $\catname{Set}$, given a map and its kernel pair, stating that it is an effective epimorphism (coequaliser of the kernel pair) just requires stating that is surjective. Furthermore in $\catname{Set}$, every epimorphism splits. We create a new sketch $\mathbb S'$ by adding to every effective coequaliser specification a splitting morphism
 \[
 \xymatrix{
 a \ar@/^/[r]^{f_1} \ar@/_/[r]_{f_2} & b \ar[r]^{g} & c \ar@/^/[l]^{r}

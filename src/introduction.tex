@@ -4,7 +4,7 @@
 
 This essay is about \emph{categorical model theory}. Given a logical theory, how does its category of models look like? And how do syntactic properties of the theory translate into categorical properties of the category of models? \\
 
-A classical example are the algebraic (equational) theories, whose well-known categories of models are the varieties from universal algebra, like \emph{groups} or \emph{rings}. Varieties have plesant properties, for example they are complete and cocomplete, well-powered, co-well-powered and have free objects. Birkhoff's famous HSP-Theorem even gives a precise characterisation of varieties as full subcategories of $\catname{Alg}(\Sigma)$, the category of algebras over some signature $\Sigma$: $\cat K$ is a variety if and only if it is closed under homomorphic images, subobjects and products in $\catname{Alg}(\Sigma)$. 
+A classical example are the algebraic (equational) theories, whose well-known categories of models are the varieties from universal algebra, like \emph{monoids}, \emph{groups} or \emph{rings}. Varieties have plesant properties, for example they are complete and cocomplete, well-powered, co-well-powered and have free objects. Birkhoff's famous HSP-Theorem gives a precise characterisation of varieties as full subcategories of $\catname{Alg}(\Sigma)$, the category of algebras over some signature $\Sigma$: $\cat K$ is a variety if and only if it is closed under homomorphic images, subobjects and products in $\catname{Alg}(\Sigma)$. 
 This shows for example that a theory of fields cannot be equational, as the cartesian product of fields fails to be a field.\footnote{Of course, the category of fields can be neither be complete nor complete as there are no morphisms between fields of different characteristic.}
 Still, the HSP-Theorem is not an intrinsic characterisation of varieties. \\
 
@@ -16,13 +16,13 @@ Accessibility weakens the requirement of cocompleteness, giving us back wilder c
 
 It turns out that locally presentable and accessible categories precisely capture the categories of models of certain kinds of theories. These theories have a syntactic description in infinitary logic. However, in this essay, I will deliberately avoid first-order language in favor of an alternative way of presenting a theory, which is completely founded on category theory: The formalism of \emph{sketches}. Section \ref{sec:sketches} will give examples and properties of these. \\
 
-A sketch is merely a small category $\cat A$ with a set of distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
+Briefly, a sketch is a small category $\cat A$ with a set of distinguished cones and cocones. A \emph{model} of the sketch is a functor $F : \cat A \to \catname{Set}$ that turns the distinguished cones and cocones into limits and colimits. For example, consider a sketch $\cat A$ with two objects and three morphisms
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[d]_{m} \ar[ld]_{\pi_1} & \\
 a & a & a
 }\]
-and one prescribed cone
+and one distinguished cone
 \[
 \xymatrix{
   & p \ar[rd]^{\pi_2} \ar[ld]_{\pi_1} & \\
@@ -48,9 +48,9 @@ e \ar@/^/[rr]^{s} \ar@/_/[rr]_{t} \ar[ru] & & v \ar[lu] \\
 }\]
 Models $F: \cat A \to \catname{Set}$ of this sketch yield graphs $(V,E)$ where $V=F(v),E=F(e)$. Turning the cone $L$ into a limit means that $F(1)$ becomes a terminal object $\bullet$ in $\catname{Set}$. Furthermore, $F$ turns $C$ into a coequaliser
 \[ \bullet \cong V/(Fs(e)\sim Ft(e)). \]
-The equivalence relation identifies all vertices that are connected by an edge, leaving us with precisely one connected component. The sketch axiomatised connected graphs (see \cite[Example D2.1.4]{elephant}). \\
+The equivalence relation identifies all vertices that are connected by an edge, leaving us with precisely one connected component. The sketch axiomatises connected graphs (see \cite[Example D2.1.4]{elephant}). \\
 
-Sketches eliminate the need for a language when writing down theories, but the ``geometry'' of the sketch will determine the categorical properties of its category of models. The core theorem that links the key ideas of this essay is the following:
+Sketches eliminate the need for a language when writing down theories. Instead, the ``geometry'' of the sketch will determine the categorical properties of its category of models. The core theorem that links the key ideas of this essay is the following:
 
 \begin{Theorem}[Sketchability]\
 \begin{enumerate}
